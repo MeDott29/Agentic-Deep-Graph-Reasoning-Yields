@@ -19,7 +19,8 @@ from services.knowledge_graph import KnowledgeGraphService
 from services.user import UserService
 from services.content import ContentService
 from models.user import UserCreate, UserPreferences
-from models.content import ContentCreate
+from models.content import ContentCreate, Comment
+from models.base import GraphNode, GraphEdge
 
 # Create services
 kg_service = KnowledgeGraphService()
@@ -35,10 +36,11 @@ SAMPLE_USERS = [
         "full_name": "Tech Guru",
         "bio": "Technology enthusiast and content creator",
         "preferences": {
-            "categories": ["technology", "programming", "gadgets"],
-            "content_language": "en",
-            "interface_language": "en",
-            "mature_content": False
+            "user_id": "user_1",
+            "content_categories": ["technology", "programming", "gadgets"],
+            "preferred_languages": ["en"],
+            "explicit_content_allowed": False,
+            "autoplay_enabled": True
         }
     },
     {
@@ -48,10 +50,11 @@ SAMPLE_USERS = [
         "full_name": "Travel Bug",
         "bio": "Exploring the world one video at a time",
         "preferences": {
-            "categories": ["travel", "adventure", "food"],
-            "content_language": "en",
-            "interface_language": "en",
-            "mature_content": False
+            "user_id": "user_2",
+            "content_categories": ["travel", "adventure", "food"],
+            "preferred_languages": ["en"],
+            "explicit_content_allowed": False,
+            "autoplay_enabled": True
         }
     },
     {
@@ -61,10 +64,11 @@ SAMPLE_USERS = [
         "full_name": "Fitness Fanatic",
         "bio": "Helping you achieve your fitness goals",
         "preferences": {
-            "categories": ["fitness", "health", "nutrition"],
-            "content_language": "en",
-            "interface_language": "en",
-            "mature_content": False
+            "user_id": "user_3",
+            "content_categories": ["fitness", "health", "nutrition"],
+            "preferred_languages": ["en"],
+            "explicit_content_allowed": False,
+            "autoplay_enabled": True
         }
     },
     {
@@ -74,10 +78,11 @@ SAMPLE_USERS = [
         "full_name": "Food Lover",
         "bio": "Cooking and eating my way through life",
         "preferences": {
-            "categories": ["food", "cooking", "recipes"],
-            "content_language": "en",
-            "interface_language": "en",
-            "mature_content": False
+            "user_id": "user_4",
+            "content_categories": ["food", "cooking", "recipes"],
+            "preferred_languages": ["en"],
+            "explicit_content_allowed": False,
+            "autoplay_enabled": True
         }
     },
     {
@@ -87,10 +92,11 @@ SAMPLE_USERS = [
         "full_name": "Pro Gamer",
         "bio": "Gaming content creator and streamer",
         "preferences": {
-            "categories": ["gaming", "esports", "technology"],
-            "content_language": "en",
-            "interface_language": "en",
-            "mature_content": True
+            "user_id": "user_5",
+            "content_categories": ["gaming", "esports", "technology"],
+            "preferred_languages": ["en"],
+            "explicit_content_allowed": True,
+            "autoplay_enabled": True
         }
     }
 ]
@@ -197,18 +203,34 @@ def create_sample_users():
     created_users = []
     
     for user_data in SAMPLE_USERS:
-        preferences = UserPreferences(**user_data["preferences"])
+        # Create user without preferences first
         user_create = UserCreate(
             username=user_data["username"],
             email=user_data["email"],
             password=user_data["password"],
             full_name=user_data["full_name"],
-            bio=user_data["bio"],
-            preferences=preferences
+            bio=user_data["bio"]
         )
         
         try:
+            # Create the user
             user = user_service.create_user(user_create)
+            
+            # Now create preferences with the actual user_id
+            preferences_data = user_data["preferences"].copy()
+            preferences_data["user_id"] = user.id
+            
+            # Store preferences in the knowledge graph
+            preferences = UserPreferences(**preferences_data)
+            
+            # Add preferences to the knowledge graph
+            kg_service.add_node_property(
+                node_id=user.id,
+                node_type="USER",
+                property_name="preferences",
+                property_value=preferences.model_dump()
+            )
+            
             created_users.append(user)
             print(f"Created user: {user.username}")
         except Exception as e:
@@ -221,24 +243,38 @@ def create_sample_content(users):
     print("Creating sample content...")
     created_content = []
     
+    # If no users were created, return empty list
+    if not users:
+        print("No users available to create content. Skipping content creation.")
+        return created_content
+    
     for content_data in SAMPLE_CONTENT:
+        # Check if user_index is valid
+        if content_data["user_index"] >= len(users):
+            print(f"Invalid user index {content_data['user_index']}. Skipping content.")
+            continue
+            
         user = users[content_data["user_index"]]
+        
+        # Create a dummy file path for sample content
+        dummy_file_path = f"src/data/sample_videos/{content_data['title'].lower().replace(' ', '_')}.mp4"
         
         content_create = ContentCreate(
             title=content_data["title"],
             description=content_data["description"],
             hashtags=content_data["hashtags"],
             allow_comments=content_data["allow_comments"],
-            privacy=content_data["privacy"]
+            is_private=content_data["privacy"] == "private",
+            user_id=user.id,
+            file_path=dummy_file_path
         )
         
         try:
             # In a real implementation, we would upload a file
             # For this sample, we'll just create the content without a file
             content = content_service.create_content(
-                user_id=user.id,
-                content_data=content_create,
-                file_path=None  # No actual file for sample data
+                content_create=content_create,
+                file_data=None  # No actual file data for this sample
             )
             
             # Manually set some engagement metrics
@@ -249,12 +285,14 @@ def create_sample_content(users):
             
             # Update the content in the database
             content_service.contents[content.id] = content
-            content_service._save_contents()
+            content_service._save_content()
             
             # Update the node in the knowledge graph
-            kg_service.update_node_properties(
+            kg_service.add_node_property(
                 node_id=content.id,
-                properties={
+                node_type="CONTENT",
+                property_name="metrics",
+                property_value={
                     "view_count": content.view_count,
                     "like_count": content.like_count,
                     "comment_count": content.comment_count,
@@ -272,6 +310,11 @@ def create_sample_content(users):
 def create_sample_interactions(users, content_items):
     """Create sample interactions between users and content"""
     print("Creating sample interactions...")
+    
+    # Check if we have users and content
+    if not users or not content_items:
+        print("Not enough users or content to create interactions. Skipping.")
+        return
     
     # Create follows between users
     for i, user in enumerate(users):
@@ -295,7 +338,7 @@ def create_sample_interactions(users, content_items):
                 if random.random() < 0.9:
                     try:
                         # Record a view
-                        kg_service.add_edge(
+                        view_edge = GraphEdge(
                             source_id=user.id,
                             target_id=content.id,
                             edge_type="VIEWS",
@@ -304,10 +347,11 @@ def create_sample_interactions(users, content_items):
                                 "duration": random.randint(5, 60)  # View duration in seconds
                             }
                         )
+                        kg_service.add_edge(view_edge)
                         
                         # Like content (60% chance if viewed)
                         if random.random() < 0.6:
-                            kg_service.add_edge(
+                            like_edge = GraphEdge(
                                 source_id=user.id,
                                 target_id=content.id,
                                 edge_type="LIKES",
@@ -315,31 +359,33 @@ def create_sample_interactions(users, content_items):
                                     "created_at": (datetime.now() - timedelta(days=random.randint(0, 30))).isoformat()
                                 }
                             )
-                            print(f"{user.username} liked '{content.title}'")
+                            kg_service.add_edge(like_edge)
+                            
+                            # Update content like count
+                            content.like_count += 1
                         
                         # Comment on content (30% chance if viewed)
                         if random.random() < 0.3:
+                            # Generate a random comment
                             comment_text = random.choice(SAMPLE_COMMENTS)
                             comment_id = str(uuid.uuid4())
                             
-                            # Add comment to content service
-                            if not hasattr(content_service, "comments"):
-                                content_service.comments = {}
-                            
-                            content_service.comments[comment_id] = {
-                                "id": comment_id,
-                                "content_id": content.id,
-                                "user_id": user.id,
-                                "text": comment_text,
-                                "created_at": (datetime.now() - timedelta(days=random.randint(0, 30))).isoformat(),
-                                "like_count": random.randint(0, 10)
-                            }
+                            # Add comment to database
+                            content_service.comments[comment_id] = Comment(
+                                id=comment_id,
+                                content_id=content.id,
+                                user_id=user.id,
+                                text=comment_text,
+                                like_count=0,
+                                created_at=datetime.now() - timedelta(days=random.randint(0, 30)),
+                                updated_at=datetime.now() - timedelta(days=random.randint(0, 30))
+                            )
                             
                             # Save comments to file
                             content_service._save_comments()
                             
                             # Add edge in knowledge graph
-                            kg_service.add_edge(
+                            comment_edge = GraphEdge(
                                 source_id=user.id,
                                 target_id=content.id,
                                 edge_type="COMMENTS",
@@ -348,6 +394,7 @@ def create_sample_interactions(users, content_items):
                                     "comment_id": comment_id
                                 }
                             )
+                            kg_service.add_edge(comment_edge)
                             print(f"{user.username} commented on '{content.title}'")
                     except Exception as e:
                         print(f"Error creating interaction: {str(e)}")
@@ -369,22 +416,26 @@ def create_sample_interests():
     # Create interest nodes
     for interest in interests:
         try:
-            kg_service.add_node(
-                node_id=f"interest_{interest}",
+            # Create a GraphNode object
+            interest_node = GraphNode(
+                id=f"interest_{interest}",
                 node_type="INTEREST",
                 properties={
                     "name": interest,
                     "created_at": datetime.now().isoformat()
                 }
             )
+            
+            # Add the node to the graph
+            kg_service.add_node(interest_node)
             print(f"Created interest node: {interest}")
         except Exception as e:
             print(f"Error creating interest node '{interest}': {str(e)}")
     
     # Connect users to interests based on their preferences
     for user_id, user_data in user_service.users.items():
-        if hasattr(user_data, "preferences") and hasattr(user_data.preferences, "categories"):
-            for category in user_data.preferences.categories:
+        if hasattr(user_data, "preferences") and hasattr(user_data.preferences, "content_categories"):
+            for category in user_data.preferences.content_categories:
                 if f"interest_{category}" in kg_service.graph.nodes:
                     try:
                         kg_service.add_edge(
@@ -413,14 +464,14 @@ def main():
         
         # Reset the database
         kg_service.graph = nx.DiGraph()
-        kg_service.save_graph()
+        kg_service._save_graph()
         
         # Reset user and content data
         user_service.users = {}
         user_service._save_users()
         
         content_service.contents = {}
-        content_service._save_contents()
+        content_service._save_content()
         content_service.comments = {}
         content_service._save_comments()
         
@@ -428,17 +479,23 @@ def main():
     
     # Create sample data
     users = create_sample_users()
-    content_items = create_sample_content(users)
-    create_sample_interactions(users, content_items)
-    create_sample_interests()
     
-    # Save all data
-    kg_service.save_graph()
-    
-    print("Database initialization complete!")
-    print(f"Created {len(users)} users")
-    print(f"Created {len(content_items)} content items")
-    print(f"Graph now has {kg_service.graph.number_of_nodes()} nodes and {kg_service.graph.number_of_edges()} edges")
+    # Only proceed if users were created
+    if users:
+        content_items = create_sample_content(users)
+        if content_items:
+            create_sample_interactions(users, content_items)
+        create_sample_interests()
+        
+        # Save all data
+        kg_service._save_graph()
+        
+        print("Database initialization complete!")
+        print(f"Created {len(users)} users")
+        print(f"Created {len(content_items)} content items")
+        print(f"Graph now has {kg_service.graph.number_of_nodes()} nodes and {kg_service.graph.number_of_edges()} edges")
+    else:
+        print("No users were created. Database initialization failed.")
 
 if __name__ == "__main__":
     main() 

@@ -1,0 +1,1638 @@
+{
+  "nodes": [
+    {
+      "id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "node_type": "USER",
+      "properties": {
+        "username": "techguru",
+        "full_name": "Tech Guru",
+        "bio": "Technology enthusiast and content creator",
+        "follower_count": 0,
+        "following_count": 0,
+        "created_at": "2025-03-05T23:05:58.116369",
+        "updated_at": "2025-03-05T23:05:58.116374",
+        "preferences": {
+          "user_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+          "content_categories": [
+            "technology",
+            "programming",
+            "gadgets"
+          ],
+          "preferred_content_duration": null,
+          "preferred_languages": [
+            "en"
+          ],
+          "explicit_content_allowed": false,
+          "autoplay_enabled": true
+        }
+      }
+    },
+    {
+      "id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+      "node_type": "USER",
+      "properties": {
+        "username": "travelbug",
+        "full_name": "Travel Bug",
+        "bio": "Exploring the world one video at a time",
+        "follower_count": 0,
+        "following_count": 0,
+        "created_at": "2025-03-05T23:05:58.326145",
+        "updated_at": "2025-03-05T23:05:58.326148",
+        "preferences": {
+          "user_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+          "content_categories": [
+            "travel",
+            "adventure",
+            "food"
+          ],
+          "preferred_content_duration": null,
+          "preferred_languages": [
+            "en"
+          ],
+          "explicit_content_allowed": false,
+          "autoplay_enabled": true
+        }
+      }
+    },
+    {
+      "id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "node_type": "USER",
+      "properties": {
+        "username": "fitnessfanatic",
+        "full_name": "Fitness Fanatic",
+        "bio": "Helping you achieve your fitness goals",
+        "follower_count": 0,
+        "following_count": 0,
+        "created_at": "2025-03-05T23:05:58.541302",
+        "updated_at": "2025-03-05T23:05:58.541322",
+        "preferences": {
+          "user_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+          "content_categories": [
+            "fitness",
+            "health",
+            "nutrition"
+          ],
+          "preferred_content_duration": null,
+          "preferred_languages": [
+            "en"
+          ],
+          "explicit_content_allowed": false,
+          "autoplay_enabled": true
+        }
+      }
+    },
+    {
+      "id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+      "node_type": "USER",
+      "properties": {
+        "username": "foodie",
+        "full_name": "Food Lover",
+        "bio": "Cooking and eating my way through life",
+        "follower_count": 0,
+        "following_count": 0,
+        "created_at": "2025-03-05T23:05:58.753895",
+        "updated_at": "2025-03-05T23:05:58.753899",
+        "preferences": {
+          "user_id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+          "content_categories": [
+            "food",
+            "cooking",
+            "recipes"
+          ],
+          "preferred_content_duration": null,
+          "preferred_languages": [
+            "en"
+          ],
+          "explicit_content_allowed": false,
+          "autoplay_enabled": true
+        }
+      }
+    },
+    {
+      "id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "node_type": "USER",
+      "properties": {
+        "username": "gamer",
+        "full_name": "Pro Gamer",
+        "bio": "Gaming content creator and streamer",
+        "follower_count": 0,
+        "following_count": 0,
+        "created_at": "2025-03-05T23:05:58.969730",
+        "updated_at": "2025-03-05T23:05:58.969733",
+        "preferences": {
+          "user_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+          "content_categories": [
+            "gaming",
+            "esports",
+            "technology"
+          ],
+          "preferred_content_duration": null,
+          "preferred_languages": [
+            "en"
+          ],
+          "explicit_content_allowed": true,
+          "autoplay_enabled": true
+        }
+      }
+    },
+    {
+      "id": "a4222d99-6d1b-461a-8bda-82dfc52b4677",
+      "node_type": "CONTENT",
+      "properties": {
+        "title": "Top 10 Tech Gadgets of 2023",
+        "description": "Check out these amazing tech gadgets that will change your life!",
+        "user_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+        "duration": 15.0,
+        "hashtags": [
+          "tech",
+          "gadgets",
+          "innovation"
+        ],
+        "view_count": 0,
+        "like_count": 0,
+        "comment_count": 0,
+        "share_count": 0,
+        "created_at": "2025-03-05T23:05:58.972043",
+        "updated_at": "2025-03-05T23:05:58.972045",
+        "metrics": {
+          "view_count": 3610,
+          "like_count": 349,
+          "comment_count": 165,
+          "share_count": 69
+        }
+      }
+    },
+    {
+      "id": "hashtag:tech",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "tech",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:gadgets",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "gadgets",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:innovation",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "innovation",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "ff98dd11-c9b0-4091-836c-ec6ed8d67d3e",
+      "node_type": "CONTENT",
+      "properties": {
+        "title": "Python Programming Tutorial for Beginners",
+        "description": "Learn the basics of Python programming in this beginner-friendly tutorial.",
+        "user_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+        "duration": 15.0,
+        "hashtags": [
+          "programming",
+          "python",
+          "tutorial"
+        ],
+        "view_count": 0,
+        "like_count": 0,
+        "comment_count": 0,
+        "share_count": 0,
+        "created_at": "2025-03-05T23:05:58.980296",
+        "updated_at": "2025-03-05T23:05:58.980301",
+        "metrics": {
+          "view_count": 1645,
+          "like_count": 78,
+          "comment_count": 33,
+          "share_count": 11
+        }
+      }
+    },
+    {
+      "id": "hashtag:programming",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "programming",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:python",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "python",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:tutorial",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "tutorial",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "72b24e92-52a9-41fc-aa26-8709c24cb61b",
+      "node_type": "CONTENT",
+      "properties": {
+        "title": "Exploring the Hidden Beaches of Bali",
+        "description": "Discover these secret beaches in Bali that tourists don't know about!",
+        "user_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+        "duration": 15.0,
+        "hashtags": [
+          "travel",
+          "bali",
+          "beaches"
+        ],
+        "view_count": 0,
+        "like_count": 0,
+        "comment_count": 0,
+        "share_count": 0,
+        "created_at": "2025-03-05T23:05:58.986854",
+        "updated_at": "2025-03-05T23:05:58.986859",
+        "metrics": {
+          "view_count": 4539,
+          "like_count": 45,
+          "comment_count": 21,
+          "share_count": 8
+        }
+      }
+    },
+    {
+      "id": "hashtag:travel",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "travel",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:bali",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "bali",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:beaches",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "beaches",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "b119a2d4-040a-4a7f-af81-ccff58777202",
+      "node_type": "CONTENT",
+      "properties": {
+        "title": "Street Food Tour in Bangkok",
+        "description": "Join me as I try the best street food in Bangkok, Thailand!",
+        "user_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+        "duration": 15.0,
+        "hashtags": [
+          "travel",
+          "food",
+          "bangkok"
+        ],
+        "view_count": 0,
+        "like_count": 0,
+        "comment_count": 0,
+        "share_count": 0,
+        "created_at": "2025-03-05T23:05:58.995935",
+        "updated_at": "2025-03-05T23:05:58.995938",
+        "metrics": {
+          "view_count": 8635,
+          "like_count": 650,
+          "comment_count": 22,
+          "share_count": 92
+        }
+      }
+    },
+    {
+      "id": "hashtag:food",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "food",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:bangkok",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "bangkok",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "0c72f352-d7f3-4365-b496-63c96cfb9803",
+      "node_type": "CONTENT",
+      "properties": {
+        "title": "10-Minute HIIT Workout for Busy People",
+        "description": "No time to exercise? Try this quick HIIT workout that you can do anywhere!",
+        "user_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+        "duration": 15.0,
+        "hashtags": [
+          "fitness",
+          "workout",
+          "hiit"
+        ],
+        "view_count": 0,
+        "like_count": 0,
+        "comment_count": 0,
+        "share_count": 0,
+        "created_at": "2025-03-05T23:05:59.004166",
+        "updated_at": "2025-03-05T23:05:59.004169",
+        "metrics": {
+          "view_count": 9017,
+          "like_count": 271,
+          "comment_count": 39,
+          "share_count": 54
+        }
+      }
+    },
+    {
+      "id": "hashtag:fitness",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "fitness",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:workout",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "workout",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:hiit",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "hiit",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "50ce9549-08f0-4697-a8c0-61514a50f2d9",
+      "node_type": "CONTENT",
+      "properties": {
+        "title": "Healthy Meal Prep for the Week",
+        "description": "Learn how to meal prep for a healthy week ahead with these simple recipes.",
+        "user_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+        "duration": 15.0,
+        "hashtags": [
+          "fitness",
+          "nutrition",
+          "mealprep"
+        ],
+        "view_count": 0,
+        "like_count": 0,
+        "comment_count": 0,
+        "share_count": 0,
+        "created_at": "2025-03-05T23:05:59.016453",
+        "updated_at": "2025-03-05T23:05:59.016456",
+        "metrics": {
+          "view_count": 9626,
+          "like_count": 477,
+          "comment_count": 172,
+          "share_count": 78
+        }
+      }
+    },
+    {
+      "id": "hashtag:nutrition",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "nutrition",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:mealprep",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "mealprep",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "593a52f9-5966-4d5d-88cb-b00de7b9f0fa",
+      "node_type": "CONTENT",
+      "properties": {
+        "title": "Easy Pasta Carbonara Recipe",
+        "description": "Learn how to make authentic Italian carbonara in just 15 minutes!",
+        "user_id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+        "duration": 15.0,
+        "hashtags": [
+          "food",
+          "recipe",
+          "italian"
+        ],
+        "view_count": 0,
+        "like_count": 0,
+        "comment_count": 0,
+        "share_count": 0,
+        "created_at": "2025-03-05T23:05:59.029522",
+        "updated_at": "2025-03-05T23:05:59.029530",
+        "metrics": {
+          "view_count": 6404,
+          "like_count": 551,
+          "comment_count": 45,
+          "share_count": 77
+        }
+      }
+    },
+    {
+      "id": "hashtag:recipe",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "recipe",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:italian",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "italian",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "2424568c-41d7-4b9f-b8a5-bb73450d8a20",
+      "node_type": "CONTENT",
+      "properties": {
+        "title": "Best Burger Joints in New York City",
+        "description": "I tried the top-rated burger places in NYC. Here's my ranking!",
+        "user_id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+        "duration": 15.0,
+        "hashtags": [
+          "food",
+          "burgers",
+          "nyc"
+        ],
+        "view_count": 0,
+        "like_count": 0,
+        "comment_count": 0,
+        "share_count": 0,
+        "created_at": "2025-03-05T23:05:59.043018",
+        "updated_at": "2025-03-05T23:05:59.043023",
+        "metrics": {
+          "view_count": 2245,
+          "like_count": 63,
+          "comment_count": 22,
+          "share_count": 7
+        }
+      }
+    },
+    {
+      "id": "hashtag:burgers",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "burgers",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:nyc",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "nyc",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "35f5a403-31e6-45eb-b1ef-0d15cf56ef3b",
+      "node_type": "CONTENT",
+      "properties": {
+        "title": "Minecraft Building Tips and Tricks",
+        "description": "Improve your Minecraft building skills with these pro tips!",
+        "user_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+        "duration": 15.0,
+        "hashtags": [
+          "gaming",
+          "minecraft",
+          "tutorial"
+        ],
+        "view_count": 0,
+        "like_count": 0,
+        "comment_count": 0,
+        "share_count": 0,
+        "created_at": "2025-03-05T23:05:59.056609",
+        "updated_at": "2025-03-05T23:05:59.056612",
+        "metrics": {
+          "view_count": 3615,
+          "like_count": 315,
+          "comment_count": 114,
+          "share_count": 29
+        }
+      }
+    },
+    {
+      "id": "hashtag:gaming",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "gaming",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:minecraft",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "minecraft",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "0e0480a5-5924-4bd9-a539-ba2962c80c92",
+      "node_type": "CONTENT",
+      "properties": {
+        "title": "Call of Duty: Warzone Gameplay Highlights",
+        "description": "Check out these epic moments from my recent Warzone matches!",
+        "user_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+        "duration": 15.0,
+        "hashtags": [
+          "gaming",
+          "callofduty",
+          "warzone"
+        ],
+        "view_count": 0,
+        "like_count": 0,
+        "comment_count": 0,
+        "share_count": 0,
+        "created_at": "2025-03-05T23:05:59.070488",
+        "updated_at": "2025-03-05T23:05:59.070491",
+        "metrics": {
+          "view_count": 8670,
+          "like_count": 729,
+          "comment_count": 264,
+          "share_count": 99
+        }
+      }
+    },
+    {
+      "id": "hashtag:callofduty",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "callofduty",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "hashtag:warzone",
+      "node_type": "HASHTAG",
+      "properties": {
+        "name": "warzone",
+        "content_count": 0
+      }
+    },
+    {
+      "id": "interest_technology",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "technology",
+        "created_at": "2025-03-05T18:05:59.226522"
+      }
+    },
+    {
+      "id": "interest_programming",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "programming",
+        "created_at": "2025-03-05T18:05:59.228711"
+      }
+    },
+    {
+      "id": "interest_gadgets",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "gadgets",
+        "created_at": "2025-03-05T18:05:59.247928"
+      }
+    },
+    {
+      "id": "interest_travel",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "travel",
+        "created_at": "2025-03-05T18:05:59.249881"
+      }
+    },
+    {
+      "id": "interest_adventure",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "adventure",
+        "created_at": "2025-03-05T18:05:59.251751"
+      }
+    },
+    {
+      "id": "interest_food",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "food",
+        "created_at": "2025-03-05T18:05:59.254001"
+      }
+    },
+    {
+      "id": "interest_fitness",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "fitness",
+        "created_at": "2025-03-05T18:05:59.256024"
+      }
+    },
+    {
+      "id": "interest_health",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "health",
+        "created_at": "2025-03-05T18:05:59.259302"
+      }
+    },
+    {
+      "id": "interest_nutrition",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "nutrition",
+        "created_at": "2025-03-05T18:05:59.261980"
+      }
+    },
+    {
+      "id": "interest_gaming",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "gaming",
+        "created_at": "2025-03-05T18:05:59.263707"
+      }
+    },
+    {
+      "id": "interest_esports",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "esports",
+        "created_at": "2025-03-05T18:05:59.265508"
+      }
+    },
+    {
+      "id": "interest_cooking",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "cooking",
+        "created_at": "2025-03-05T18:05:59.267461"
+      }
+    },
+    {
+      "id": "interest_recipes",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "recipes",
+        "created_at": "2025-03-05T18:05:59.269683"
+      }
+    },
+    {
+      "id": "interest_fashion",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "fashion",
+        "created_at": "2025-03-05T18:05:59.272117"
+      }
+    },
+    {
+      "id": "interest_beauty",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "beauty",
+        "created_at": "2025-03-05T18:05:59.274170"
+      }
+    },
+    {
+      "id": "interest_music",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "music",
+        "created_at": "2025-03-05T18:05:59.278640"
+      }
+    },
+    {
+      "id": "interest_movies",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "movies",
+        "created_at": "2025-03-05T18:05:59.281517"
+      }
+    },
+    {
+      "id": "interest_books",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "books",
+        "created_at": "2025-03-05T18:05:59.283863"
+      }
+    },
+    {
+      "id": "interest_photography",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "photography",
+        "created_at": "2025-03-05T18:05:59.285712"
+      }
+    },
+    {
+      "id": "interest_art",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "art",
+        "created_at": "2025-03-05T18:05:59.287940"
+      }
+    },
+    {
+      "id": "interest_science",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "science",
+        "created_at": "2025-03-05T18:05:59.291818"
+      }
+    },
+    {
+      "id": "interest_history",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "history",
+        "created_at": "2025-03-05T18:05:59.294980"
+      }
+    },
+    {
+      "id": "interest_politics",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "politics",
+        "created_at": "2025-03-05T18:05:59.297321"
+      }
+    },
+    {
+      "id": "interest_business",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "business",
+        "created_at": "2025-03-05T18:05:59.299352"
+      }
+    },
+    {
+      "id": "interest_finance",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "finance",
+        "created_at": "2025-03-05T18:05:59.302160"
+      }
+    },
+    {
+      "id": "interest_sports",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "sports",
+        "created_at": "2025-03-05T18:05:59.304108"
+      }
+    },
+    {
+      "id": "interest_outdoors",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "outdoors",
+        "created_at": "2025-03-05T18:05:59.306102"
+      }
+    },
+    {
+      "id": "interest_pets",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "pets",
+        "created_at": "2025-03-05T18:05:59.309644"
+      }
+    },
+    {
+      "id": "interest_animals",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "animals",
+        "created_at": "2025-03-05T18:05:59.312691"
+      }
+    },
+    {
+      "id": "interest_diy",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "diy",
+        "created_at": "2025-03-05T18:05:59.314751"
+      }
+    },
+    {
+      "id": "interest_crafts",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "crafts",
+        "created_at": "2025-03-05T18:05:59.317378"
+      }
+    },
+    {
+      "id": "interest_home",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "home",
+        "created_at": "2025-03-05T18:05:59.319214"
+      }
+    },
+    {
+      "id": "interest_garden",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "garden",
+        "created_at": "2025-03-05T18:05:59.320986"
+      }
+    },
+    {
+      "id": "interest_parenting",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "parenting",
+        "created_at": "2025-03-05T18:05:59.322903"
+      }
+    },
+    {
+      "id": "interest_education",
+      "node_type": "INTEREST",
+      "properties": {
+        "name": "education",
+        "created_at": "2025-03-05T18:05:59.325335"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "target_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+      "edge_type": "FOLLOWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.083976"
+      }
+    },
+    {
+      "source_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "target_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "edge_type": "FOLLOWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.085288"
+      }
+    },
+    {
+      "source_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "target_id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+      "edge_type": "FOLLOWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.086574"
+      }
+    },
+    {
+      "source_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "target_id": "72b24e92-52a9-41fc-aa26-8709c24cb61b",
+      "edge_type": "COMMENTS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-10T18:05:59.138881",
+        "comment_id": "93282db3-4f52-466b-b378-913c78675906"
+      }
+    },
+    {
+      "source_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "target_id": "b119a2d4-040a-4a7f-af81-ccff58777202",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-11T18:05:59.151068"
+      }
+    },
+    {
+      "source_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "target_id": "0c72f352-d7f3-4365-b496-63c96cfb9803",
+      "edge_type": "COMMENTS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-07T18:05:59.167934",
+        "comment_id": "df804725-421b-42e0-a14a-006fafb351dc"
+      }
+    },
+    {
+      "source_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "target_id": "50ce9549-08f0-4697-a8c0-61514a50f2d9",
+      "edge_type": "VIEWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-01T18:05:59.174842",
+        "duration": 51
+      }
+    },
+    {
+      "source_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "target_id": "593a52f9-5966-4d5d-88cb-b00de7b9f0fa",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-10T18:05:59.189418"
+      }
+    },
+    {
+      "source_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "target_id": "35f5a403-31e6-45eb-b1ef-0d15cf56ef3b",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-19T18:05:59.215420"
+      }
+    },
+    {
+      "source_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "target_id": "0e0480a5-5924-4bd9-a539-ba2962c80c92",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-02T18:05:59.224030"
+      }
+    },
+    {
+      "source_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+      "target_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "edge_type": "FOLLOWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.087930"
+      }
+    },
+    {
+      "source_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+      "target_id": "ff98dd11-c9b0-4091-836c-ec6ed8d67d3e",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-20T18:05:59.122722"
+      }
+    },
+    {
+      "source_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+      "target_id": "50ce9549-08f0-4697-a8c0-61514a50f2d9",
+      "edge_type": "VIEWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-08T18:05:59.177941",
+        "duration": 10
+      }
+    },
+    {
+      "source_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+      "target_id": "593a52f9-5966-4d5d-88cb-b00de7b9f0fa",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-20T18:05:59.193619"
+      }
+    },
+    {
+      "source_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+      "target_id": "2424568c-41d7-4b9f-b8a5-bb73450d8a20",
+      "edge_type": "VIEWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-23T18:05:59.200390",
+        "duration": 31
+      }
+    },
+    {
+      "source_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+      "target_id": "35f5a403-31e6-45eb-b1ef-0d15cf56ef3b",
+      "edge_type": "VIEWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-07T18:05:59.217098",
+        "duration": 47
+      }
+    },
+    {
+      "source_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "target_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+      "edge_type": "FOLLOWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.089458"
+      }
+    },
+    {
+      "source_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "target_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "edge_type": "FOLLOWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.092934"
+      }
+    },
+    {
+      "source_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "target_id": "a4222d99-6d1b-461a-8bda-82dfc52b4677",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-25T18:05:59.108363"
+      }
+    },
+    {
+      "source_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "target_id": "ff98dd11-c9b0-4091-836c-ec6ed8d67d3e",
+      "edge_type": "COMMENTS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-23T18:05:59.129341",
+        "comment_id": "a57cf4a7-6988-472e-aafc-c3a478b9d5a1"
+      }
+    },
+    {
+      "source_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "target_id": "72b24e92-52a9-41fc-aa26-8709c24cb61b",
+      "edge_type": "COMMENTS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-16T18:05:59.146333",
+        "comment_id": "6d2676ee-800f-4444-99cb-e536161f901a"
+      }
+    },
+    {
+      "source_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "target_id": "b119a2d4-040a-4a7f-af81-ccff58777202",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-22T18:05:59.153916"
+      }
+    },
+    {
+      "source_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "target_id": "2424568c-41d7-4b9f-b8a5-bb73450d8a20",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-16T18:05:59.203790"
+      }
+    },
+    {
+      "source_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "target_id": "35f5a403-31e6-45eb-b1ef-0d15cf56ef3b",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-25T18:05:59.220374"
+      }
+    },
+    {
+      "source_id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+      "target_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+      "edge_type": "FOLLOWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.095782"
+      }
+    },
+    {
+      "source_id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+      "target_id": "a4222d99-6d1b-461a-8bda-82dfc52b4677",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-09T18:05:59.112691"
+      }
+    },
+    {
+      "source_id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+      "target_id": "ff98dd11-c9b0-4091-836c-ec6ed8d67d3e",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-25T18:05:59.132420"
+      }
+    },
+    {
+      "source_id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+      "target_id": "b119a2d4-040a-4a7f-af81-ccff58777202",
+      "edge_type": "VIEWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-27T18:05:59.155284",
+        "duration": 41
+      }
+    },
+    {
+      "source_id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+      "target_id": "0c72f352-d7f3-4365-b496-63c96cfb9803",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-11T18:05:59.171392"
+      }
+    },
+    {
+      "source_id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+      "target_id": "50ce9549-08f0-4697-a8c0-61514a50f2d9",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-10T18:05:59.181839"
+      }
+    },
+    {
+      "source_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "target_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "edge_type": "FOLLOWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.097672"
+      }
+    },
+    {
+      "source_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "target_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+      "edge_type": "FOLLOWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.099684"
+      }
+    },
+    {
+      "source_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "target_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "edge_type": "FOLLOWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.101480"
+      }
+    },
+    {
+      "source_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "target_id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+      "edge_type": "FOLLOWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.104041"
+      }
+    },
+    {
+      "source_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "target_id": "a4222d99-6d1b-461a-8bda-82dfc52b4677",
+      "edge_type": "COMMENTS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-28T18:05:59.118530",
+        "comment_id": "d681e2da-8a07-4d26-a5e6-6695e569fe29"
+      }
+    },
+    {
+      "source_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "target_id": "ff98dd11-c9b0-4091-836c-ec6ed8d67d3e",
+      "edge_type": "VIEWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-24T18:05:59.134213",
+        "duration": 6
+      }
+    },
+    {
+      "source_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "target_id": "72b24e92-52a9-41fc-aa26-8709c24cb61b",
+      "edge_type": "VIEWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-24T18:05:59.148308",
+        "duration": 59
+      }
+    },
+    {
+      "source_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "target_id": "b119a2d4-040a-4a7f-af81-ccff58777202",
+      "edge_type": "COMMENTS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-23T18:05:59.161561",
+        "comment_id": "29f7ae4c-99a9-4fb5-9516-92368fe49f01"
+      }
+    },
+    {
+      "source_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "target_id": "0c72f352-d7f3-4365-b496-63c96cfb9803",
+      "edge_type": "VIEWS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-10T18:05:59.172912",
+        "duration": 50
+      }
+    },
+    {
+      "source_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "target_id": "50ce9549-08f0-4697-a8c0-61514a50f2d9",
+      "edge_type": "COMMENTS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-02T18:05:59.186194",
+        "comment_id": "23ced6bf-1030-4989-8529-d36961aea26c"
+      }
+    },
+    {
+      "source_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "target_id": "593a52f9-5966-4d5d-88cb-b00de7b9f0fa",
+      "edge_type": "LIKES",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-12T18:05:59.198182"
+      }
+    },
+    {
+      "source_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "target_id": "2424568c-41d7-4b9f-b8a5-bb73450d8a20",
+      "edge_type": "COMMENTS",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-02-25T18:05:59.210544",
+        "comment_id": "5b12dc46-d6a9-455f-a091-468bf86f49e7"
+      }
+    },
+    {
+      "source_id": "a4222d99-6d1b-461a-8bda-82dfc52b4677",
+      "target_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "edge_type": "CREATED_BY",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.973258"
+      }
+    },
+    {
+      "source_id": "a4222d99-6d1b-461a-8bda-82dfc52b4677",
+      "target_id": "hashtag:tech",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.974308"
+      }
+    },
+    {
+      "source_id": "a4222d99-6d1b-461a-8bda-82dfc52b4677",
+      "target_id": "hashtag:gadgets",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.975458"
+      }
+    },
+    {
+      "source_id": "a4222d99-6d1b-461a-8bda-82dfc52b4677",
+      "target_id": "hashtag:innovation",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.977577"
+      }
+    },
+    {
+      "source_id": "ff98dd11-c9b0-4091-836c-ec6ed8d67d3e",
+      "target_id": "ac7ddd4e-3184-43b7-85a8-7ce707f9fede",
+      "edge_type": "CREATED_BY",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.981658"
+      }
+    },
+    {
+      "source_id": "ff98dd11-c9b0-4091-836c-ec6ed8d67d3e",
+      "target_id": "hashtag:programming",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.982460"
+      }
+    },
+    {
+      "source_id": "ff98dd11-c9b0-4091-836c-ec6ed8d67d3e",
+      "target_id": "hashtag:python",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.983312"
+      }
+    },
+    {
+      "source_id": "ff98dd11-c9b0-4091-836c-ec6ed8d67d3e",
+      "target_id": "hashtag:tutorial",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.984391"
+      }
+    },
+    {
+      "source_id": "72b24e92-52a9-41fc-aa26-8709c24cb61b",
+      "target_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+      "edge_type": "CREATED_BY",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.988154"
+      }
+    },
+    {
+      "source_id": "72b24e92-52a9-41fc-aa26-8709c24cb61b",
+      "target_id": "hashtag:travel",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.989063"
+      }
+    },
+    {
+      "source_id": "72b24e92-52a9-41fc-aa26-8709c24cb61b",
+      "target_id": "hashtag:bali",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.990853"
+      }
+    },
+    {
+      "source_id": "72b24e92-52a9-41fc-aa26-8709c24cb61b",
+      "target_id": "hashtag:beaches",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.992736"
+      }
+    },
+    {
+      "source_id": "b119a2d4-040a-4a7f-af81-ccff58777202",
+      "target_id": "6fd7d5b2-2dd1-4509-ae7b-c73153376b7f",
+      "edge_type": "CREATED_BY",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.997432"
+      }
+    },
+    {
+      "source_id": "b119a2d4-040a-4a7f-af81-ccff58777202",
+      "target_id": "hashtag:travel",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.998054"
+      }
+    },
+    {
+      "source_id": "b119a2d4-040a-4a7f-af81-ccff58777202",
+      "target_id": "hashtag:food",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:58.999925"
+      }
+    },
+    {
+      "source_id": "b119a2d4-040a-4a7f-af81-ccff58777202",
+      "target_id": "hashtag:bangkok",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.001704"
+      }
+    },
+    {
+      "source_id": "0c72f352-d7f3-4365-b496-63c96cfb9803",
+      "target_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "edge_type": "CREATED_BY",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.006256"
+      }
+    },
+    {
+      "source_id": "0c72f352-d7f3-4365-b496-63c96cfb9803",
+      "target_id": "hashtag:fitness",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.008416"
+      }
+    },
+    {
+      "source_id": "0c72f352-d7f3-4365-b496-63c96cfb9803",
+      "target_id": "hashtag:workout",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.011791"
+      }
+    },
+    {
+      "source_id": "0c72f352-d7f3-4365-b496-63c96cfb9803",
+      "target_id": "hashtag:hiit",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.013522"
+      }
+    },
+    {
+      "source_id": "50ce9549-08f0-4697-a8c0-61514a50f2d9",
+      "target_id": "d629e329-a601-406f-a59d-fcc2461197d4",
+      "edge_type": "CREATED_BY",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.018698"
+      }
+    },
+    {
+      "source_id": "50ce9549-08f0-4697-a8c0-61514a50f2d9",
+      "target_id": "hashtag:fitness",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.019640"
+      }
+    },
+    {
+      "source_id": "50ce9549-08f0-4697-a8c0-61514a50f2d9",
+      "target_id": "hashtag:nutrition",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.021852"
+      }
+    },
+    {
+      "source_id": "50ce9549-08f0-4697-a8c0-61514a50f2d9",
+      "target_id": "hashtag:mealprep",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.024693"
+      }
+    },
+    {
+      "source_id": "593a52f9-5966-4d5d-88cb-b00de7b9f0fa",
+      "target_id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+      "edge_type": "CREATED_BY",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.031683"
+      }
+    },
+    {
+      "source_id": "593a52f9-5966-4d5d-88cb-b00de7b9f0fa",
+      "target_id": "hashtag:food",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.033298"
+      }
+    },
+    {
+      "source_id": "593a52f9-5966-4d5d-88cb-b00de7b9f0fa",
+      "target_id": "hashtag:recipe",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.035751"
+      }
+    },
+    {
+      "source_id": "593a52f9-5966-4d5d-88cb-b00de7b9f0fa",
+      "target_id": "hashtag:italian",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.038098"
+      }
+    },
+    {
+      "source_id": "2424568c-41d7-4b9f-b8a5-bb73450d8a20",
+      "target_id": "83e0203b-aae1-4da5-9843-1c8c4ed495e5",
+      "edge_type": "CREATED_BY",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.045478"
+      }
+    },
+    {
+      "source_id": "2424568c-41d7-4b9f-b8a5-bb73450d8a20",
+      "target_id": "hashtag:food",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.046475"
+      }
+    },
+    {
+      "source_id": "2424568c-41d7-4b9f-b8a5-bb73450d8a20",
+      "target_id": "hashtag:burgers",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.048731"
+      }
+    },
+    {
+      "source_id": "2424568c-41d7-4b9f-b8a5-bb73450d8a20",
+      "target_id": "hashtag:nyc",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.051947"
+      }
+    },
+    {
+      "source_id": "35f5a403-31e6-45eb-b1ef-0d15cf56ef3b",
+      "target_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "edge_type": "CREATED_BY",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.059806"
+      }
+    },
+    {
+      "source_id": "35f5a403-31e6-45eb-b1ef-0d15cf56ef3b",
+      "target_id": "hashtag:gaming",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.064029"
+      }
+    },
+    {
+      "source_id": "35f5a403-31e6-45eb-b1ef-0d15cf56ef3b",
+      "target_id": "hashtag:minecraft",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.066025"
+      }
+    },
+    {
+      "source_id": "35f5a403-31e6-45eb-b1ef-0d15cf56ef3b",
+      "target_id": "hashtag:tutorial",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.067073"
+      }
+    },
+    {
+      "source_id": "0e0480a5-5924-4bd9-a539-ba2962c80c92",
+      "target_id": "1d8762ce-c4cb-4755-9603-ee9ae8013d11",
+      "edge_type": "CREATED_BY",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.072785"
+      }
+    },
+    {
+      "source_id": "0e0480a5-5924-4bd9-a539-ba2962c80c92",
+      "target_id": "hashtag:gaming",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.075455"
+      }
+    },
+    {
+      "source_id": "0e0480a5-5924-4bd9-a539-ba2962c80c92",
+      "target_id": "hashtag:callofduty",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.078648"
+      }
+    },
+    {
+      "source_id": "0e0480a5-5924-4bd9-a539-ba2962c80c92",
+      "target_id": "hashtag:warzone",
+      "edge_type": "HAS_TAG",
+      "weight": 1.0,
+      "properties": {
+        "created_at": "2025-03-05T23:05:59.080916"
+      }
+    }
+  ],
+  "last_updated": "2025-03-05T23:05:59.329649"
+}

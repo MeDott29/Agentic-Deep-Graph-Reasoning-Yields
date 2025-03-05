@@ -62,20 +62,44 @@ class KnowledgeGraphService:
         # Prepare data for serialization
         nodes = []
         for node_id, node_data in self.graph.nodes(data=True):
+            # Convert any datetime objects to ISO format strings
+            properties = {}
+            for key, value in node_data.get('properties', {}).items():
+                if isinstance(value, dict):
+                    # Handle nested dictionaries
+                    properties[key] = {}
+                    for k, v in value.items():
+                        if isinstance(v, datetime):
+                            properties[key][k] = v.isoformat()
+                        else:
+                            properties[key][k] = v
+                elif isinstance(value, datetime):
+                    properties[key] = value.isoformat()
+                else:
+                    properties[key] = value
+            
             nodes.append({
                 'id': node_id,
                 'node_type': node_data.get('node_type'),
-                'properties': node_data.get('properties', {})
+                'properties': properties
             })
         
         edges = []
         for source, target, edge_data in self.graph.edges(data=True):
+            # Convert any datetime objects to ISO format strings
+            properties = {}
+            for key, value in edge_data.get('properties', {}).items():
+                if isinstance(value, datetime):
+                    properties[key] = value.isoformat()
+                else:
+                    properties[key] = value
+            
             edges.append({
                 'source_id': source,
                 'target_id': target,
                 'edge_type': edge_data.get('edge_type'),
                 'weight': edge_data.get('weight', 1.0),
-                'properties': edge_data.get('properties', {})
+                'properties': properties
             })
         
         graph_data = {
@@ -501,4 +525,24 @@ class KnowledgeGraphService:
         
         feed.sort(key=lambda x: x.get('normalized_score', 0), reverse=True)
         
-        return feed[:limit] 
+        return feed[:limit]
+    
+    def add_node_property(self, node_id: str, node_type: str, property_name: str, property_value: Any) -> bool:
+        """Add or update a property to a node in the graph"""
+        if node_id not in self.graph.nodes:
+            return False
+        
+        # Get current properties
+        properties = self.graph.nodes[node_id].get('properties', {})
+        
+        # Update property
+        properties[property_name] = property_value
+        
+        # Update node
+        self.graph.nodes[node_id]['properties'] = properties
+        self.graph.nodes[node_id]['node_type'] = node_type
+        
+        # Save graph
+        self._save_graph()
+        
+        return True 

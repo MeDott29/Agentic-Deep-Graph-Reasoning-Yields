@@ -54,7 +54,15 @@ class ContentService:
         # Create directory if it doesn't exist
         os.makedirs(os.path.dirname(self.content_file), exist_ok=True)
         
-        content_data = [item.dict() for item in self.content.values()]
+        # Convert content objects to dictionaries with datetime handling
+        content_data = []
+        for item in self.content.values():
+            item_dict = item.dict()
+            # Convert datetime objects to ISO format strings
+            for key, value in item_dict.items():
+                if isinstance(value, datetime):
+                    item_dict[key] = value.isoformat()
+            content_data.append(item_dict)
         
         with open(self.content_file, 'w') as f:
             json.dump(content_data, f, indent=2)
@@ -82,7 +90,15 @@ class ContentService:
         # Create directory if it doesn't exist
         os.makedirs(os.path.dirname(self.comments_file), exist_ok=True)
         
-        comments_data = [comment.dict() for comment in self.comments.values()]
+        # Convert comment objects to dictionaries with datetime handling
+        comments_data = []
+        for comment in self.comments.values():
+            comment_dict = comment.dict()
+            # Convert datetime objects to ISO format strings
+            for key, value in comment_dict.items():
+                if isinstance(value, datetime):
+                    comment_dict[key] = value.isoformat()
+            comments_data.append(comment_dict)
         
         with open(self.comments_file, 'w') as f:
             json.dump(comments_data, f, indent=2)
@@ -119,7 +135,7 @@ class ContentService:
         
         return None
     
-    def create_content(self, content_create: ContentCreate, file_data: bytes) -> Content:
+    def create_content(self, content_create: ContentCreate, file_data: Optional[bytes] = None) -> Content:
         """Create new content"""
         content_id = str(uuid.uuid4())
         
@@ -127,8 +143,16 @@ class ContentService:
         file_ext = Path(content_create.file_path).suffix
         file_path = os.path.join(self.content_dir, f"{content_id}{file_ext}")
         
-        with open(file_path, 'wb') as f:
-            f.write(file_data)
+        # Create directory if it doesn't exist
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        
+        if file_data:
+            with open(file_path, 'wb') as f:
+                f.write(file_data)
+        else:
+            # Create an empty file for sample data
+            with open(file_path, 'wb') as f:
+                f.write(b'')
         
         # TODO: Generate thumbnail and get video metadata
         # For now, we'll use placeholder values

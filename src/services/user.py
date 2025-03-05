@@ -53,7 +53,15 @@ class UserService:
         # Create directory if it doesn't exist
         os.makedirs(os.path.dirname(self.users_file), exist_ok=True)
         
-        users_data = [user.dict() for user in self.users.values()]
+        # Convert user objects to dictionaries with datetime handling
+        users_data = []
+        for user in self.users.values():
+            user_dict = user.dict()
+            # Convert datetime objects to ISO format strings
+            for key, value in user_dict.items():
+                if isinstance(value, datetime):
+                    user_dict[key] = value.isoformat()
+            users_data.append(user_dict)
         
         with open(self.users_file, 'w') as f:
             json.dump(users_data, f, indent=2)
