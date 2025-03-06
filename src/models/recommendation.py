@@ -7,20 +7,59 @@ from pydantic import BaseModel, Field
 from .base import TimestampMixin
 
 class RecommendationScore(BaseModel):
-    """Score for a recommendation"""
-    content_id: str
+    """Model for recommendation score"""
     score: float
     reason: str
-    features: Dict[str, float] = Field(default_factory=dict)
 
 class ContentRecommendation(BaseModel):
-    """Content recommendation model"""
+    """Model for content recommendation"""
+    content_id: str
+    score: float
+    reasons: List[str] = Field(default_factory=list)
+    content: Dict[str, Any]
+
+class RecommendationRequest(BaseModel):
+    """Model for recommendation request"""
     user_id: str
-    recommendations: List[RecommendationScore]
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
-    
-    class Config:
-        orm_mode = True
+    count: int = 20
+    content_types: Optional[List[str]] = None
+    hashtags: Optional[List[str]] = None
+    min_duration: Optional[float] = None
+    max_duration: Optional[float] = None
+    exclude_seen: bool = True
+    exclude_user_ids: Optional[List[str]] = None
+    include_ai_content: bool = True
+    ai_content_ratio: float = 0.3  # 30% AI content by default
+
+class RecommendationResponse(BaseModel):
+    """Model for recommendation response"""
+    user_id: str
+    count: int
+    recommendations: List[ContentRecommendation]
+
+class AIContentPreference(BaseModel):
+    """Model for AI content preference"""
+    user_id: str
+    interests: List[str] = Field(default_factory=list)
+    preferred_agents: List[str] = Field(default_factory=list)
+    content_types: List[str] = Field(default_factory=list)
+    interaction_history: List[Dict[str, Any]] = Field(default_factory=list)
+
+class AIContentInteraction(BaseModel):
+    """Model for AI content interaction"""
+    user_id: str
+    content_id: str
+    agent_id: str
+    interaction_type: str
+    timestamp: datetime = Field(default_factory=datetime.now)
+
+class AIContentFeedRequest(BaseModel):
+    """Model for AI content feed request"""
+    user_id: str
+    count: int = 10
+    content_types: Optional[List[str]] = None
+    interests: Optional[List[str]] = None
+    preferred_agents: Optional[List[str]] = None
 
 class UserSimilarity(BaseModel):
     """User similarity model"""
@@ -68,20 +107,4 @@ class UserInterest(BaseModel):
     timestamp: datetime = Field(default_factory=datetime.utcnow)
     
     class Config:
-        orm_mode = True
-
-class RecommendationRequest(BaseModel):
-    """Recommendation request model"""
-    user_id: str
-    count: int = 10
-    exclude_seen: bool = True
-    include_following: bool = True
-    include_trending: bool = True
-    categories: Optional[List[str]] = None
-    max_duration: Optional[int] = None  # in seconds
-    
-class RecommendationResponse(BaseModel):
-    """Recommendation response model"""
-    recommendations: List[Dict[str, Any]]
-    request_id: str
-    timestamp: datetime = Field(default_factory=datetime.utcnow) 
+        orm_mode = True 

@@ -5,12 +5,14 @@ from typing import List, Dict, Any, Optional
 import numpy as np
 from datetime import datetime
 import uuid
+import random
 
 from models.recommendation import (
     RecommendationScore, ContentRecommendation, 
     RecommendationRequest, RecommendationResponse
 )
 from services.knowledge_graph import KnowledgeGraphService
+from services.ai_content import AIContentGenerationService
 
 class RecommendationService:
     """Service for generating content recommendations"""
@@ -18,22 +20,33 @@ class RecommendationService:
     def __init__(self, knowledge_graph_service: KnowledgeGraphService):
         """Initialize the recommendation service"""
         self.kg_service = knowledge_graph_service
+        self.ai_content_service = AIContentGenerationService(knowledge_graph_service)
     
     def get_recommendations(self, request: RecommendationRequest) -> RecommendationResponse:
         """Get content recommendations for a user"""
         user_id = request.user_id
         count = request.count
+        include_ai_content = request.include_ai_content
+        ai_content_ratio = request.ai_content_ratio
         
-        # Get user feed from knowledge graph
+        # Calculate how many AI-generated content items to include
+        ai_content_count = 0
+        if include_ai_content:
+            ai_content_count = int(count * ai_content_ratio)
+            regular_content_count = count - ai_content_count
+        else:
+            regular_content_count = count
+        
+        # Get user feed from knowledge graph for regular content
         feed_items = self.kg_service.get_user_feed(
             user_id=user_id,
-            limit=count
+            limit=regular_content_count
         )
         
         # Apply filters
         filtered_items = self._apply_filters(feed_items, request)
         
-        # Format response
+        # Format regular content recommendations
         recommendations = []
         for item in filtered_items:
             node_data = item.get('node_data', {})
@@ -51,281 +64,401 @@ class RecommendationService:
                 'like_count': properties.get('like_count', 0),
                 'comment_count': properties.get('comment_count', 0),
                 'share_count': properties.get('share_count', 0),
-                'score': item.get('normalized_score', 0),
-                'reasons': item.get('reasons', ["Recommended for you"])
+                'is_ai_generated': properties.get('is_ai_generated', False),
+                'ai_agent_id': properties.get('ai_agent_id'),
             }
             
-            recommendations.append(content_details)
+            # Extract recommendation details
+            recommendation = ContentRecommendation(
+                content_id=item.get('content_id'),
+                score=item.get('score', 0.0),
+                reasons=item.get('reasons', []),
+                content=content_details
+            )
+            
+            recommendations.append(recommendation)
+        
+        # Add AI-generated content if requested
+        if include_ai_content and ai_content_count > 0:
+            ai_content_models = self.ai_content_service.generate_ai_content(
+                user_id=user_id,
+                count=ai_content_count
+            )
+            
+            # Convert AI content models to recommendations
+            for content_model in ai_content_models:
+                # Create a recommendation object
+                ai_recommendation = ContentRecommendation(
+                    content_id=str(uuid.uuid4()),  # Generate a temporary ID
+                    score=random.uniform(0.7, 1.0),  # Give AI content a high score
+                    reasons=["AI-generated content based on your preferences"],
+                    content={
+                        'id': str(uuid.uuid4()),
+                        'title': content_model.title,
+                        'description': content_model.description,
+                        'user_id': content_model.user_id,
+                        'duration': 30.0,  # Default duration
+                        'hashtags': content_model.hashtags,
+                        'view_count': 0,
+                        'like_count': 0,
+                        'comment_count': 0,
+                        'share_count': 0,
+                        'is_ai_generated': True,
+                        'ai_agent_id': content_model.ai_agent_id,
+                    }
+                )
+                
+                recommendations.append(ai_recommendation)
+            
+            # Shuffle recommendations to mix AI and regular content
+            random.shuffle(recommendations)
         
         # Create response
         response = RecommendationResponse(
-            recommendations=recommendations,
-            request_id=str(uuid.uuid4()),
-            timestamp=datetime.utcnow()
+            user_id=user_id,
+            count=len(recommendations),
+            recommendations=recommendations
         )
         
         return response
     
     def _apply_filters(self, feed_items: List[Dict[str, Any]], request: RecommendationRequest) -> List[Dict[str, Any]]:
         """Apply filters to feed items based on request parameters"""
-        filtered_items = feed_items.copy()
+        filtered_items = feed_items
         
-        # Filter by categories if specified
-        if request.categories:
+        # Filter by content type
+        if request.content_types:
             filtered_items = [
                 item for item in filtered_items
-                if any(
-                    category in item.get('node_data', {}).get('properties', {}).get('hashtags', [])
-                    for category in request.categories
-                )
+                if item.get('node_data', {}).get('properties', {}).get('content_type') in request.content_types
             ]
         
-        # Filter by duration if specified
-        if request.max_duration:
+        # Filter by hashtags
+        if request.hashtags:
+            filtered_items = [
+                item for item in filtered_items
+                if any(tag in item.get('node_data', {}).get('properties', {}).get('hashtags', []) for tag in request.hashtags)
+            ]
+        
+        # Filter by minimum duration
+        if request.min_duration is not None:
+            filtered_items = [
+                item for item in filtered_items
+                if item.get('node_data', {}).get('properties', {}).get('duration', 0) >= request.min_duration
+            ]
+        
+        # Filter by maximum duration
+        if request.max_duration is not None:
             filtered_items = [
                 item for item in filtered_items
                 if item.get('node_data', {}).get('properties', {}).get('duration', 0) <= request.max_duration
             ]
         
-        # Include/exclude content from followed users
-        if not request.include_following:
-            # Get list of users the current user follows
-            followed_users = set()
-            for _, target, edge_data in self.kg_service.graph.out_edges(request.user_id, data=True):
-                if edge_data.get('edge_type') == 'FOLLOWS':
-                    followed_users.add(target)
-            
-            # Filter out content created by followed users
+        # Filter by exclude seen
+        if request.exclude_seen:
+            # This would require tracking user views in a real implementation
+            pass
+        
+        # Filter by exclude user IDs
+        if request.exclude_user_ids:
             filtered_items = [
                 item for item in filtered_items
-                if item.get('node_data', {}).get('properties', {}).get('user_id') not in followed_users
+                if item.get('node_data', {}).get('properties', {}).get('user_id') not in request.exclude_user_ids
             ]
         
-        # Include/exclude trending content
-        if not request.include_trending:
-            # Filter out items that are primarily trending (not personalized)
+        # Filter by include AI content
+        if not request.include_ai_content:
             filtered_items = [
                 item for item in filtered_items
-                if 'score' in item  # Items with 'score' are from personalized recommendations
+                if not item.get('node_data', {}).get('properties', {}).get('is_ai_generated', False)
             ]
         
         return filtered_items
     
     def record_interaction(self, user_id: str, content_id: str, interaction_type: str, data: Dict[str, Any] = None) -> bool:
-        """Record a user interaction with content to improve future recommendations"""
-        data = data or {}
-        
+        """Record user interaction with content"""
         try:
-            if interaction_type == 'view':
-                # Create a view edge
-                duration = data.get('duration', 0)
-                view_edge = self.kg_service.graph.add_edge(
-                    user_id,
-                    content_id,
-                    edge_type='VIEWS',
-                    properties={
-                        'duration': duration,
-                        'created_at': datetime.utcnow().isoformat()
-                    }
+            # Get content details
+            content_node = self.kg_service.get_node(content_id)
+            
+            if not content_node:
+                return False
+            
+            # Check if content is AI-generated
+            is_ai_generated = content_node.get('properties', {}).get('is_ai_generated', False)
+            ai_agent_id = content_node.get('properties', {}).get('ai_agent_id')
+            
+            # Record interaction in knowledge graph
+            if interaction_type == "view":
+                # Increment view count
+                self.kg_service.add_node_property(
+                    node_id=content_id,
+                    node_type="CONTENT",
+                    property_name="view_count",
+                    property_value=content_node.get('properties', {}).get('view_count', 0) + 1
                 )
                 
-                # Update content view count
-                if content_id in self.kg_service.graph.nodes:
-                    properties = self.kg_service.graph.nodes[content_id].get('properties', {})
-                    view_count = properties.get('view_count', 0)
-                    properties['view_count'] = view_count + 1
-                    self.kg_service.graph.nodes[content_id]['properties'] = properties
-            
-            elif interaction_type == 'like':
-                # Create a like edge
-                like_edge = self.kg_service.graph.add_edge(
-                    user_id,
-                    content_id,
-                    edge_type='LIKES',
-                    properties={
-                        'created_at': datetime.utcnow().isoformat()
-                    }
+                # Add view edge
+                from models.social import View
+                view_edge = View(
+                    source_id=user_id,
+                    target_id=content_id,
+                    timestamp=datetime.now(),
+                    properties=data or {}
+                )
+                self.kg_service.add_edge(view_edge)
+                
+            elif interaction_type == "like":
+                # Increment like count
+                self.kg_service.add_node_property(
+                    node_id=content_id,
+                    node_type="CONTENT",
+                    property_name="like_count",
+                    property_value=content_node.get('properties', {}).get('like_count', 0) + 1
                 )
                 
-                # Update content like count
-                if content_id in self.kg_service.graph.nodes:
-                    properties = self.kg_service.graph.nodes[content_id].get('properties', {})
-                    like_count = properties.get('like_count', 0)
-                    properties['like_count'] = like_count + 1
-                    self.kg_service.graph.nodes[content_id]['properties'] = properties
-            
-            elif interaction_type == 'comment':
-                # Create a comment edge
-                comment_id = data.get('comment_id')
-                if comment_id:
-                    comment_edge = self.kg_service.graph.add_edge(
-                        user_id,
-                        content_id,
-                        edge_type='COMMENTS',
-                        properties={
-                            'comment_id': comment_id,
-                            'created_at': datetime.utcnow().isoformat()
-                        }
-                    )
-                    
-                    # Update content comment count
-                    if content_id in self.kg_service.graph.nodes:
-                        properties = self.kg_service.graph.nodes[content_id].get('properties', {})
-                        comment_count = properties.get('comment_count', 0)
-                        properties['comment_count'] = comment_count + 1
-                        self.kg_service.graph.nodes[content_id]['properties'] = properties
-            
-            elif interaction_type == 'share':
-                # Create a share edge
-                platform = data.get('platform', 'unknown')
-                share_edge = self.kg_service.graph.add_edge(
-                    user_id,
-                    content_id,
-                    edge_type='SHARES',
-                    properties={
-                        'platform': platform,
-                        'created_at': datetime.utcnow().isoformat()
-                    }
+                # Add like edge
+                from models.social import Like
+                like_edge = Like(
+                    source_id=user_id,
+                    target_id=content_id,
+                    timestamp=datetime.now(),
+                    properties=data or {}
+                )
+                self.kg_service.add_edge(like_edge)
+                
+            elif interaction_type == "share":
+                # Increment share count
+                self.kg_service.add_node_property(
+                    node_id=content_id,
+                    node_type="CONTENT",
+                    property_name="share_count",
+                    property_value=content_node.get('properties', {}).get('share_count', 0) + 1
                 )
                 
-                # Update content share count
-                if content_id in self.kg_service.graph.nodes:
-                    properties = self.kg_service.graph.nodes[content_id].get('properties', {})
-                    share_count = properties.get('share_count', 0)
-                    properties['share_count'] = share_count + 1
-                    self.kg_service.graph.nodes[content_id]['properties'] = properties
+                # Add share edge
+                from models.social import Share
+                share_edge = Share(
+                    source_id=user_id,
+                    target_id=content_id,
+                    timestamp=datetime.now(),
+                    properties=data or {}
+                )
+                self.kg_service.add_edge(share_edge)
+                
+            elif interaction_type == "comment":
+                # Increment comment count
+                self.kg_service.add_node_property(
+                    node_id=content_id,
+                    node_type="CONTENT",
+                    property_name="comment_count",
+                    property_value=content_node.get('properties', {}).get('comment_count', 0) + 1
+                )
+                
+                # Add comment edge
+                from models.social import CommentEdge
+                comment_edge = CommentEdge(
+                    source_id=user_id,
+                    target_id=content_id,
+                    timestamp=datetime.now(),
+                    properties=data or {}
+                )
+                self.kg_service.add_edge(comment_edge)
             
-            # Save the updated graph
-            self.kg_service._save_graph()
+            # If content is AI-generated, record interaction in AI content service
+            if is_ai_generated and ai_agent_id:
+                self.ai_content_service.record_user_interaction(
+                    user_id=user_id,
+                    content_id=content_id,
+                    agent_id=ai_agent_id,
+                    interaction_type=interaction_type
+                )
+            
+            # Update user interests based on interaction
+            self.update_user_interests(user_id)
+            
             return True
-        
+            
         except Exception as e:
             print(f"Error recording interaction: {e}")
             return False
     
     def update_user_interests(self, user_id: str) -> bool:
-        """Update user interests based on their interactions"""
+        """Update user interests based on interactions"""
         try:
-            # Get user's content interactions
-            liked_content = []
-            viewed_content = []
+            # Get user's recent interactions
+            interactions = []
             
-            for _, target, edge_data in self.kg_service.graph.out_edges(user_id, data=True):
-                edge_type = edge_data.get('edge_type')
-                if edge_type == 'LIKES':
-                    liked_content.append(target)
-                elif edge_type == 'VIEWS':
-                    viewed_content.append(target)
+            # Get view interactions
+            view_edges = self.kg_service.get_edges(
+                source_id=user_id,
+                edge_type="VIEW"
+            )
+            for edge in view_edges:
+                interactions.append({
+                    "content_id": edge.get("target_id"),
+                    "type": "view",
+                    "timestamp": edge.get("properties", {}).get("timestamp"),
+                    "weight": 1.0
+                })
             
-            # Get hashtags from liked and viewed content
-            hashtag_scores = {}
+            # Get like interactions
+            like_edges = self.kg_service.get_edges(
+                source_id=user_id,
+                edge_type="LIKE"
+            )
+            for edge in like_edges:
+                interactions.append({
+                    "content_id": edge.get("target_id"),
+                    "type": "like",
+                    "timestamp": edge.get("properties", {}).get("timestamp"),
+                    "weight": 2.0
+                })
             
-            # Hashtags from liked content (higher weight)
-            for content_id in liked_content:
-                for _, target, edge_data in self.kg_service.graph.out_edges(content_id, data=True):
-                    if edge_data.get('edge_type') == 'HAS_TAG':
-                        hashtag_id = target
-                        hashtag_scores[hashtag_id] = hashtag_scores.get(hashtag_id, 0) + 2
+            # Get share interactions
+            share_edges = self.kg_service.get_edges(
+                source_id=user_id,
+                edge_type="SHARE"
+            )
+            for edge in share_edges:
+                interactions.append({
+                    "content_id": edge.get("target_id"),
+                    "type": "share",
+                    "timestamp": edge.get("properties", {}).get("timestamp"),
+                    "weight": 3.0
+                })
             
-            # Hashtags from viewed content (lower weight)
-            for content_id in viewed_content:
-                for _, target, edge_data in self.kg_service.graph.out_edges(content_id, data=True):
-                    if edge_data.get('edge_type') == 'HAS_TAG':
-                        hashtag_id = target
-                        hashtag_scores[hashtag_id] = hashtag_scores.get(hashtag_id, 0) + 0.5
+            # Get comment interactions
+            comment_edges = self.kg_service.get_edges(
+                source_id=user_id,
+                edge_type="COMMENT"
+            )
+            for edge in comment_edges:
+                interactions.append({
+                    "content_id": edge.get("target_id"),
+                    "type": "comment",
+                    "timestamp": edge.get("properties", {}).get("timestamp"),
+                    "weight": 2.5
+                })
             
-            # Update user's interest edges
-            # First, remove existing interest edges
-            edges_to_remove = []
-            for _, target, edge_data in self.kg_service.graph.out_edges(user_id, data=True):
-                if edge_data.get('edge_type') == 'INTEREST_IN':
-                    edges_to_remove.append((user_id, target))
+            # Sort interactions by timestamp (most recent first)
+            interactions.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
             
-            for source, target in edges_to_remove:
-                self.kg_service.graph.remove_edge(source, target)
+            # Limit to most recent 100 interactions
+            interactions = interactions[:100]
             
-            # Add new interest edges
-            for hashtag_id, score in hashtag_scores.items():
-                # Normalize score to be between 0 and 1
-                normalized_score = min(1.0, score / 10.0)
+            # Extract content details for each interaction
+            content_details = []
+            for interaction in interactions:
+                content_id = interaction.get("content_id")
+                content_node = self.kg_service.get_node(content_id)
                 
-                self.kg_service.graph.add_edge(
-                    user_id,
-                    hashtag_id,
-                    edge_type='INTEREST_IN',
-                    weight=normalized_score,
-                    properties={
-                        'score': normalized_score,
-                        'created_at': datetime.utcnow().isoformat(),
-                        'updated_at': datetime.utcnow().isoformat()
-                    }
+                if content_node:
+                    content_details.append({
+                        "content_id": content_id,
+                        "properties": content_node.get("properties", {}),
+                        "weight": interaction.get("weight", 1.0)
+                    })
+            
+            # Extract hashtags and calculate weights
+            hashtag_weights = {}
+            for content in content_details:
+                hashtags = content.get("properties", {}).get("hashtags", [])
+                weight = content.get("weight", 1.0)
+                
+                for hashtag in hashtags:
+                    if hashtag in hashtag_weights:
+                        hashtag_weights[hashtag] += weight
+                    else:
+                        hashtag_weights[hashtag] = weight
+            
+            # Sort hashtags by weight
+            sorted_hashtags = sorted(hashtag_weights.items(), key=lambda x: x[1], reverse=True)
+            
+            # Get top 10 hashtags
+            top_hashtags = [hashtag for hashtag, _ in sorted_hashtags[:10]]
+            
+            # Update user interests in knowledge graph
+            user_node = self.kg_service.get_node(user_id)
+            if user_node:
+                self.kg_service.add_node_property(
+                    node_id=user_id,
+                    node_type="USER",
+                    property_name="interests",
+                    property_value=top_hashtags
                 )
             
-            # Save the updated graph
-            self.kg_service._save_graph()
+            # Update AI content preferences
+            ai_preferences = self.ai_content_service.get_user_preferences(user_id)
+            ai_preferences["interests"] = top_hashtags
+            self.ai_content_service.update_user_preferences(user_id, {"interests": top_hashtags})
+            
             return True
-        
+            
         except Exception as e:
             print(f"Error updating user interests: {e}")
             return False
     
     def find_similar_content(self, content_id: str, limit: int = 10) -> List[Dict[str, Any]]:
         """Find content similar to the given content"""
-        if content_id not in self.kg_service.graph.nodes:
+        # Get content details
+        content_node = self.kg_service.get_node(content_id)
+        
+        if not content_node:
             return []
         
-        # Get content hashtags
-        content_hashtags = set()
-        for _, target, edge_data in self.kg_service.graph.out_edges(content_id, data=True):
-            if edge_data.get('edge_type') == 'HAS_TAG':
-                content_hashtags.add(target)
+        # Extract content properties
+        properties = content_node.get("properties", {})
+        hashtags = properties.get("hashtags", [])
+        user_id = properties.get("user_id")
         
-        # Get content creator
-        content_creator = None
-        for _, target, edge_data in self.kg_service.graph.out_edges(content_id, data=True):
-            if edge_data.get('edge_type') == 'CREATED_BY':
-                content_creator = target
-                break
+        # Find content with similar hashtags
+        similar_content = []
         
-        # Score other content based on similarity
-        content_scores = {}
+        # Query graph for content with similar hashtags
+        for hashtag in hashtags:
+            hashtag_node_id = f"hashtag:{hashtag}"
+            
+            # Get content connected to this hashtag
+            content_edges = self.kg_service.get_edges(
+                source_id=None,
+                target_id=hashtag_node_id,
+                edge_type="HAS_TAG"
+            )
+            
+            for edge in content_edges:
+                content_id = edge.get("source_id")
+                
+                # Skip the original content
+                if content_id == content_node.get("id"):
+                    continue
+                
+                # Get content details
+                similar_content_node = self.kg_service.get_node(content_id)
+                
+                if similar_content_node:
+                    # Calculate similarity score based on hashtag overlap
+                    similar_hashtags = similar_content_node.get("properties", {}).get("hashtags", [])
+                    common_hashtags = set(hashtags).intersection(set(similar_hashtags))
+                    similarity_score = len(common_hashtags) / max(len(hashtags), len(similar_hashtags))
+                    
+                    # Add to results
+                    similar_content.append({
+                        "content_id": content_id,
+                        "score": similarity_score,
+                        "common_hashtags": list(common_hashtags),
+                        "node_data": similar_content_node
+                    })
         
-        for node_id, node_data in self.kg_service.graph.nodes(data=True):
-            # Skip if not content or if it's the same content
-            if node_data.get('node_type') != 'CONTENT' or node_id == content_id:
-                continue
-            
-            score = 0
-            
-            # Check for common hashtags
-            node_hashtags = set()
-            for _, target, edge_data in self.kg_service.graph.out_edges(node_id, data=True):
-                if edge_data.get('edge_type') == 'HAS_TAG':
-                    node_hashtags.add(target)
-            
-            # Score based on common hashtags
-            common_hashtags = content_hashtags.intersection(node_hashtags)
-            score += len(common_hashtags) * 2
-            
-            # Bonus if from same creator
-            if content_creator:
-                for _, target, edge_data in self.kg_service.graph.out_edges(node_id, data=True):
-                    if edge_data.get('edge_type') == 'CREATED_BY' and target == content_creator:
-                        score += 3
-                        break
-            
-            # Only include if there's some similarity
-            if score > 0:
-                content_scores[node_id] = score
+        # Remove duplicates
+        unique_content = {}
+        for content in similar_content:
+            content_id = content.get("content_id")
+            if content_id not in unique_content or content.get("score") > unique_content[content_id].get("score"):
+                unique_content[content_id] = content
         
-        # Sort by score and return top results
-        similar_content = [
-            {
-                'content_id': c_id,
-                'similarity_score': score,
-                'node_data': self.kg_service.graph.nodes[c_id]
-            }
-            for c_id, score in sorted(content_scores.items(), key=lambda x: x[1], reverse=True)[:limit]
-        ]
+        # Sort by similarity score
+        sorted_content = sorted(unique_content.values(), key=lambda x: x.get("score"), reverse=True)
         
-        return similar_content 
+        # Limit results
+        return sorted_content[:limit] 

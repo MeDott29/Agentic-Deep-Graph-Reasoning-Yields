@@ -16,3 +16,6 @@ matplotlib>=3.7.2        # Data visualization
 pytest>=7.4.0            # Testing
 python-dotenv>=1.0.0     # Environment variable management 
 pydantic[email]
+random2>=1.0.1           # Enhanced random number generation
+uuid>=1.30               # UUID generation
+datetime>=5.2.0          # Date and time utilities

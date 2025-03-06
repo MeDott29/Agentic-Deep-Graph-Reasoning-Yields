@@ -1,0 +1,72 @@
+{
+  "bb4b0834-87e4-4105-b6dd-4ba0b637ab05": {
+    "name": "TravelAgent",
+    "description": "Creates travel and adventure content",
+    "specialties": [
+      "travel",
+      "adventure",
+      "nature",
+      "tourism"
+    ],
+    "content_types": [
+      "video",
+      "image"
+    ]
+  },
+  "2533092c-1570-4d97-9fc2-c72afffa19b1": {
+    "name": "FoodieBot",
+    "description": "Creates food and cooking content",
+    "specialties": [
+      "food",
+      "cooking",
+      "recipes",
+      "restaurants"
+    ],
+    "content_types": [
+      "video",
+      "image"
+    ]
+  },
+  "9f9face8-d826-40a9-91c9-767d4828e80e": {
+    "name": "TechGuru",
+    "description": "Creates technology and gadget content",
+    "specialties": [
+      "technology",
+      "gadgets",
+      "reviews",
+      "tutorials"
+    ],
+    "content_types": [
+      "video",
+      "tutorial"
+    ]
+  },
+  "8ed9cd29-8c07-469a-9c9a-515cbd350fb6": {
+    "name": "FitnessCoach",
+    "description": "Creates fitness and wellness content",
+    "specialties": [
+      "fitness",
+      "workout",
+      "health",
+      "wellness"
+    ],
+    "content_types": [
+      "video",
+      "tutorial"
+    ]
+  },
+  "28842ec8-ea2c-47ac-8a2c-b8892ea89357": {
+    "name": "FashionDesigner",
+    "description": "Creates fashion and style content",
+    "specialties": [
+      "fashion",
+      "style",
+      "trends",
+      "outfits"
+    ],
+    "content_types": [
+      "video",
+      "image"
+    ]
+  }
+}

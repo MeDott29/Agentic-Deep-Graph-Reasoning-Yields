@@ -11,6 +11,7 @@ A synthetic knowledge graph-based social network system inspired by TikTok, leve
 - **Social Interactions**: Like, comment, share, and follow functionality
 - **Trending Content**: Discover popular content based on engagement metrics
 - **Analytics**: Track content performance and user engagement
+- **AI-Generated Content**: Content created by AI agents tailored to user preferences
 
 ## Architecture
 
@@ -20,6 +21,7 @@ The system is built using a microservices architecture with the following compon
 - **Service Layer**: Business logic and service orchestration
 - **Data Layer**: Graph database and relational database integration
 - **ML Models**: Recommendation algorithms and content analysis
+- **AI Agents**: Specialized content generation agents
 - **Utils**: Helper functions and utilities
 
 ## Getting Started
@@ -114,12 +116,52 @@ The system provides the following API endpoints:
 - `GET /similar-users/{user_id}` - Get similar users
 - `POST /update-interests` - Update user interests
 
+### AI Content API (`/api/ai-content`)
+
+- `GET /agents` - Get list of AI content generation agents
+- `GET /agents/{agent_id}` - Get AI agent by ID
+- `POST /agents` - Create a new AI agent
+- `PUT /agents/{agent_id}` - Update an AI agent
+- `DELETE /agents/{agent_id}` - Delete an AI agent
+- `GET /preferences/{user_id}` - Get user preferences for AI content
+- `PUT /preferences/{user_id}` - Update user preferences for AI content
+- `POST /generate` - Generate AI content based on user preferences
+- `POST /feed` - Get personalized AI content feed for a user
+- `POST /interaction/{user_id}/{content_id}` - Record user interaction with AI content
+- `GET /analysis/{user_id}` - Analyze user preferences based on interaction history
+
 ### Analytics API (`/api/analytics`)
 
 - `GET /content/{content_id}/metrics` - Get content metrics
 - `GET /user/{user_id}/metrics` - Get user metrics
 - `GET /trending/topics` - Get trending topics
 - `GET /dashboard` - Get analytics dashboard
+
+## AI-Generated Content
+
+The system includes a feature for AI-generated content, where specialized AI agents create content tailored to user preferences. Initially, content is generated randomly, but as users interact with the system, the AI agents learn their preferences and generate more targeted content.
+
+### AI Agents
+
+The system includes several default AI agents, each specializing in different content types:
+
+- **TravelAgent**: Creates travel and adventure content
+- **FoodieBot**: Creates food and cooking content
+- **TechGuru**: Creates technology and gadget content
+- **FitnessCoach**: Creates fitness and wellness content
+- **FashionDesigner**: Creates fashion and style content
+
+### User Preference Learning
+
+The system tracks user interactions with content (views, likes, comments, shares) and analyzes these interactions to determine user preferences. These preferences are then used to:
+
+1. Select appropriate AI agents for content generation
+2. Choose relevant topics and themes for the content
+3. Tailor the content format to user preferences
+
+### Integration with Recommendations
+
+AI-generated content is seamlessly integrated into the recommendation engine, appearing alongside regular user-generated content in feeds. The system allows controlling the ratio of AI to user-generated content through the recommendation API.
 
 ## Development
 
@@ -132,6 +174,7 @@ The system provides the following API endpoints:
 │   │   ├── content.py
 │   │   ├── social.py
 │   │   ├── recommendations.py
+│   │   ├── ai_content.py
 │   │   └── analytics.py
 │   ├── models/        # Data models and schemas
 │   │   ├── base.py
@@ -143,6 +186,7 @@ The system provides the following API endpoints:
 │   │   ├── knowledge_graph.py
 │   │   ├── user.py
 │   │   ├── content.py
+│   │   ├── ai_content.py
 │   │   └── recommendation.py
 │   ├── scripts/       # Utility scripts
 │   │   └── init_db.py

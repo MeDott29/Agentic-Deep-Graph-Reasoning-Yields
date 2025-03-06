@@ -14,10 +14,14 @@ class ContentBase(BaseModel):
     
 class ContentCreate(ContentBase):
     """Content creation model"""
-    file_path: str
+    file_path: Optional[str] = None
+    content_type: str = "video"
     hashtags: List[str] = Field(default_factory=list)
     is_private: bool = False
     allow_comments: bool = True
+    is_ai_generated: bool = False
+    ai_agent_id: Optional[str] = None
+    target_user_id: Optional[str] = None
     
     @validator('hashtags')
     def hashtags_format(cls, v):
@@ -45,6 +49,7 @@ class ContentInDB(ContentBase, TimestampMixin):
     duration: float  # in seconds
     width: int
     height: int
+    content_type: str = "video"
     hashtags: List[str] = Field(default_factory=list)
     is_private: bool = False
     allow_comments: bool = True
@@ -52,6 +57,9 @@ class ContentInDB(ContentBase, TimestampMixin):
     like_count: int = 0
     comment_count: int = 0
     share_count: int = 0
+    is_ai_generated: bool = False
+    ai_agent_id: Optional[str] = None
+    target_user_id: Optional[str] = None
     
 class Content(ContentBase, TimestampMixin):
     """Content model returned to clients"""
@@ -61,6 +69,7 @@ class Content(ContentBase, TimestampMixin):
     duration: float  # in seconds
     width: int
     height: int
+    content_type: str = "video"
     hashtags: List[str] = Field(default_factory=list)
     is_private: bool = False
     allow_comments: bool = True
@@ -68,6 +77,9 @@ class Content(ContentBase, TimestampMixin):
     like_count: int = 0
     comment_count: int = 0
     share_count: int = 0
+    is_ai_generated: bool = False
+    ai_agent_id: Optional[str] = None
+    target_user_id: Optional[str] = None
     
     class Config:
         orm_mode = True
@@ -83,6 +95,7 @@ class ContentNode(GraphNode):
                 "description": content.description,
                 "user_id": content.user_id,
                 "duration": content.duration,
+                "content_type": content.content_type,
                 "hashtags": content.hashtags,
                 "view_count": content.view_count,
                 "like_count": content.like_count,
@@ -90,6 +103,9 @@ class ContentNode(GraphNode):
                 "share_count": content.share_count,
                 "created_at": content.created_at.isoformat(),
                 "updated_at": content.updated_at.isoformat(),
+                "is_ai_generated": content.is_ai_generated,
+                "ai_agent_id": content.ai_agent_id,
+                "target_user_id": content.target_user_id
             }
         )
 
@@ -101,6 +117,20 @@ class HashtagNode(GraphNode):
             node_type="HASHTAG",
             properties={
                 "name": hashtag,
+                "content_count": 0,
+            }
+        )
+
+class AIAgentNode(GraphNode):
+    """AI Agent node in the knowledge graph"""
+    def __init__(self, agent_id: str, name: str, specialties: List[str]):
+        super().__init__(
+            id=f"agent:{agent_id}",
+            node_type="AI_AGENT",
+            properties={
+                "agent_id": agent_id,
+                "name": name,
+                "specialties": specialties,
                 "content_count": 0,
             }
         )

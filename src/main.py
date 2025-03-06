@@ -16,6 +16,7 @@ from api.content import router as content_router
 from api.social import router as social_router
 from api.recommendations import router as recommendations_router
 from api.analytics import router as analytics_router
+from api.ai_content import router as ai_content_router
 
 # Create FastAPI application
 app = FastAPI(
@@ -39,6 +40,7 @@ app.include_router(content_router, prefix="/api/content", tags=["content"])
 app.include_router(social_router, prefix="/api/social", tags=["social"])
 app.include_router(recommendations_router, prefix="/api/recommendations", tags=["recommendations"])
 app.include_router(analytics_router, prefix="/api/analytics", tags=["analytics"])
+app.include_router(ai_content_router, prefix="/api/ai-content", tags=["ai-content"])
 
 @app.get("/")
 async def root():
