@@ -1,0 +1,26 @@
+{
+  "trend_20250306164209_4236": {
+    "views": 0,
+    "total_view_time": 0.0,
+    "likes": 1,
+    "last_viewed": null,
+    "history": [
+      {
+        "timestamp": "2025-03-06T16:42:14.558694",
+        "action": "like"
+      }
+    ]
+  },
+  "trend_20250306171412_4808": {
+    "views": 0,
+    "total_view_time": 0.0,
+    "likes": 1,
+    "last_viewed": null,
+    "history": [
+      {
+        "timestamp": "2025-03-06T17:14:17.168515",
+        "action": "like"
+      }
+    ]
+  }
+}

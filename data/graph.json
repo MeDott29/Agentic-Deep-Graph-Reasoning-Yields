@@ -1,0 +1,288 @@
+{
+  "nodes": [
+    {
+      "id": "bd490b5d-06bf-439f-939a-d1a17a2315aa",
+      "name": "Technology",
+      "type": "topic",
+      "created_at": "2025-03-06T16:42:09.556364",
+      "updated_at": "2025-03-06T17:14:12.166476",
+      "properties": {
+        "categories": [
+          "science",
+          "technology"
+        ],
+        "engagement_score": 0.408,
+        "trending_score": 0.6624999999611112,
+        "complexity": 3,
+        "entertainment_value": 0.0
+      }
+    },
+    {
+      "id": "6fdb3a90-ecf2-4d33-a1a0-2e3e44081247",
+      "name": "Science",
+      "type": "topic",
+      "created_at": "2025-03-06T16:42:09.556408",
+      "updated_at": "2025-03-06T16:42:09.556422",
+      "properties": {
+        "categories": [
+          "science"
+        ],
+        "engagement_score": 0.0,
+        "trending_score": 0.25,
+        "complexity": 3,
+        "entertainment_value": 0.0
+      }
+    },
+    {
+      "id": "f3549244-7bd6-4bd7-9b8c-21d485fd73e7",
+      "name": "Entertainment",
+      "type": "topic",
+      "created_at": "2025-03-06T16:42:09.556434",
+      "updated_at": "2025-03-06T16:42:09.556445",
+      "properties": {
+        "categories": [
+          "entertainment",
+          "pop culture"
+        ],
+        "engagement_score": 0.0,
+        "trending_score": 0.25,
+        "complexity": 3,
+        "entertainment_value": 0.0
+      }
+    },
+    {
+      "id": "a0d1ed40-9b6b-4bef-b033-b4696600c3da",
+      "name": "Sports",
+      "type": "topic",
+      "created_at": "2025-03-06T16:42:09.556458",
+      "updated_at": "2025-03-06T17:14:17.169998",
+      "properties": {
+        "categories": [
+          "entertainment"
+        ],
+        "engagement_score": 0.09,
+        "trending_score": 0.27499999994583335,
+        "complexity": 3,
+        "entertainment_value": 0.0,
+        "agent_scores": {
+          "bd310ed1-0969-4e82-98c8-12cd0e2142e8": 0.3
+        }
+      }
+    },
+    {
+      "id": "fc805191-0318-4001-a66d-f71fa2d62a2a",
+      "name": "Politics",
+      "type": "topic",
+      "created_at": "2025-03-06T16:42:09.556477",
+      "updated_at": "2025-03-06T17:14:17.169665",
+      "properties": {
+        "categories": [
+          "current events"
+        ],
+        "engagement_score": 0.09,
+        "trending_score": 0.25,
+        "complexity": 3,
+        "entertainment_value": 0.0,
+        "agent_scores": {
+          "bd310ed1-0969-4e82-98c8-12cd0e2142e8": 0.3
+        }
+      }
+    },
+    {
+      "id": "28341960-3098-423e-96b7-960936c85463",
+      "name": "Health",
+      "type": "topic",
+      "created_at": "2025-03-06T16:42:09.556500",
+      "updated_at": "2025-03-06T16:42:09.556510",
+      "properties": {
+        "categories": [
+          "science",
+          "health"
+        ],
+        "engagement_score": 0.0,
+        "trending_score": 0.25,
+        "complexity": 3,
+        "entertainment_value": 0.0
+      }
+    },
+    {
+      "id": "d9cd2247-72fb-454f-bee2-d45dfb95fc19",
+      "name": "Environment",
+      "type": "topic",
+      "created_at": "2025-03-06T16:42:09.556519",
+      "updated_at": "2025-03-06T16:42:09.556526",
+      "properties": {
+        "categories": [
+          "science",
+          "current events"
+        ],
+        "engagement_score": 0.0,
+        "trending_score": 0.25,
+        "complexity": 3,
+        "entertainment_value": 0.0
+      }
+    },
+    {
+      "id": "0ea8df03-09f1-4326-b995-86008136934c",
+      "name": "Business",
+      "type": "topic",
+      "created_at": "2025-03-06T16:42:09.556542",
+      "updated_at": "2025-03-06T16:42:09.556550",
+      "properties": {
+        "categories": [
+          "business",
+          "current events"
+        ],
+        "engagement_score": 0.0,
+        "trending_score": 0.25,
+        "complexity": 3,
+        "entertainment_value": 0.0
+      }
+    },
+    {
+      "id": "6527e255-406a-4bb3-8620-6965595b32a8",
+      "name": "Education",
+      "type": "topic",
+      "created_at": "2025-03-06T16:42:09.556560",
+      "updated_at": "2025-03-06T16:42:09.556566",
+      "properties": {
+        "categories": [
+          "education"
+        ],
+        "engagement_score": 0.0,
+        "trending_score": 0.25,
+        "complexity": 3,
+        "entertainment_value": 0.0
+      }
+    },
+    {
+      "id": "2fbcffdf-5ad0-4cce-b7c0-e9b97dc45b07",
+      "name": "Art",
+      "type": "topic",
+      "created_at": "2025-03-06T16:42:09.556573",
+      "updated_at": "2025-03-06T16:42:09.556579",
+      "properties": {
+        "categories": [
+          "entertainment",
+          "art"
+        ],
+        "engagement_score": 0.0,
+        "trending_score": 0.25,
+        "complexity": 3,
+        "entertainment_value": 0.0
+      }
+    },
+    {
+      "id": "bd310ed1-0969-4e82-98c8-12cd0e2142e8",
+      "name": "TrendSpotter",
+      "type": "agent",
+      "created_at": "2025-03-06T17:14:12.168035",
+      "updated_at": "2025-03-06T17:14:17.169684",
+      "properties": {
+        "personality": "Curious, up-to-date, and always on the lookout for what's new and exciting",
+        "specialization": [
+          "trends",
+          "current events",
+          "viral content",
+          "popular culture"
+        ],
+        "content_count": 1,
+        "total_engagement": 0.3,
+        "performance_by_topic": {
+          "Politics": 0.3
+        }
+      }
+    },
+    {
+      "id": "91a5a209-0bfc-47ba-8a80-46259478bfc8",
+      "name": "DeepDive",
+      "type": "agent",
+      "created_at": "2025-03-06T17:14:12.168058",
+      "updated_at": "2025-03-06T17:14:12.168058",
+      "properties": {
+        "personality": "Analytical, thorough, and focused on providing comprehensive explanations",
+        "specialization": [
+          "science",
+          "technology",
+          "history",
+          "philosophy",
+          "complex concepts"
+        ],
+        "content_count": 0,
+        "total_engagement": 0.0,
+        "performance_by_topic": {}
+      }
+    },
+    {
+      "id": "6b9abfcc-8b09-4f46-bfc2-9b4aff837057",
+      "name": "Entertainer",
+      "type": "agent",
+      "created_at": "2025-03-06T17:14:12.168071",
+      "updated_at": "2025-03-06T17:14:12.168071",
+      "properties": {
+        "personality": "Witty, playful, and focused on creating content that amuses and engages",
+        "specialization": [
+          "humor",
+          "stories",
+          "entertainment",
+          "pop culture",
+          "fun facts"
+        ],
+        "content_count": 0,
+        "total_engagement": 0.0,
+        "performance_by_topic": {}
+      }
+    },
+    {
+      "id": "trend_20250306171412_4808",
+      "name": "Content trend_20250306171412_4808",
+      "type": "content",
+      "created_at": "2025-03-06T17:14:17.169507",
+      "updated_at": "2025-03-06T17:14:17.169637",
+      "properties": {
+        "content_type": "text",
+        "agent_id": "bd310ed1-0969-4e82-98c8-12cd0e2142e8",
+        "agent_name": "TrendSpotter",
+        "view_count": 1,
+        "total_view_time": 0.0,
+        "likes": 1,
+        "tags": [
+          "Politics"
+        ]
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "a5261df2-f867-4961-b496-13b122711463",
+      "source_id": "trend_20250306171412_4808",
+      "target_id": "fc805191-0318-4001-a66d-f71fa2d62a2a",
+      "type": "ABOUT",
+      "created_at": "2025-03-06T17:14:17.169738",
+      "updated_at": "2025-03-06T17:14:17.169749",
+      "properties": {
+        "weight": 0.3
+      }
+    },
+    {
+      "id": "fcc626e4-3638-4151-8d14-713d34131fe6",
+      "source_id": "bd310ed1-0969-4e82-98c8-12cd0e2142e8",
+      "target_id": "trend_20250306171412_4808",
+      "type": "CREATED",
+      "created_at": "2025-03-06T17:14:17.169821",
+      "updated_at": "2025-03-06T17:14:17.169821",
+      "properties": {}
+    },
+    {
+      "id": "558c2869-0689-4285-bafa-bf2943855228",
+      "source_id": "bd310ed1-0969-4e82-98c8-12cd0e2142e8",
+      "target_id": "a0d1ed40-9b6b-4bef-b033-b4696600c3da",
+      "type": "SPECIALIZES_IN",
+      "created_at": "2025-03-06T17:14:17.170041",
+      "updated_at": "2025-03-06T17:14:17.170050",
+      "properties": {
+        "weight": 0.3
+      }
+    }
+  ]
+}

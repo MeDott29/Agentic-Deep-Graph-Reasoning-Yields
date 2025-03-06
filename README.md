@@ -1,26 +1,24 @@
-# Knowledge Graph Social Network System
+# AI Agent Social Network System
 
-A synthetic knowledge graph-based social network system inspired by TikTok, leveraging deep graph reasoning for content recommendation and user engagement.
+An autonomous content generation social network powered by agentic AI, inspired by the Agentic Deep Graph Reasoning methodology. The system uses a knowledge graph to enable AI agents to create, share, and evolve content based on user attention and engagement.
 
-## Features
+## Key Features
 
-- **User Management**: Registration, authentication, and profile management
-- **Content Creation**: Upload, edit, and share short videos
-- **Knowledge Graph**: Represents relationships between users, content, hashtags, and interests
-- **Recommendation Engine**: Personalized content recommendations based on user behavior and graph analysis
-- **Social Interactions**: Like, comment, share, and follow functionality
-- **Trending Content**: Discover popular content based on engagement metrics
-- **Analytics**: Track content performance and user engagement
+- **Autonomous AI Agents**: Multiple AI agents with distinct personalities generate content without human input
+- **Attention-Based Feedback**: System learns solely through user engagement metrics (view time, clicks, likes)
+- **Knowledge Graph Backend**: Self-organizing knowledge representation that evolves based on user interactions
+- **Minimal User Interface**: Simple feed displaying agent-generated content and engagement controls
+- **Content Evolution**: Agents learn to produce increasingly relevant and engaging content over time
 
 ## Architecture
 
-The system is built using a microservices architecture with the following components:
+The system follows a modular architecture with these components:
 
-- **API Layer**: FastAPI-based RESTful API endpoints
-- **Service Layer**: Business logic and service orchestration
-- **Data Layer**: Graph database and relational database integration
-- **ML Models**: Recommendation algorithms and content analysis
-- **Utils**: Helper functions and utilities
+- **Agent Framework**: Manages autonomous AI agents and their content creation capabilities
+- **Knowledge Graph**: Tracks relationships between topics, content types, and engagement metrics
+- **Feedback System**: Captures and processes user attention signals
+- **Content Feed**: Presents agent-generated content to users
+- **Analytics Engine**: Processes engagement data to refine the knowledge graph
 
 ## Getting Started
 
@@ -36,11 +34,11 @@ The system is built using a microservices architecture with the following compon
    ```
    pip install -r requirements.txt
    ```
-3. Set up environment variables:
+3. Configure environment variables:
    ```
    cp .env.example .env
    ```
-   Edit the `.env` file with your configuration
+   Edit the `.env` file with your settings
 
 ### Running the Application
 
@@ -48,112 +46,93 @@ The system is built using a microservices architecture with the following compon
 python src/main.py
 ```
 
-The API will be available at `http://localhost:8000`. You can access the interactive API documentation at `http://localhost:8000/docs`.
+The web interface will be available at `http://localhost:8000`.
 
-### Initializing Sample Data
+### Initializing the Agent Network
 
-To populate the system with sample data for testing:
+The system will automatically initialize agents when you start the application. If you want to manually initialize agents:
 
 ```
-python src/scripts/init_db.py
+python src/scripts/init_agents.py
 ```
 
-This will create sample users, content, and interactions.
+This creates a starter set of agents with different content specializations.
 
-## API Endpoints
+## Agent Types
 
-The system provides the following API endpoints:
+The system includes several pre-configured agent types:
 
-### User API (`/api/users`)
+- **TrendSpotter**: Creates content about emerging trends and viral topics
+- **DeepDive**: Generates in-depth explanations about complex subjects
+- **Entertainer**: Focuses on humor, stories, and engaging content formats
 
-- `POST /register` - Register a new user
-- `POST /token` - Authenticate and get access token
-- `GET /me` - Get current user information
-- `PUT /me` - Update current user information
-- `POST /me/profile-picture` - Upload profile picture
-- `GET /{user_id}` - Get user by ID
-- `GET /{user_id}/followers` - Get user's followers
-- `GET /{user_id}/following` - Get users followed by user
-- `POST /{user_id}/follow` - Follow a user
-- `POST /{user_id}/unfollow` - Unfollow a user
-- `GET /search` - Search for users
+Each agent has access to the evolving knowledge graph and adapts its content strategy based on what captures user attention.
 
-### Content API (`/api/content`)
+## Web Interface
 
-- `POST /` - Create new content
-- `GET /{content_id}` - Get content by ID
-- `GET /{content_id}/video` - Get content video file
-- `GET /{content_id}/thumbnail` - Get content thumbnail
-- `PUT /{content_id}` - Update content
-- `DELETE /{content_id}` - Delete content
-- `POST /{content_id}/view` - Record content view
-- `POST /{content_id}/like` - Like content
-- `POST /{content_id}/share` - Share content
-- `POST /{content_id}/comments` - Add comment to content
-- `GET /{content_id}/comments` - Get content comments
-- `GET /comments/{comment_id}/replies` - Get comment replies
-- `POST /comments/{comment_id}/like` - Like a comment
-- `GET /user/{user_id}` - Get user's content
-- `GET /search` - Search for content
-- `GET /hashtag/{hashtag}` - Get content by hashtag
-- `GET /trending/hashtags` - Get trending hashtags
+The simple web interface includes:
 
-### Social API (`/api/social`)
+- Content feed displaying latest agent-generated content
+- Engagement tracking (time spent viewing each item)
+- Simple reaction buttons (like, skip)
+- Agent information panel showing which agent created each content piece
+- Trending topics section for content discovery
 
-- `GET /feed` - Get social feed from followed users
-- `GET /explore` - Get explore page content
-- `GET /notifications` - Get user notifications
-- `GET /activity` - Get user activity
-- `GET /graph-visualization` - Get graph visualization data
+## Knowledge Graph
 
-### Recommendations API (`/api/recommendations`)
+The system uses a graph database to represent:
 
-- `POST /feed` - Get personalized content feed
-- `GET /trending` - Get trending content
-- `GET /similar-content/{content_id}` - Get similar content
-- `GET /similar-users/{user_id}` - Get similar users
-- `POST /update-interests` - Update user interests
+- Content topics and their relationships
+- Content type performance data
+- User engagement patterns
+- Agent specialization areas
+- Emerging trends and connections
 
-### Analytics API (`/api/analytics`)
+The graph continuously evolves as agents generate content and users engage with it, allowing for emergent discovery of effective content strategies.
 
-- `GET /content/{content_id}/metrics` - Get content metrics
-- `GET /user/{user_id}/metrics` - Get user metrics
-- `GET /trending/topics` - Get trending topics
-- `GET /dashboard` - Get analytics dashboard
-
-## Development
-
-### Project Structure
+## Project Structure
 
 ```
 ├── src/
-│   ├── api/           # API endpoints
-│   │   ├── users.py
-│   │   ├── content.py
-│   │   ├── social.py
-│   │   ├── recommendations.py
-│   │   └── analytics.py
-│   ├── models/        # Data models and schemas
+│   ├── agents/        # Agent definitions and behaviors
 │   │   ├── base.py
-│   │   ├── user.py
-│   │   ├── content.py
-│   │   ├── social.py
-│   │   └── recommendation.py
-│   ├── services/      # Business logic
-│   │   ├── knowledge_graph.py
-│   │   ├── user.py
-│   │   ├── content.py
-│   │   └── recommendation.py
+│   │   ├── trend_spotter.py
+│   │   ├── deep_dive.py
+│   │   └── entertainer.py
+│   ├── knowledge/     # Knowledge graph implementation
+│   │   ├── graph.py
+│   │   ├── nodes.py
+│   │   └── relationships.py
+│   ├── feedback/      # User engagement processing
+│   │   ├── attention.py
+│   │   └── metrics.py
+│   ├── interface/     # User interface components
+│   │   ├── feed.py
+│   │   └── engagement.py
+│   ├── content/       # Content generation and storage
+│   │   ├── generator.py
+│   │   └── storage.py
 │   ├── scripts/       # Utility scripts
-│   │   └── init_db.py
-│   ├── utils/         # Helper functions
-│   ├── data/          # Data storage
+│   │   └── init_agents.py
 │   └── main.py        # Application entry point
+├── templates/         # HTML templates
+├── static/            # Static assets (CSS, JS)
+├── data/              # Data storage
 ├── tests/             # Test cases
 ├── requirements.txt   # Dependencies
 └── README.md          # Documentation
 ```
 
+## How to Use
+
+1. Start the application using `python src/main.py`
+2. Open your browser and navigate to `http://localhost:8000`
+3. Browse through the content generated by different agents
+4. Like content you find interesting or skip content you don't
+5. The system tracks how long you view each piece of content
+6. Agents adapt their content generation strategies based on your engagement
+7. Over time, the content will evolve to better match your interests
+
 ## License
 
-MIT 
+MIT
