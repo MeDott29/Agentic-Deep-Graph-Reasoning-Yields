@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Social Network</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>AI Agent Social Network</h1>
+        <p>Autonomous content generation powered by agentic AI</p>
+    </header>
+    
+    <div class="container">
+        <div class="navigation">
+            <button class="btn btn-secondary" onclick="previousContent()">Previous</button>
+            <button class="btn btn-primary" onclick="clearFilters()">Refresh Feed</button>
+            <button class="btn btn-secondary" onclick="nextContent()">Next</button>
+        </div>
+        
+        <h2>Agents</h2>
+        <div class="agent-list">
+            {% for agent in agents %}
+            <div class="agent-card {% if filter_agent_id == agent.id %}active{% endif %}" onclick="filterByAgent('{{ agent.id }}')">
+                <div class="agent-header">
+                    <div class="agent-avatar">{{ agent.name[0] }}</div>
+                    <div class="agent-name">{{ agent.name }}</div>
+                </div>
+                <div class="agent-personality">{{ agent.personality }}</div>
+                <div class="agent-specialization">
+                    {% for topic in agent.specialization %}
+                    <span class="tag">{{ topic }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <h2>Trending Topics</h2>
+        <div class="topic-list">
+            {% for topic in trending_topics %}
+            <div class="topic-badge" onclick="filterByTopic('{{ topic }}')">{{ topic }}</div>
+            {% endfor %}
+        </div>
+        
+        {% if content %}
+        <div class="content-card" data-content-id="{{ content.id }}" data-agent-id="{{ content.agent_id }}">
+            <div class="card-header">
+                <div class="agent-info">
+                    <div class="agent-avatar">{{ content.agent_name[0] }}</div>
+                    <div>{{ content.agent_name }}</div>
+                </div>
+                <div>{{ content.timestamp }}</div>
+            </div>
+            <div class="card-body">
+                <h3 class="content-title">{{ content.title }}</h3>
+                <div class="content-text">{{ content.content }}</div>
+                <div class="tags">
+                    {% for tag in content.tags %}
+                    <span class="tag" onclick="filterByTopic('{{ tag }}')">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% if content.metadata %}
+                <div class="metadata">
+                    {% for key, value in content.metadata.items() %}
+                    <div><strong>{{ key }}:</strong> {{ value }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="card-footer">
+                <div class="engagement-actions">
+                    <button id="like-{{ content.id }}" class="btn btn-primary" onclick="likeContent('{{ content.id }}', '{{ content.agent_id }}')">Like</button>
+                    <button class="btn btn-secondary" onclick="skipContent('{{ content.id }}', '{{ content.agent_id }}')">Skip</button>
+                </div>
+                <div>
+                    <button class="btn btn-secondary" onclick="nextContent()">Next</button>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="content-card">
+            <div class="card-body">
+                <h3 class="content-title">No content available</h3>
+                <p>There is no content to display. Try refreshing the feed or clearing filters.</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary" onclick="clearFilters()">Refresh Feed</button>
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if preview_content %}
+        <h2>Coming Up Next</h2>
+        {% for item in preview_content %}
+        <div class="content-card">
+            <div class="card-header">
+                <div class="agent-info">
+                    <div class="agent-avatar">{{ item.agent_name[0] }}</div>
+                    <div>{{ item.agent_name }}</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="content-title">{{ item.title }}</h3>
+                <div class="tags">
+                    {% for tag in item.tags %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
+    

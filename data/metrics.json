@@ -12,14 +12,150 @@
     ]
   },
   "trend_20250306171412_4808": {
-    "views": 0,
-    "total_view_time": 0.0,
+    "views": 1,
+    "total_view_time": 0.7960453033447266,
     "likes": 1,
-    "last_viewed": null,
+    "last_viewed": "2025-03-06T17:21:22.727703",
     "history": [
       {
         "timestamp": "2025-03-06T17:14:17.168515",
         "action": "like"
+      },
+      {
+        "timestamp": "2025-03-06T17:21:22.727726",
+        "action": "view",
+        "view_time": 0.7960453033447266
+      }
+    ]
+  },
+  "trend_20250306171726_8697": {
+    "views": 1,
+    "total_view_time": 0.8133127689361572,
+    "likes": 1,
+    "last_viewed": "2025-03-06T17:21:20.895334",
+    "history": [
+      {
+        "timestamp": "2025-03-06T17:17:31.421919",
+        "action": "like"
+      },
+      {
+        "timestamp": "2025-03-06T17:21:20.895366",
+        "action": "view",
+        "view_time": 0.8133127689361572
+      }
+    ]
+  },
+  "fun_20250306172011_2900": {
+    "views": 2,
+    "total_view_time": 24.947185754776,
+    "likes": 0,
+    "last_viewed": "2025-03-06T17:21:25.361925",
+    "history": [
+      {
+        "timestamp": "2025-03-06T17:21:11.899117",
+        "action": "view",
+        "view_time": 23.0711727142334
+      },
+      {
+        "timestamp": "2025-03-06T17:21:25.361935",
+        "action": "view",
+        "view_time": 1.8760130405426025
+      }
+    ]
+  },
+  "deep_20250306172011_1353": {
+    "views": 2,
+    "total_view_time": 2.9313063621520996,
+    "likes": 0,
+    "last_viewed": "2025-03-06T17:21:26.056859",
+    "history": [
+      {
+        "timestamp": "2025-03-06T17:21:14.364439",
+        "action": "view",
+        "view_time": 2.324801206588745
+      },
+      {
+        "timestamp": "2025-03-06T17:21:26.056891",
+        "action": "view",
+        "view_time": 0.6065051555633545
+      }
+    ]
+  },
+  "trend_20250306172011_2962": {
+    "views": 1,
+    "total_view_time": 2.9007155895233154,
+    "likes": 0,
+    "last_viewed": "2025-03-06T17:21:17.401792",
+    "history": [
+      {
+        "timestamp": "2025-03-06T17:21:17.401798",
+        "action": "view",
+        "view_time": 2.9007155895233154
+      }
+    ]
+  },
+  "fun_20250306171726_5542": {
+    "views": 1,
+    "total_view_time": 1.1464793682098389,
+    "likes": 0,
+    "last_viewed": "2025-03-06T17:21:18.649534",
+    "history": [
+      {
+        "timestamp": "2025-03-06T17:21:18.649543",
+        "action": "view",
+        "view_time": 1.1464793682098389
+      }
+    ]
+  },
+  "deep_20250306171726_2574": {
+    "views": 1,
+    "total_view_time": 1.2004258632659912,
+    "likes": 0,
+    "last_viewed": "2025-03-06T17:21:19.951759",
+    "history": [
+      {
+        "timestamp": "2025-03-06T17:21:19.951781",
+        "action": "view",
+        "view_time": 1.2004258632659912
+      }
+    ]
+  },
+  "fun_20250306171412_5570": {
+    "views": 1,
+    "total_view_time": 0.437100887298584,
+    "likes": 0,
+    "last_viewed": "2025-03-06T17:21:21.462896",
+    "history": [
+      {
+        "timestamp": "2025-03-06T17:21:21.462918",
+        "action": "view",
+        "view_time": 0.437100887298584
+      }
+    ]
+  },
+  "deep_20250306171412_2781": {
+    "views": 1,
+    "total_view_time": 0.2352614402770996,
+    "likes": 0,
+    "last_viewed": "2025-03-06T17:21:21.809580",
+    "history": [
+      {
+        "timestamp": "2025-03-06T17:21:21.809612",
+        "action": "view",
+        "view_time": 0.2352614402770996
+      }
+    ]
+  },
+  "fun_20250306164209_6004": {
+    "views": 1,
+    "total_view_time": 0.5250487327575684,
+    "likes": 0,
+    "last_viewed": "2025-03-06T17:21:23.372000",
+    "history": [
+      {
+        "timestamp": "2025-03-06T17:21:23.372022",
+        "action": "view",
+        "view_time": 0.5250487327575684
       }
     ]
   }
