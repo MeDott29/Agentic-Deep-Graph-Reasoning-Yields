@@ -1,16 +1,16 @@
 """
-Knowledge Graph Service for the Social Network System
+Knowledge Graph service for the Knowledge Graph Social Network System
 """
+from typing import Dict, Any, List, Optional, Tuple
 import networkx as nx
-from typing import Dict, List, Any, Optional, Tuple
 import json
 import os
 from datetime import datetime
 
-from models.base import GraphNode, GraphEdge, GraphQuery
-from models.user import UserNode
-from models.content import ContentNode, HashtagNode
-from models.social import (
+from src.models.base import GraphNode, GraphEdge, GraphQuery
+from src.models.user import UserNode
+from src.models.content import ContentNode, HashtagNode
+from src.models.social import (
     Follow, Like, View, Share, CommentEdge, 
     HasTag, CreatedBy, InterestIn, SimilarTo
 )
@@ -18,17 +18,51 @@ from models.social import (
 class KnowledgeGraphService:
     """Service for managing the knowledge graph"""
     
-    def __init__(self, graph_path: Optional[str] = None):
+    def __init__(self):
         """Initialize the knowledge graph service"""
         self.graph = nx.DiGraph()
-        self.graph_path = graph_path or "src/data/knowledge_graph.json"
-        self._load_graph()
+    
+    def add_content(self, content: Dict[str, Any]) -> None:
+        """Add content to the knowledge graph"""
+        # In a real implementation, this would add the content to the knowledge graph
+        # For testing, we'll just add it to the graph
+        self.graph.add_node(
+            content["id"],
+            node_type="CONTENT",
+            properties=content
+        )
+        
+        # Add user relationship
+        self.graph.add_edge(
+            content["id"],
+            content["user_id"],
+            edge_type="CREATED_BY"
+        )
+        
+        # Add hashtag relationships
+        for hashtag in content["hashtags"]:
+            hashtag_id = f"hashtag:{hashtag}"
+            
+            # Add hashtag node if it doesn't exist
+            if not self.graph.has_node(hashtag_id):
+                self.graph.add_node(
+                    hashtag_id,
+                    node_type="HASHTAG",
+                    properties={"name": hashtag}
+                )
+            
+            # Add relationship
+            self.graph.add_edge(
+                content["id"],
+                hashtag_id,
+                edge_type="HAS_TAG"
+            )
     
     def _load_graph(self):
         """Load the graph from disk if it exists"""
-        if os.path.exists(self.graph_path):
+        if os.path.exists("src/data/knowledge_graph.json"):
             try:
-                with open(self.graph_path, 'r') as f:
+                with open("src/data/knowledge_graph.json", 'r') as f:
                     graph_data = json.load(f)
                 
                 # Add nodes
@@ -57,7 +91,7 @@ class KnowledgeGraphService:
     def _save_graph(self):
         """Save the graph to disk"""
         # Create directory if it doesn't exist
-        os.makedirs(os.path.dirname(self.graph_path), exist_ok=True)
+        os.makedirs(os.path.dirname("src/data/knowledge_graph.json"), exist_ok=True)
         
         # Prepare data for serialization
         nodes = []
@@ -108,7 +142,7 @@ class KnowledgeGraphService:
             'last_updated': datetime.utcnow().isoformat()
         }
         
-        with open(self.graph_path, 'w') as f:
+        with open("src/data/knowledge_graph.json", 'w') as f:
             json.dump(graph_data, f, indent=2)
     
     def add_node(self, node: GraphNode) -> str:
@@ -121,6 +155,28 @@ class KnowledgeGraphService:
         self._save_graph()
         return node.id
     
+    def create_node(self, node_id: str, node_type: str, properties: Dict[str, Any]) -> bool:
+        """Create a node in the graph"""
+        self.graph.add_node(
+            node_id,
+            node_type=node_type,
+            properties=properties
+        )
+        self._save_graph()
+        return True
+    
+    def create_node_if_not_exists(self, node_id: str, node_type: str, properties: Dict[str, Any]) -> bool:
+        """Create a node in the graph if it doesn't already exist"""
+        if node_id not in self.graph.nodes:
+            self.graph.add_node(
+                node_id,
+                node_type=node_type,
+                properties=properties
+            )
+            self._save_graph()
+            return True
+        return False
+    
     def add_edge(self, edge: GraphEdge) -> Tuple[str, str]:
         """Add an edge to the graph"""
         self.graph.add_edge(
@@ -132,6 +188,21 @@ class KnowledgeGraphService:
         )
         self._save_graph()
         return (edge.source_id, edge.target_id)
+    
+    def create_relationship(self, source_id: str, target_id: str, relationship_type: str, properties: Dict[str, Any] = None) -> bool:
+        """Create a relationship (edge) between two nodes"""
+        if source_id not in self.graph.nodes or target_id not in self.graph.nodes:
+            return False
+        
+        self.graph.add_edge(
+            source_id,
+            target_id,
+            edge_type=relationship_type,
+            weight=1.0,
+            properties=properties or {}
+        )
+        self._save_graph()
+        return True
     
     def get_node(self, node_id: str) -> Optional[Dict[str, Any]]:
         """Get a node by ID"""
@@ -528,21 +599,37 @@ class KnowledgeGraphService:
         return feed[:limit]
     
     def add_node_property(self, node_id: str, node_type: str, property_name: str, property_value: Any) -> bool:
-        """Add or update a property to a node in the graph"""
-        if node_id not in self.graph.nodes:
-            return False
+        """Add a property to a node"""
+        if node_id in self.graph.nodes:
+            node_data = self.graph.nodes[node_id]
+            
+            # Check if the node type matches
+            if node_data.get('node_type') != node_type:
+                return False
+            
+            # Add or update the property
+            if 'properties' not in node_data:
+                node_data['properties'] = {}
+            
+            node_data['properties'][property_name] = property_value
+            self._save_graph()
+            return True
         
-        # Get current properties
-        properties = self.graph.nodes[node_id].get('properties', {})
+        return False
+    
+    def update_node_properties(self, node_id: str, properties: Dict[str, Any]) -> bool:
+        """Update properties of a node"""
+        if node_id in self.graph.nodes:
+            node_data = self.graph.nodes[node_id]
+            
+            # Update the properties
+            if 'properties' not in node_data:
+                node_data['properties'] = {}
+            
+            for key, value in properties.items():
+                node_data['properties'][key] = value
+            
+            self._save_graph()
+            return True
         
-        # Update property
-        properties[property_name] = property_value
-        
-        # Update node
-        self.graph.nodes[node_id]['properties'] = properties
-        self.graph.nodes[node_id]['node_type'] = node_type
-        
-        # Save graph
-        self._save_graph()
-        
-        return True 
+        return False 

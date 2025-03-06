@@ -1,2 +1,4 @@
 AgenticDeepGraphReasoningforKnowledgeandDiscovery.wav
 .env
+*/__pycache__/*
+

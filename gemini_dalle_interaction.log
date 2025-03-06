@@ -1,0 +1,819 @@
+2025-03-06 01:02:57,999 - gemini_dalle_interaction - INFO - Gemini-DALL-E Interaction service initialized
+2025-03-06 01:02:57,999 - gemini_dalle_interaction - INFO - Starting Gemini-DALL-E interaction service with interval of 15 seconds
+2025-03-06 01:02:57,999 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:02:57,999 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:03:13,000 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:03:13,000 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:03:28,001 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:03:28,001 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:03:43,002 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:03:43,002 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:03:58,002 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:03:58,002 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:04:13,003 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:04:13,003 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:04:28,003 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:04:28,003 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:04:43,005 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:04:43,005 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:04:58,006 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:04:58,006 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:05:13,007 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:05:13,007 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:05:28,007 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:05:28,007 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:05:43,008 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:05:43,008 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:05:58,008 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:05:58,008 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:06:13,009 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:06:13,009 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:06:28,009 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:06:28,009 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:06:43,010 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:06:43,010 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:06:58,010 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:06:58,011 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:07:13,011 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:07:13,011 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:07:28,011 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:07:28,011 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:07:43,012 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:07:43,012 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:07:58,013 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:07:58,013 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:08:13,014 - gemini_dalle_interaction - WARNING - No DALL-E-2 generated images found
+2025-03-06 01:08:13,015 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:08:30,171 - gemini_dalle_interaction - INFO - Gemini-DALL-E Interaction service initialized
+2025-03-06 01:08:30,171 - gemini_dalle_interaction - INFO - Starting Gemini-DALL-E interaction service with interval of 15 seconds
+2025-03-06 01:08:30,172 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:08:30,172 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:08:30,172 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 862609ea-e362-4f54-8459-266e59752a5b
+2025-03-06 01:08:30,173 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:08:30,173 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:08:30,173 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:08:45,173 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:08:45,174 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:08:45,174 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8e56ff44-dccb-4cbc-b838-59bf7a98f976
+2025-03-06 01:08:45,174 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:08:45,174 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:08:45,174 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:09:00,174 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:09:00,175 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:09:00,175 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content c4f1c71e-06a1-4ffc-aa44-4506fd0789e4
+2025-03-06 01:09:00,175 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:09:00,175 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:09:00,175 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:09:15,175 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:09:15,176 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:09:15,176 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8e56ff44-dccb-4cbc-b838-59bf7a98f976
+2025-03-06 01:09:15,176 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:09:15,176 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:09:15,176 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:09:30,178 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:09:30,178 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:09:30,178 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content c4f1c71e-06a1-4ffc-aa44-4506fd0789e4
+2025-03-06 01:09:30,178 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:09:30,178 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:09:30,179 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:09:45,179 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:09:45,179 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:09:45,179 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content c4f1c71e-06a1-4ffc-aa44-4506fd0789e4
+2025-03-06 01:09:45,179 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:09:45,179 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:09:45,180 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:10:00,180 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:10:00,180 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:10:00,180 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content c4f1c71e-06a1-4ffc-aa44-4506fd0789e4
+2025-03-06 01:10:00,180 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:10:00,181 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:10:00,181 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:10:15,181 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:10:15,181 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:10:15,182 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 64645aa7-ea9c-47b1-bc00-a7c6d2c86902
+2025-03-06 01:10:15,182 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:10:15,182 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:10:15,182 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:10:30,182 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:10:30,182 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:10:30,183 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content c4f1c71e-06a1-4ffc-aa44-4506fd0789e4
+2025-03-06 01:10:30,183 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:10:30,183 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:10:30,183 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:10:45,183 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:10:45,183 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:10:45,184 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 64645aa7-ea9c-47b1-bc00-a7c6d2c86902
+2025-03-06 01:10:45,184 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:10:45,184 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:10:45,184 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:11:00,184 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:11:00,185 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:11:00,185 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 64645aa7-ea9c-47b1-bc00-a7c6d2c86902
+2025-03-06 01:11:00,185 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:11:00,185 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:11:00,185 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:11:15,186 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:11:15,186 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:11:15,186 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8e56ff44-dccb-4cbc-b838-59bf7a98f976
+2025-03-06 01:11:15,186 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:11:15,186 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:11:15,186 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:11:30,187 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:11:30,187 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:11:30,187 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content c4f1c71e-06a1-4ffc-aa44-4506fd0789e4
+2025-03-06 01:11:30,187 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:11:30,187 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:11:30,188 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:11:45,189 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:11:45,189 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:11:45,189 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 64645aa7-ea9c-47b1-bc00-a7c6d2c86902
+2025-03-06 01:11:45,190 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:11:45,190 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:11:45,190 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:12:00,190 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:12:00,191 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:12:00,191 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 862609ea-e362-4f54-8459-266e59752a5b
+2025-03-06 01:12:00,191 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:12:00,191 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:12:00,191 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:12:15,192 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:12:15,192 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:12:15,192 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 862609ea-e362-4f54-8459-266e59752a5b
+2025-03-06 01:12:15,192 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:12:15,192 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:12:15,192 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:12:30,193 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:12:30,193 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:12:30,193 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 862609ea-e362-4f54-8459-266e59752a5b
+2025-03-06 01:12:30,193 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:12:30,193 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:12:30,194 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:12:45,194 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:12:45,194 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:12:45,194 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content c4f1c71e-06a1-4ffc-aa44-4506fd0789e4
+2025-03-06 01:12:45,194 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:12:45,195 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:12:45,195 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:13:00,195 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:13:00,195 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:13:00,195 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8e56ff44-dccb-4cbc-b838-59bf7a98f976
+2025-03-06 01:13:00,196 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:13:00,196 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:13:00,196 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:13:15,196 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:13:15,196 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:13:15,196 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content c4f1c71e-06a1-4ffc-aa44-4506fd0789e4
+2025-03-06 01:13:15,197 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:13:15,197 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:13:15,197 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:13:30,197 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:13:30,197 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:13:30,198 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 64645aa7-ea9c-47b1-bc00-a7c6d2c86902
+2025-03-06 01:13:30,198 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:13:30,198 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:13:30,198 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:13:45,199 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:13:45,199 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:13:45,200 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8e56ff44-dccb-4cbc-b838-59bf7a98f976
+2025-03-06 01:13:45,201 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:13:45,201 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:13:45,201 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:14:00,202 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:14:00,203 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:14:00,203 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 862609ea-e362-4f54-8459-266e59752a5b
+2025-03-06 01:14:00,204 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:14:00,205 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:14:00,206 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:14:15,206 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:14:15,206 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:14:15,206 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 862609ea-e362-4f54-8459-266e59752a5b
+2025-03-06 01:14:15,207 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:14:15,207 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:14:15,207 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:14:30,207 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:14:30,207 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:14:30,208 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 862609ea-e362-4f54-8459-266e59752a5b
+2025-03-06 01:14:30,208 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:14:30,208 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:14:30,208 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:14:45,208 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:14:45,209 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:14:45,209 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content c4f1c71e-06a1-4ffc-aa44-4506fd0789e4
+2025-03-06 01:14:45,209 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:14:45,209 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:14:45,209 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:15:00,209 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:15:00,210 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:15:00,210 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8e56ff44-dccb-4cbc-b838-59bf7a98f976
+2025-03-06 01:15:00,211 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:15:00,211 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:15:00,211 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:15:15,211 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:15:15,212 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:15:15,212 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8e56ff44-dccb-4cbc-b838-59bf7a98f976
+2025-03-06 01:15:15,212 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:15:15,212 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:15:15,212 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:15:30,212 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:15:30,213 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:15:30,213 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 2438f0f4-2e82-4060-ac2b-0653dea4ccf5
+2025-03-06 01:15:30,213 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:15:30,213 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:15:30,213 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:15:45,214 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:15:45,214 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:15:45,214 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8e56ff44-dccb-4cbc-b838-59bf7a98f976
+2025-03-06 01:15:45,215 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:15:45,215 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:15:45,215 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:16:00,215 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:16:00,215 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:16:00,216 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8e56ff44-dccb-4cbc-b838-59bf7a98f976
+2025-03-06 01:16:00,216 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:16:00,216 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:16:00,216 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:16:15,218 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:16:15,218 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:16:15,218 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 2438f0f4-2e82-4060-ac2b-0653dea4ccf5
+2025-03-06 01:16:15,218 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:16:15,219 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:16:15,219 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:16:30,219 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:16:30,220 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:16:30,220 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 862609ea-e362-4f54-8459-266e59752a5b
+2025-03-06 01:16:30,220 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:16:30,220 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:16:30,220 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:16:45,221 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:16:45,221 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:16:45,221 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 64645aa7-ea9c-47b1-bc00-a7c6d2c86902
+2025-03-06 01:16:45,221 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:16:45,221 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:16:45,221 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:17:00,222 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:17:00,222 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:17:00,222 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 2438f0f4-2e82-4060-ac2b-0653dea4ccf5
+2025-03-06 01:17:00,223 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:17:00,223 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:17:00,223 - gemini_dalle_interaction - INFO - Waiting 15 seconds until next interaction
+2025-03-06 01:17:00,991 - gemini_dalle_interaction - INFO - Keyboard interrupt received, stopping service
+2025-03-06 01:17:24,904 - gemini_dalle_interaction - INFO - Gemini-DALL-E Interaction service initialized
+2025-03-06 01:17:24,904 - gemini_dalle_interaction - INFO - Starting Gemini-DALL-E interaction service with interval of 60 seconds
+2025-03-06 01:17:24,905 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:17:24,905 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:17:24,905 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content ef2af624-a205-4b15-a559-4fb25387b7c4
+2025-03-06 01:17:24,905 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_generative_model'
+2025-03-06 01:17:24,905 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:17:24,905 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:17:34,114 - gemini_dalle_interaction - INFO - Keyboard interrupt received, stopping service
+2025-03-06 01:18:37,435 - gemini_dalle_interaction - INFO - Gemini-DALL-E Interaction service initialized
+2025-03-06 01:18:37,435 - gemini_dalle_interaction - INFO - Starting Gemini-DALL-E interaction service with interval of 60 seconds
+2025-03-06 01:18:37,435 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:18:37,436 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:18:37,436 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content ef2af624-a205-4b15-a559-4fb25387b7c4
+2025-03-06 01:18:37,436 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_generative_model'
+2025-03-06 01:18:37,436 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:18:37,436 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:18:48,232 - gemini_dalle_interaction - INFO - Keyboard interrupt received, stopping service
+2025-03-06 01:21:37,940 - gemini_dalle_interaction - INFO - Gemini-DALL-E Interaction service initialized
+2025-03-06 01:21:37,940 - gemini_dalle_interaction - INFO - Starting Gemini-DALL-E interaction service with interval of 60 seconds
+2025-03-06 01:21:37,940 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:21:37,940 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:21:37,941 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 10b7ecf8-fe2b-46dd-9b54-cb48b230a416
+2025-03-06 01:21:37,941 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: Models.generate_content() got an unexpected keyword argument 'generation_config'
+2025-03-06 01:21:37,941 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:21:37,941 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:22:37,942 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:22:37,942 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:22:37,942 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 271b5524-0b8a-47e0-9109-e6f730f7012b
+2025-03-06 01:22:37,943 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: Models.generate_content() got an unexpected keyword argument 'generation_config'
+2025-03-06 01:22:37,943 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:22:37,943 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:23:37,944 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:23:37,945 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:23:37,946 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0e4ebadc-0e20-42bd-9f98-75be64fc1471
+2025-03-06 01:23:37,947 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: Models.generate_content() got an unexpected keyword argument 'generation_config'
+2025-03-06 01:23:37,947 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:23:37,947 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:24:37,950 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:24:37,950 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:24:37,950 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 17815b97-e25a-4ba0-973f-fd85b3653e12
+2025-03-06 01:24:37,951 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: Models.generate_content() got an unexpected keyword argument 'generation_config'
+2025-03-06 01:24:37,951 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:24:37,951 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:25:19,905 - gemini_dalle_interaction - INFO - Keyboard interrupt received, stopping service
+2025-03-06 01:26:07,818 - gemini_dalle_interaction - INFO - Gemini-DALL-E Interaction service initialized
+2025-03-06 01:26:07,819 - gemini_dalle_interaction - INFO - Starting Gemini-DALL-E interaction service with interval of 60 seconds
+2025-03-06 01:26:07,819 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:26:07,819 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:26:07,819 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content a45773b4-be1c-45c8-9fe5-a75325f9fe42
+2025-03-06 01:26:07,820 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:26:07,820 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:26:07,820 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:27:07,820 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:27:07,820 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:27:07,821 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 17815b97-e25a-4ba0-973f-fd85b3653e12
+2025-03-06 01:27:07,821 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:27:07,821 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:27:07,821 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:28:07,821 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:28:07,821 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:28:07,822 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 10b7ecf8-fe2b-46dd-9b54-cb48b230a416
+2025-03-06 01:28:07,822 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:28:07,822 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:28:07,822 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:29:07,823 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:29:07,823 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:29:07,823 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content d6bcfeb0-6dfa-4b32-a822-b4bd7cc4b834
+2025-03-06 01:29:07,823 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:29:07,824 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:29:07,824 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:30:07,826 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:30:07,826 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:30:07,827 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 17815b97-e25a-4ba0-973f-fd85b3653e12
+2025-03-06 01:30:07,827 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:30:07,827 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:30:07,827 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:31:07,827 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:31:07,828 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:31:07,828 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 26938424-e762-4f13-be75-92fc9e51685a
+2025-03-06 01:31:07,828 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 'Client' object has no attribute 'get_model'
+2025-03-06 01:31:07,829 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:31:07,829 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:31:54,882 - gemini_dalle_interaction - INFO - Keyboard interrupt received, stopping service
+2025-03-06 01:31:57,838 - gemini_dalle_interaction - INFO - Gemini-DALL-E Interaction service initialized
+2025-03-06 01:31:57,838 - gemini_dalle_interaction - INFO - Starting Gemini-DALL-E interaction service with interval of 60 seconds
+2025-03-06 01:31:57,839 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:31:57,839 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:31:57,839 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 01:31:57,840 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:31:57,840 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:31:57,840 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:32:57,841 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:32:57,841 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:32:57,841 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content a45773b4-be1c-45c8-9fe5-a75325f9fe42
+2025-03-06 01:32:57,841 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:32:57,841 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:32:57,841 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:33:57,842 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:33:57,842 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:33:57,843 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content cac71906-95aa-4f78-adee-d38e7fc778c9
+2025-03-06 01:33:57,843 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:33:57,844 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:33:57,844 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:34:57,845 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:34:57,845 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:34:57,845 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 01:34:57,846 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:34:57,846 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:34:57,846 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:35:57,847 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:35:57,848 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:35:57,848 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 01:35:57,849 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:35:57,849 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:35:57,849 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:36:57,853 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:36:57,854 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:36:57,854 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content cac71906-95aa-4f78-adee-d38e7fc778c9
+2025-03-06 01:36:57,854 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:36:57,854 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:36:57,854 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:37:27,068 - gemini_dalle_interaction - INFO - Gemini-DALL-E Interaction service initialized
+2025-03-06 01:37:27,068 - gemini_dalle_interaction - INFO - Starting Gemini-DALL-E interaction service with interval of 60 seconds
+2025-03-06 01:37:27,069 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:37:27,069 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:37:27,069 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content cac71906-95aa-4f78-adee-d38e7fc778c9
+2025-03-06 01:37:27,070 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: Models.generate_content() got an unexpected keyword argument 'generation_config'
+2025-03-06 01:37:27,070 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:37:27,070 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:37:57,856 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:37:57,856 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:37:57,856 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8d396116-d9c6-4f4a-b96d-3967d3baff3c
+2025-03-06 01:37:57,857 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:37:57,858 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:37:57,858 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:38:27,071 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:38:27,071 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:38:27,071 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content cac71906-95aa-4f78-adee-d38e7fc778c9
+2025-03-06 01:38:27,071 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: Models.generate_content() got an unexpected keyword argument 'generation_config'
+2025-03-06 01:38:27,071 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:38:27,071 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:38:57,860 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:38:57,861 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:38:57,861 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8d396116-d9c6-4f4a-b96d-3967d3baff3c
+2025-03-06 01:38:57,862 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:38:57,863 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:38:57,863 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:39:27,073 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:39:27,073 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:39:27,074 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 9bc6acf1-f01f-4dfa-a9af-6e47c4926a80
+2025-03-06 01:39:27,075 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: Models.generate_content() got an unexpected keyword argument 'generation_config'
+2025-03-06 01:39:27,075 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:39:27,075 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:39:57,864 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:39:57,864 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:39:57,864 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content a45773b4-be1c-45c8-9fe5-a75325f9fe42
+2025-03-06 01:39:57,865 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:39:57,865 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:39:57,865 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:40:27,076 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:40:27,077 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:40:27,077 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 01:40:27,077 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: Models.generate_content() got an unexpected keyword argument 'generation_config'
+2025-03-06 01:40:27,078 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:40:27,078 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:40:57,866 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:40:57,867 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:40:57,867 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 01:40:57,867 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:40:57,868 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:40:57,868 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:41:27,078 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:41:27,079 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:41:27,079 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 42c740fe-1e41-4857-a549-95a838c34638
+2025-03-06 01:41:27,079 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: Models.generate_content() got an unexpected keyword argument 'generation_config'
+2025-03-06 01:41:27,079 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:41:27,079 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:41:57,869 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:41:57,869 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:41:57,870 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content a45773b4-be1c-45c8-9fe5-a75325f9fe42
+2025-03-06 01:41:57,871 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:41:57,872 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:41:57,872 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:42:27,080 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:42:27,081 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:42:27,081 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 42c740fe-1e41-4857-a549-95a838c34638
+2025-03-06 01:42:27,082 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: Models.generate_content() got an unexpected keyword argument 'generation_config'
+2025-03-06 01:42:27,082 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:42:27,082 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:42:57,873 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:42:57,873 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:42:57,874 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 01:42:57,874 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:42:57,875 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:42:57,875 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:43:27,084 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:43:27,084 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:43:27,084 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content ca07f2a7-2fca-471c-9372-b0faee50d72d
+2025-03-06 01:43:27,084 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: Models.generate_content() got an unexpected keyword argument 'generation_config'
+2025-03-06 01:43:27,085 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:43:27,085 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:43:57,875 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:43:57,875 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:43:57,876 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 26938424-e762-4f13-be75-92fc9e51685a
+2025-03-06 01:43:57,876 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:43:57,876 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:43:57,876 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:44:26,128 - gemini_dalle_interaction - INFO - Keyboard interrupt received, stopping service
+2025-03-06 01:44:35,147 - gemini_dalle_interaction - INFO - Gemini-DALL-E Interaction service initialized
+2025-03-06 01:44:35,147 - gemini_dalle_interaction - INFO - Starting Gemini-DALL-E interaction service with interval of 60 seconds
+2025-03-06 01:44:35,148 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:44:35,148 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:44:35,148 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 42c740fe-1e41-4857-a549-95a838c34638
+2025-03-06 01:44:35,148 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-06 01:44:35,580 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'Request contains an invalid argument.', 'status': 'INVALID_ARGUMENT'}}
+2025-03-06 01:44:35,580 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:44:35,580 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:44:53,993 - gemini_dalle_interaction - INFO - Keyboard interrupt received, stopping service
+2025-03-06 01:44:57,877 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:44:57,877 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:44:57,877 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 01:44:57,877 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:44:57,877 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:44:57,877 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:45:57,879 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:45:57,879 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:45:57,880 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 26938424-e762-4f13-be75-92fc9e51685a
+2025-03-06 01:45:57,881 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:45:57,881 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:45:57,882 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:46:57,882 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:46:57,883 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:46:57,883 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8d396116-d9c6-4f4a-b96d-3967d3baff3c
+2025-03-06 01:46:57,883 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:46:57,883 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:46:57,883 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:47:33,555 - gemini_dalle_interaction - INFO - Gemini-DALL-E Interaction service initialized
+2025-03-06 01:47:33,555 - gemini_dalle_interaction - INFO - Starting Gemini-DALL-E interaction service with interval of 60 seconds
+2025-03-06 01:47:33,556 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:47:33,556 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:47:33,557 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 4c8b807a-5936-4a9c-83c7-08763dacad5b
+2025-03-06 01:47:33,557 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-06 01:47:33,923 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'Request contains an invalid argument.', 'status': 'INVALID_ARGUMENT'}}
+2025-03-06 01:47:33,923 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:47:33,923 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:47:57,884 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:47:57,884 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:47:57,884 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 01:47:57,885 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:47:57,885 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:47:57,885 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:48:33,924 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:48:33,924 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:48:33,925 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content a7833b40-9c62-4f45-892a-181339951a10
+2025-03-06 01:48:33,925 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-06 01:48:34,414 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'Request contains an invalid argument.', 'status': 'INVALID_ARGUMENT'}}
+2025-03-06 01:48:34,415 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:48:34,416 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:48:57,886 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:48:57,886 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:48:57,886 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 26938424-e762-4f13-be75-92fc9e51685a
+2025-03-06 01:48:57,886 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:48:57,886 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:48:57,886 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:49:34,416 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:49:34,417 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:49:34,417 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content a7833b40-9c62-4f45-892a-181339951a10
+2025-03-06 01:49:34,417 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-06 01:49:34,846 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'Request contains an invalid argument.', 'status': 'INVALID_ARGUMENT'}}
+2025-03-06 01:49:34,847 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:49:34,847 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:49:57,887 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:49:57,888 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:49:57,888 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content a45773b4-be1c-45c8-9fe5-a75325f9fe42
+2025-03-06 01:49:57,889 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:49:57,889 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:49:57,889 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:50:34,848 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:50:34,848 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:50:34,849 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 4c8b807a-5936-4a9c-83c7-08763dacad5b
+2025-03-06 01:50:34,850 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-06 01:50:35,210 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'Request contains an invalid argument.', 'status': 'INVALID_ARGUMENT'}}
+2025-03-06 01:50:35,210 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:50:35,210 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:50:57,891 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:50:57,891 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:50:57,892 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8d396116-d9c6-4f4a-b96d-3967d3baff3c
+2025-03-06 01:50:57,892 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:50:57,893 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:50:57,893 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:51:35,211 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:51:35,211 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:51:35,211 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 7393feec-5f71-4177-9c7a-14d840585eef
+2025-03-06 01:51:35,212 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-06 01:51:35,623 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'Request contains an invalid argument.', 'status': 'INVALID_ARGUMENT'}}
+2025-03-06 01:51:35,623 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:51:35,624 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:51:57,894 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:51:57,895 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:51:57,895 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 01:51:57,896 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:51:57,896 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:51:57,896 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:52:32,832 - gemini_dalle_interaction - INFO - Keyboard interrupt received, stopping service
+2025-03-06 01:52:37,522 - gemini_dalle_interaction - INFO - Gemini-DALL-E Interaction service initialized
+2025-03-06 01:52:37,522 - gemini_dalle_interaction - INFO - Starting Gemini-DALL-E interaction service with interval of 60 seconds
+2025-03-06 01:52:37,523 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:52:37,523 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:52:37,523 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 728be9c3-6638-45a3-8b62-1d6767d20c42
+2025-03-06 01:52:37,527 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:52:37,527 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:52:37,527 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:52:57,897 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:52:57,897 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:52:57,898 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content a45773b4-be1c-45c8-9fe5-a75325f9fe42
+2025-03-06 01:52:57,898 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:52:57,898 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:52:57,899 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:53:37,528 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:53:37,528 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:53:37,528 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 83da420d-5906-4fab-838a-9304e9bf41b7
+2025-03-06 01:53:37,533 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:53:37,534 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:53:37,534 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:53:41,908 - gemini_dalle_interaction - INFO - Keyboard interrupt received, stopping service
+2025-03-06 01:53:52,426 - gemini_dalle_interaction - INFO - Gemini-DALL-E Interaction service initialized
+2025-03-06 01:53:52,426 - gemini_dalle_interaction - INFO - Starting Gemini-DALL-E interaction service with interval of 10 seconds
+2025-03-06 01:53:52,427 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:53:52,427 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:53:52,427 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 4c8b807a-5936-4a9c-83c7-08763dacad5b
+2025-03-06 01:53:52,431 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:53:52,431 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:53:52,431 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 01:53:57,900 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:53:57,900 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:53:57,901 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 26938424-e762-4f13-be75-92fc9e51685a
+2025-03-06 01:53:57,901 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:53:57,901 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:53:57,901 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:54:02,432 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:54:02,433 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:54:02,433 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 83da420d-5906-4fab-838a-9304e9bf41b7
+2025-03-06 01:54:02,436 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:54:02,437 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:54:02,437 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 01:54:12,437 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:54:12,438 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:54:12,438 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 83da420d-5906-4fab-838a-9304e9bf41b7
+2025-03-06 01:54:12,439 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:54:12,440 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:54:12,440 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 01:54:22,440 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:54:22,441 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:54:22,441 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 83da420d-5906-4fab-838a-9304e9bf41b7
+2025-03-06 01:54:22,446 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:54:22,446 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:54:22,446 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 01:54:24,420 - gemini_dalle_interaction - INFO - Keyboard interrupt received, stopping service
+2025-03-06 01:54:57,903 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:54:57,903 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:54:57,903 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 26938424-e762-4f13-be75-92fc9e51685a
+2025-03-06 01:54:57,904 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:54:57,904 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:54:57,905 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:55:57,905 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:55:57,905 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:55:57,905 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 01:55:57,906 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:55:57,906 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:55:57,906 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:56:57,907 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:56:57,908 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:56:57,908 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 26938424-e762-4f13-be75-92fc9e51685a
+2025-03-06 01:56:57,910 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:56:57,910 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:56:57,911 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:57:57,911 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:57:57,912 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:57:57,912 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content cac71906-95aa-4f78-adee-d38e7fc778c9
+2025-03-06 01:57:57,912 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:57:57,912 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:57:57,912 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:58:57,913 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:58:57,914 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:58:57,914 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8d396116-d9c6-4f4a-b96d-3967d3baff3c
+2025-03-06 01:58:57,914 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:58:57,915 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:58:57,915 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 01:59:57,915 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 01:59:57,915 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 01:59:57,915 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 26938424-e762-4f13-be75-92fc9e51685a
+2025-03-06 01:59:57,916 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 01:59:57,916 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 01:59:57,916 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 02:00:57,917 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:00:57,917 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:00:57,918 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content a45773b4-be1c-45c8-9fe5-a75325f9fe42
+2025-03-06 02:00:57,918 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 02:00:57,918 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:00:57,918 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 02:01:57,919 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:01:57,919 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:01:57,919 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content a45773b4-be1c-45c8-9fe5-a75325f9fe42
+2025-03-06 02:01:57,919 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 02:01:57,919 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:01:57,919 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 02:02:57,920 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:02:57,920 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:02:57,920 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content cac71906-95aa-4f78-adee-d38e7fc778c9
+2025-03-06 02:02:57,921 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 02:02:57,921 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:02:57,921 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 02:03:57,922 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:03:57,922 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:03:57,922 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content a45773b4-be1c-45c8-9fe5-a75325f9fe42
+2025-03-06 02:03:57,922 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 02:03:57,922 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:03:57,922 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 02:04:57,927 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:04:57,927 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:04:57,928 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 02:04:57,928 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 02:04:57,929 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:04:57,929 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 02:05:57,929 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:05:57,929 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:05:57,930 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 02:05:57,930 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 02:05:57,930 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:05:57,930 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 02:06:28,303 - gemini_dalle_interaction - INFO - Gemini-DALL-E Interaction service initialized
+2025-03-06 02:06:28,304 - gemini_dalle_interaction - INFO - Starting Gemini-DALL-E interaction service with interval of 10 seconds
+2025-03-06 02:06:28,305 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:06:28,305 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:06:28,306 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content bc65203f-3b9a-4672-b422-d32b7757c209
+2025-03-06 02:06:28,548 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-03-06 02:06:28,555 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image with GPT-4o: Error code: 400 - {'error': {'message': 'Invalid base64 image_url.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_base64'}}
+2025-03-06 02:06:28,555 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:06:28,555 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 02:06:38,556 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:06:38,556 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:06:38,556 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content f8dc8c6a-3aeb-46a4-a834-28d492f36f21
+2025-03-06 02:06:38,773 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-03-06 02:06:38,774 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image with GPT-4o: Error code: 400 - {'error': {'message': 'Invalid base64 image_url.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_base64'}}
+2025-03-06 02:06:38,774 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:06:38,774 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 02:06:48,775 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:06:48,775 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:06:48,775 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content f8dc8c6a-3aeb-46a4-a834-28d492f36f21
+2025-03-06 02:06:49,025 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-03-06 02:06:49,026 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image with GPT-4o: Error code: 400 - {'error': {'message': 'Invalid base64 image_url.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_base64'}}
+2025-03-06 02:06:49,026 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:06:49,026 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 02:06:57,931 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:06:57,931 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:06:57,931 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content a45773b4-be1c-45c8-9fe5-a75325f9fe42
+2025-03-06 02:06:57,931 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 02:06:57,932 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:06:57,932 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 02:06:59,027 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:06:59,027 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:06:59,027 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content f72fd59f-f50c-40a0-aad6-06bf0d6c2c87
+2025-03-06 02:06:59,254 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-03-06 02:06:59,255 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image with GPT-4o: Error code: 400 - {'error': {'message': 'Invalid base64 image_url.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_base64'}}
+2025-03-06 02:06:59,255 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:06:59,255 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 02:07:09,256 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:07:09,257 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:07:09,257 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 6345696f-ba5d-41c2-bbea-14c33b95b338
+2025-03-06 02:07:09,477 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-03-06 02:07:09,478 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image with GPT-4o: Error code: 400 - {'error': {'message': 'Invalid base64 image_url.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_base64'}}
+2025-03-06 02:07:09,478 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:07:09,478 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 02:07:19,478 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:07:19,478 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:07:19,479 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content f8dc8c6a-3aeb-46a4-a834-28d492f36f21
+2025-03-06 02:07:19,803 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-03-06 02:07:19,803 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image with GPT-4o: Error code: 400 - {'error': {'message': 'Invalid base64 image_url.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_base64'}}
+2025-03-06 02:07:19,804 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:07:19,804 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 02:07:29,804 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:07:29,805 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:07:29,805 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content bc65203f-3b9a-4672-b422-d32b7757c209
+2025-03-06 02:07:30,049 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-03-06 02:07:30,052 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image with GPT-4o: Error code: 400 - {'error': {'message': 'Invalid base64 image_url.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_base64'}}
+2025-03-06 02:07:30,052 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:07:30,052 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 02:07:40,053 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:07:40,053 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:07:40,053 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 6345696f-ba5d-41c2-bbea-14c33b95b338
+2025-03-06 02:07:40,248 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-03-06 02:07:40,250 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image with GPT-4o: Error code: 400 - {'error': {'message': 'Invalid base64 image_url.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_base64'}}
+2025-03-06 02:07:40,250 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:07:40,250 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 02:07:50,251 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:07:50,251 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:07:50,251 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content ef2ae454-5bf6-48e3-8fc5-779b93b5203e
+2025-03-06 02:07:50,560 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-03-06 02:07:50,562 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image with GPT-4o: Error code: 400 - {'error': {'message': 'Invalid base64 image_url.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_base64'}}
+2025-03-06 02:07:50,563 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:07:50,563 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 02:07:57,932 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:07:57,932 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:07:57,932 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8d396116-d9c6-4f4a-b96d-3967d3baff3c
+2025-03-06 02:07:57,933 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 02:07:57,933 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:07:57,933 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 02:08:00,564 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:08:00,564 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:08:00,564 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content f72fd59f-f50c-40a0-aad6-06bf0d6c2c87
+2025-03-06 02:08:00,752 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-03-06 02:08:00,753 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image with GPT-4o: Error code: 400 - {'error': {'message': 'Invalid base64 image_url.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_base64'}}
+2025-03-06 02:08:00,753 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:08:00,753 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 02:08:10,754 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:08:10,754 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:08:10,755 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content f72fd59f-f50c-40a0-aad6-06bf0d6c2c87
+2025-03-06 02:08:10,957 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-03-06 02:08:10,958 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image with GPT-4o: Error code: 400 - {'error': {'message': 'Invalid base64 image_url.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_base64'}}
+2025-03-06 02:08:10,958 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:08:10,958 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 02:08:20,959 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:08:20,959 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:08:20,959 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content f8dc8c6a-3aeb-46a4-a834-28d492f36f21
+2025-03-06 02:08:21,278 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-03-06 02:08:21,280 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image with GPT-4o: Error code: 400 - {'error': {'message': 'Invalid base64 image_url.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_base64'}}
+2025-03-06 02:08:21,280 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:08:21,280 - gemini_dalle_interaction - INFO - Waiting 10 seconds until next interaction
+2025-03-06 02:08:24,737 - gemini_dalle_interaction - INFO - Keyboard interrupt received, stopping service
+2025-03-06 02:08:57,933 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:08:57,933 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:08:57,934 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 02:08:57,934 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 02:08:57,934 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:08:57,934 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 02:09:57,936 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:09:57,936 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:09:57,937 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content cac71906-95aa-4f78-adee-d38e7fc778c9
+2025-03-06 02:09:57,938 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 02:09:57,938 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:09:57,939 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 02:10:57,939 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:10:57,939 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:10:57,939 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 0157bbcb-bb5f-4c4e-9746-03566ba01908
+2025-03-06 02:10:57,940 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 02:10:57,940 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:10:57,940 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 02:11:57,940 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:11:57,940 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:11:57,941 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content 8d396116-d9c6-4f4a-b96d-3967d3baff3c
+2025-03-06 02:11:57,941 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 02:11:57,941 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:11:57,941 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction
+2025-03-06 02:12:57,941 - gemini_dalle_interaction - INFO - Found 5 images to analyze
+2025-03-06 02:12:57,942 - gemini_dalle_interaction - WARNING - No Gemini-specialized agents found
+2025-03-06 02:12:57,942 - gemini_dalle_interaction - INFO - Gemini agent Gemini analyzing image from content a45773b4-be1c-45c8-9fe5-a75325f9fe42
+2025-03-06 02:12:57,942 - gemini_dalle_interaction - ERROR - Failed to analyze image: Error analyzing image: from_data
+2025-03-06 02:12:57,942 - gemini_dalle_interaction - WARNING - Failed to generate Gemini comment
+2025-03-06 02:12:57,942 - gemini_dalle_interaction - INFO - Waiting 60 seconds until next interaction

@@ -5,11 +5,11 @@ from fastapi import APIRouter, Depends, HTTPException, status, Query
 from typing import List, Optional, Dict, Any
 from datetime import datetime, timedelta
 
-from models.user import User
-from services.knowledge_graph import KnowledgeGraphService
-from services.user import UserService
-from services.content import ContentService
-from api.users import get_current_user
+from src.models.user import User
+from src.services.knowledge_graph import KnowledgeGraphService
+from src.services.user import UserService
+from src.services.content import ContentService
+from src.api.users import get_current_user
 
 # Create router
 router = APIRouter()

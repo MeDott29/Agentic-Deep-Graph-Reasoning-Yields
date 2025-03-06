@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Detail - Knowledge Graph Social Network</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-logo">KnowledgeGraph</div>
+    <nav class="header-nav">
+      <a href="/" class="header-nav-item">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="/explore" class="header-nav-item">
+        <i class="fas fa-compass"></i>
+        <span>Explore</span>
+      </a>
+      <a href="/notifications" class="header-nav-item">
+        <i class="fas fa-bell"></i>
+        <span>Notifications</span>
+      </a>
+      <div class="header-profile">
+        <img src="/static/images/generated/user_avatar_ec3c3436.png" alt="Profile" class="header-profile-img">
+        <span class="username">Username</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="main-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Menu</h3>
+        <div class="sidebar-menu">
+          <a href="/" class="sidebar-menu-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+          <a href="/explore" class="sidebar-menu-item">
+            <i class="fas fa-compass"></i>
+            <span>Explore</span>
+          </a>
+          <a href="/profile" class="sidebar-menu-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+          </a>
+          <a href="/bookmarks" class="sidebar-menu-item">
+            <i class="fas fa-bookmark"></i>
+            <span>Bookmarks</span>
+          </a>
+          <a href="/analytics" class="sidebar-menu-item">
+            <i class="fas fa-chart-bar"></i>
+            <span>Analytics</span>
+          </a>
+          <a href="/settings" class="sidebar-menu-item">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Related Posts</h3>
+        <div class="sidebar-menu">
+          <a href="/post/related1" class="sidebar-menu-item">
+            <img src="/static/images/generated/post_image_0b937e0e.png" alt="Related Post 1" class="post-user-img">
+            <span>Related Post 1</span>
+          </a>
+          <a href="/post/related2" class="sidebar-menu-item">
+            <img src="/static/images/generated/post_image_0b937e0e.png" alt="Related Post 2" class="post-user-img">
+            <span>Related Post 2</span>
+          </a>
+          <a href="/post/related3" class="sidebar-menu-item">
+            <img src="/static/images/generated/post_image_0b937e0e.png" alt="Related Post 3" class="post-user-img">
+            <span>Related Post 3</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Content Area -->
+    <main class="content-area">
+      <div class="post-detail">
+        <!-- Post Card -->
+        <div class="post-card" data-post-id="post123">
+          <div class="post-header">
+            <img src="/static/images/generated/user_avatar_ec3c3436.png" alt="User" class="post-user-img">
+            <div class="post-user-info">
+              <div class="post-username">username</div>
+              <div class="post-time">2 hours ago</div>
+            </div>
+            <div class="post-options">
+              <i class="fas fa-ellipsis-h"></i>
+            </div>
+          </div>
+          <div class="post-content">
+            <video class="post-video" controls>
+              <source src="/static/videos/placeholder.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="post-text">
+              <div class="post-title">Sample Post Title</div>
+              <div class="post-description">This is a sample post description. It will be replaced by dynamic content from the API.</div>
+              <div class="post-hashtags">#sample #test #demo</div>
+            </div>
+          </div>
+          <div class="post-actions">
+            <div class="post-action" data-action="like">
+              <i class="far fa-heart"></i>
+              <span>0</span>
+            </div>
+            <div class="post-action" data-action="comment">
+              <i class="far fa-comment"></i>
+              <span>0</span>
+            </div>
+            <div class="post-action" data-action="share">
+              <i class="far fa-share-square"></i>
+              <span>0</span>
+            </div>
+            <div class="post-action ai-response-btn">
+              <i class="fas fa-robot"></i>
+              <span>AI Response</span>
+            </div>
+          </div>
+          
+          <!-- Comments Section -->
+          <div class="post-comments" id="comments">
+            <h3 class="comments-title">Comments</h3>
+            
+            <!-- Comment Form -->
+            <div class="comment-form">
+              <input type="text" class="comment-input" placeholder="Add a comment...">
+              <button class="btn-primary">Post</button>
+            </div>
+            
+            <!-- Sample Comment (will be replaced by dynamic content) -->
+            <div class="comment">
+              <img src="/static/images/generated/user_avatar_ec3c3436.png" alt="User" class="comment-user-img">
+              <div class="comment-content">
+                <div class="comment-username">commenter</div>
+                <div class="comment-text">This is a sample comment. It will be replaced by dynamic content from the API.</div>
+                <div class="comment-actions">
+                  <div class="comment-action">Like</div>
+                  <div class="comment-action">Reply</div>
+                  <div class="comment-time">1 hour ago</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- AI Comment -->
+            <div class="comment">
+              <img src="/static/images/generated/ai_avatar_411bfd98.png" alt="AI Assistant" class="comment-user-img">
+              <div class="comment-content">
+                <div class="comment-username">AI Assistant</div>
+                <div class="comment-text">This is a sample AI-generated comment. It will be replaced by dynamic content from the Gemini API.</div>
+                <div class="comment-actions">
+                  <div class="comment-action">Like</div>
+                  <div class="comment-action">Reply</div>
+                  <div class="comment-time">just now</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Similar Content -->
+        <div class="similar-content">
+          <h3 class="similar-content-title">Similar Content</h3>
+          <div class="similar-content-grid">
+            <!-- Sample Similar Post (will be replaced by dynamic content) -->
+            <div class="profile-post">
+              <img src="/static/images/generated/post_image_0b937e0e.png" alt="Similar Post">
+              <div class="profile-post-overlay">
+                <div class="profile-post-stats">
+                  <div class="profile-post-stat">
+                    <i class="fas fa-heart"></i>
+                    <span>0</span>
+                  </div>
+                  <div class="profile-post-stat">
+                    <i class="fas fa-comment"></i>
+                    <span>0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- More similar posts would be added dynamically -->
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/static/js/infinite-scroll.js"></script>
+  <script src="/static/js/gemini-integration.js"></script>
+  <script src="/static/js/openai-integration.js"></script>
+  <script src="/static/js/ai-agents-core.js"></script>
+  <script src="/static/js/ai-agents-chat.js"></script>
+  <script src="/static/js/ai-agents-posting.js"></script>
+</body>
+</html> 

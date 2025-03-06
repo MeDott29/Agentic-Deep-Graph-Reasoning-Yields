@@ -6,11 +6,11 @@ import numpy as np
 from datetime import datetime
 import uuid
 
-from models.recommendation import (
+from src.models.recommendation import (
     RecommendationScore, ContentRecommendation, 
     RecommendationRequest, RecommendationResponse
 )
-from services.knowledge_graph import KnowledgeGraphService
+from src.services.knowledge_graph import KnowledgeGraphService
 
 class RecommendationService:
     """Service for generating content recommendations"""

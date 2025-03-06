@@ -7,11 +7,12 @@ from typing import List, Optional
 import os
 from datetime import datetime
 
-from models.user import User
-from models.content import ContentCreate, ContentUpdate, Content, Comment
-from services.knowledge_graph import KnowledgeGraphService
-from services.content import ContentService
-from api.users import get_current_user
+from src.models.user import User
+from src.models.content import ContentCreate, ContentUpdate, Content, Comment
+from src.services.knowledge_graph import KnowledgeGraphService
+from src.services.content import ContentService
+from src.services.recommendation import RecommendationService
+from src.api.users import get_current_user
 
 # Create router
 router = APIRouter()
@@ -181,7 +182,6 @@ async def record_view(
         )
     
     # Record view in recommendation service
-    from services.recommendation import RecommendationService
     recommendation_service = RecommendationService(kg_service)
     
     success = recommendation_service.record_interaction(
@@ -214,7 +214,6 @@ async def like_content(
         )
     
     # Record like in recommendation service
-    from services.recommendation import RecommendationService
     recommendation_service = RecommendationService(kg_service)
     
     success = recommendation_service.record_interaction(
@@ -250,7 +249,6 @@ async def share_content(
         )
     
     # Record share in recommendation service
-    from services.recommendation import RecommendationService
     recommendation_service = RecommendationService(kg_service)
     
     success = recommendation_service.record_interaction(
@@ -306,7 +304,6 @@ async def add_comment(
         )
     
     # Record comment in recommendation service
-    from services.recommendation import RecommendationService
     recommendation_service = RecommendationService(kg_service)
     
     recommendation_service.record_interaction(

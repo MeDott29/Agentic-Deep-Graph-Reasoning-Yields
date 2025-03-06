@@ -18,6 +18,7 @@ class ContentCreate(ContentBase):
     hashtags: List[str] = Field(default_factory=list)
     is_private: bool = False
     allow_comments: bool = True
+    is_ai_generated: bool = False
     
     @validator('hashtags')
     def hashtags_format(cls, v):
@@ -48,6 +49,7 @@ class ContentInDB(ContentBase, TimestampMixin):
     hashtags: List[str] = Field(default_factory=list)
     is_private: bool = False
     allow_comments: bool = True
+    is_ai_generated: bool = False
     view_count: int = 0
     like_count: int = 0
     comment_count: int = 0
@@ -64,6 +66,7 @@ class Content(ContentBase, TimestampMixin):
     hashtags: List[str] = Field(default_factory=list)
     is_private: bool = False
     allow_comments: bool = True
+    is_ai_generated: bool = False
     view_count: int = 0
     like_count: int = 0
     comment_count: int = 0
@@ -76,7 +79,7 @@ class ContentNode(GraphNode):
     """Content node in the knowledge graph"""
     def __init__(self, content: Content):
         super().__init__(
-            id=content.id,
+            node_id=content.id,
             node_type="CONTENT",
             properties={
                 "title": content.title,
@@ -84,6 +87,7 @@ class ContentNode(GraphNode):
                 "user_id": content.user_id,
                 "duration": content.duration,
                 "hashtags": content.hashtags,
+                "is_ai_generated": content.is_ai_generated,
                 "view_count": content.view_count,
                 "like_count": content.like_count,
                 "comment_count": content.comment_count,
@@ -96,14 +100,17 @@ class ContentNode(GraphNode):
 class HashtagNode(GraphNode):
     """Hashtag node in the knowledge graph"""
     def __init__(self, hashtag: str):
+        node_id = f"hashtag:{hashtag}"
         super().__init__(
-            id=f"hashtag:{hashtag}",
+            node_id=node_id,
             node_type="HASHTAG",
             properties={
                 "name": hashtag,
                 "content_count": 0,
             }
         )
+        # Ensure id is accessible as an attribute
+        self.id = node_id
 
 class Comment(TimestampMixin):
     """Comment model"""

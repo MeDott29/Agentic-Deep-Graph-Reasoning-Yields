@@ -2,13 +2,13 @@
 Recommendations API endpoints for the Knowledge Graph Social Network System
 """
 from fastapi import APIRouter, Depends, HTTPException, status
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 
-from models.user import User
-from models.recommendation import RecommendationRequest, RecommendationResponse
-from services.knowledge_graph import KnowledgeGraphService
-from services.recommendation import RecommendationService
-from api.users import get_current_user
+from src.models.user import User
+from src.models.recommendation import RecommendationRequest, RecommendationResponse
+from src.services.knowledge_graph import KnowledgeGraphService
+from src.services.recommendation import RecommendationService
+from src.api.users import get_current_user
 
 # Create router
 router = APIRouter()

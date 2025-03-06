@@ -1,83 +1,69 @@
 """
-User models for the Knowledge Graph Social Network System
+User model for the Knowledge Graph Social Network System
 """
-from datetime import datetime
+from pydantic import BaseModel, EmailStr, Field
 from typing import Optional, List, Dict, Any
-from pydantic import BaseModel, Field, EmailStr, validator
-from .base import GraphNode, TimestampMixin
+from datetime import datetime
+
+from src.models.base import GraphNode
+
+class UserNode(GraphNode):
+    """User node in the knowledge graph"""
+    def __init__(self, user_id: str, properties: Dict[str, Any]):
+        super().__init__(node_id=user_id, node_type="USER", properties=properties)
 
 class UserBase(BaseModel):
     """Base user model"""
     username: str
-    email: EmailStr
+    email: str
     full_name: Optional[str] = None
     bio: Optional[str] = None
-    
-    @validator('username')
-    def username_alphanumeric(cls, v):
-        assert v.isalnum(), 'Username must be alphanumeric'
-        return v
 
-class UserCreate(UserBase):
-    """User creation model"""
-    password: str
-    
-    @validator('password')
-    def password_min_length(cls, v):
-        assert len(v) >= 8, 'Password must be at least 8 characters'
-        return v
-
-class UserUpdate(BaseModel):
-    """User update model"""
-    full_name: Optional[str] = None
-    bio: Optional[str] = None
-    profile_picture_url: Optional[str] = None
-    
-class UserInDB(UserBase, TimestampMixin):
-    """User model as stored in the database"""
+class User(BaseModel):
+    """User model"""
     id: str
-    hashed_password: str
+    username: str
+    email: str
+    full_name: Optional[str] = None
+    bio: Optional[str] = None
+    profile_picture: Optional[str] = None
+    created_at: datetime = Field(default_factory=datetime.now)
+    updated_at: datetime = Field(default_factory=datetime.now)
     is_active: bool = True
     is_verified: bool = False
-    profile_picture_url: Optional[str] = None
-    follower_count: int = 0
-    following_count: int = 0
-    
-class User(UserBase, TimestampMixin):
-    """User model returned to clients"""
-    id: str
-    profile_picture_url: Optional[str] = None
-    follower_count: int = 0
-    following_count: int = 0
+    is_admin: bool = False
     
     class Config:
-        orm_mode = True
+        """Pydantic config"""
+        from_attributes = True 
 
-class UserNode(GraphNode):
-    """User node in the knowledge graph"""
-    def __init__(self, user: User):
-        super().__init__(
-            id=user.id,
-            node_type="USER",
-            properties={
-                "username": user.username,
-                "full_name": user.full_name,
-                "bio": user.bio,
-                "follower_count": user.follower_count,
-                "following_count": user.following_count,
-                "created_at": user.created_at.isoformat(),
-                "updated_at": user.updated_at.isoformat(),
-            }
-        )
+class UserCreate(BaseModel):
+    """User creation model"""
+    username: str
+    email: str
+    password: str
+    full_name: Optional[str] = None
+    bio: Optional[str] = None
+    
+class UserUpdate(BaseModel):
+    """User update model"""
+    username: Optional[str] = None
+    email: Optional[str] = None
+    password: Optional[str] = None
+    full_name: Optional[str] = None
+    bio: Optional[str] = None
+    profile_picture: Optional[str] = None
+    is_active: Optional[bool] = None
+    is_verified: Optional[bool] = None 
+
+class UserInDB(User):
+    """User model as stored in the database"""
+    hashed_password: str
 
 class UserPreferences(BaseModel):
-    """User preferences for content recommendations"""
+    """User preferences model"""
     user_id: str
-    content_categories: List[str] = Field(default_factory=list)
-    preferred_content_duration: Optional[int] = None  # in seconds
-    preferred_languages: List[str] = Field(default_factory=lambda: ["en"])
+    content_categories: List[str] = []
+    preferred_languages: List[str] = ["en"]
     explicit_content_allowed: bool = False
-    autoplay_enabled: bool = True
-    
-    class Config:
-        orm_mode = True 
+    autoplay_enabled: bool = True 

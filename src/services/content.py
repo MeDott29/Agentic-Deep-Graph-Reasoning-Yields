@@ -9,12 +9,12 @@ import uuid
 import shutil
 from pathlib import Path
 
-from models.content import (
+from src.models.content import (
     ContentBase, ContentCreate, ContentUpdate, ContentInDB, 
     Content, ContentNode, HashtagNode, Comment
 )
-from models.social import HasTag, CreatedBy
-from services.knowledge_graph import KnowledgeGraphService
+from src.models.social import HasTag, CreatedBy
+from src.services.knowledge_graph import KnowledgeGraphService
 
 class ContentService:
     """Service for managing content"""
@@ -135,78 +135,128 @@ class ContentService:
         
         return None
     
-    def create_content(self, content_create: ContentCreate, file_data: Optional[bytes] = None) -> Content:
-        """Create new content"""
+    def create_content(
+        self,
+        content_create: ContentCreate,
+        file_data: bytes = None
+    ) -> Content:
+        """
+        Create new content
+        
+        Args:
+            content_create: The content creation model
+            file_data: The binary data of the file
+            
+        Returns:
+            The created content
+        """
+        # Generate a unique ID for the content
         content_id = str(uuid.uuid4())
         
-        # Save file
-        file_ext = Path(content_create.file_path).suffix
-        file_path = os.path.join(self.content_dir, f"{content_id}{file_ext}")
-        
-        # Create directory if it doesn't exist
-        os.makedirs(os.path.dirname(file_path), exist_ok=True)
-        
+        # Process the file
         if file_data:
-            with open(file_path, 'wb') as f:
+            # Save the file
+            file_ext = os.path.splitext(content_create.file_path)[1] if content_create.file_path else ".jpg"
+            file_name = f"{content_id}{file_ext}"
+            saved_file_path = os.path.join(self.content_dir, file_name)
+            
+            with open(saved_file_path, "wb") as f:
                 f.write(file_data)
+                
+            # Use the saved file path
+            file_path = saved_file_path
         else:
-            # Create an empty file for sample data
-            with open(file_path, 'wb') as f:
-                f.write(b'')
+            file_path = content_create.file_path
         
-        # TODO: Generate thumbnail and get video metadata
-        # For now, we'll use placeholder values
+        # For a real implementation, we would generate a thumbnail and get video metadata
+        # For this mock implementation, we'll use placeholder values
         thumbnail_path = None
-        duration = 15.0  # seconds
-        width = 1080
-        height = 1920
+        duration = 30.0  # seconds
+        width = 1280
+        height = 720
         
+        # Create the content in the database
         content_in_db = ContentInDB(
             id=content_id,
-            title=content_create.title,
-            description=content_create.description,
+            title=content_create.title or "",
+            description=content_create.description or "",
             user_id=content_create.user_id,
             file_path=file_path,
             thumbnail_path=thumbnail_path,
             duration=duration,
             width=width,
             height=height,
-            hashtags=content_create.hashtags,
+            hashtags=content_create.hashtags or [],
             is_private=content_create.is_private,
             allow_comments=content_create.allow_comments,
+            is_ai_generated=content_create.is_ai_generated,
+            created_at=datetime.now(),
+            updated_at=datetime.now()
+        )
+        
+        # Add to the content dictionary
+        self.content[content_id] = content_in_db
+        
+        # Save the content
+        self._save_content()
+        
+        # Create a Content object for the knowledge graph
+        content = Content(
+            id=content_id,
+            title=content_create.title or "",
+            description=content_create.description or "",
+            user_id=content_create.user_id,
+            video_url=f"/api/content/{content_id}/video",
+            thumbnail_url=f"/api/content/{content_id}/thumbnail" if thumbnail_path else None,
+            duration=duration,
+            width=width,
+            height=height,
+            hashtags=content_create.hashtags or [],
+            is_private=content_create.is_private,
+            allow_comments=content_create.allow_comments,
+            is_ai_generated=content_create.is_ai_generated,
             view_count=0,
             like_count=0,
             comment_count=0,
             share_count=0,
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
+            created_at=content_in_db.created_at,
+            updated_at=content_in_db.updated_at
         )
         
-        # Save content to database
-        self.content[content_id] = content_in_db
-        self._save_content()
-        
-        # Add content to knowledge graph
-        content = self.get_content(content_id)
+        # Create the content node in the knowledge graph
         content_node = ContentNode(content)
-        self.kg_service.add_node(content_node)
         
-        # Add creator relationship
-        created_by_edge = CreatedBy(content_id, content_create.user_id)
-        self.kg_service.add_edge(created_by_edge)
+        self.kg_service.create_node(
+            node_id=content_id,
+            node_type="CONTENT",
+            properties=content_node.properties
+        )
         
-        # Add hashtag nodes and relationships
-        for hashtag in content_create.hashtags:
-            hashtag_id = f"hashtag:{hashtag}"
+        # Create relationships for hashtags
+        for hashtag in content_create.hashtags or []:
+            # Create hashtag node if it doesn't exist
+            hashtag_node = HashtagNode(hashtag)
+            self.kg_service.create_node_if_not_exists(
+                node_id=hashtag_node.id,
+                node_type=hashtag_node.node_type,
+                properties=hashtag_node.properties
+            )
             
-            # Check if hashtag node exists
-            if not self.kg_service.get_node(hashtag_id):
-                hashtag_node = HashtagNode(hashtag)
-                self.kg_service.add_node(hashtag_node)
-            
-            # Add relationship
-            has_tag_edge = HasTag(content_id, hashtag_id)
-            self.kg_service.add_edge(has_tag_edge)
+            # Create relationship between content and hashtag
+            self.kg_service.create_relationship(
+                source_id=content_id,
+                target_id=hashtag_node.id,
+                relationship_type="HAS_TAG",
+                properties={}
+            )
+        
+        # Create relationship between user and content
+        self.kg_service.create_relationship(
+            source_id=content_id,
+            target_id=content_create.user_id,
+            relationship_type="CREATED_BY",
+            properties={}
+        )
         
         return content
     
@@ -312,18 +362,52 @@ class ContentService:
         return True
     
     def get_user_content(self, user_id: str, limit: int = 20, offset: int = 0) -> List[Content]:
-        """Get content created by a user"""
+        """Get content by user ID"""
         user_content = [
-            self.get_content(content_id)
-            for content_id, content_in_db in self.content.items()
-            if content_in_db.user_id == user_id
+            self.get_content(content_id) 
+            for content_id, content in self.content.items() 
+            if content.user_id == user_id
         ]
         
-        # Sort by creation date (newest first)
+        # Sort by created_at (newest first)
         user_content.sort(key=lambda x: x.created_at, reverse=True)
         
-        # Apply pagination
         return user_content[offset:offset+limit]
+    
+    def get_recent_content(self, limit: int = 20, offset: int = 0) -> List[Dict[str, Any]]:
+        """Get recent content from all users"""
+        # Get all content
+        all_content = [self.get_content(content_id) for content_id in self.content.keys()]
+        
+        # Sort by created_at (newest first)
+        all_content.sort(key=lambda x: x.created_at, reverse=True)
+        
+        # Convert to dictionaries with user information
+        result = []
+        for content in all_content[offset:offset+limit]:
+            # Get user information from the knowledge graph
+            user_info = self.kg_service.get_node(content.user_id)
+            user_name = user_info.get("properties", {}).get("name", "Unknown User") if user_info else "Unknown User"
+            
+            # Create a dictionary with content and user information
+            content_dict = {
+                "id": content.id,
+                "title": content.title,
+                "description": content.description,
+                "user_id": content.user_id,
+                "user_name": user_name,
+                "video_url": content.video_url,
+                "thumbnail_url": content.thumbnail_url,
+                "hashtags": content.hashtags,
+                "view_count": content.view_count,
+                "like_count": content.like_count,
+                "comment_count": content.comment_count,
+                "created_at": content.created_at.isoformat() if isinstance(content.created_at, datetime) else content.created_at
+            }
+            
+            result.append(content_dict)
+        
+        return result
     
     def search_content(self, query: str, limit: int = 20) -> List[Content]:
         """Search for content by title, description, or hashtags"""
@@ -431,20 +515,59 @@ class ContentService:
     
     def get_comment_replies(self, comment_id: str, limit: int = 20, offset: int = 0) -> List[Comment]:
         """Get replies to a comment"""
-        if comment_id not in self.comments:
-            return []
-        
-        # Get replies
         replies = [
             comment for comment in self.comments.values()
             if comment.parent_comment_id == comment_id
         ]
         
-        # Sort by creation date (oldest first)
-        replies.sort(key=lambda x: x.created_at)
+        # Sort by created_at (newest first)
+        replies.sort(key=lambda x: x.created_at, reverse=True)
         
-        # Apply pagination
         return replies[offset:offset+limit]
+    
+    def create_comment(self, user_id: str, content_id: str, comment: str) -> Dict[str, Any]:
+        """Create a comment on content"""
+        # Check if the content exists
+        if content_id not in self.content:
+            raise ValueError(f"Content with ID {content_id} not found")
+        
+        # Generate a unique ID for the comment
+        comment_id = str(uuid.uuid4())
+        
+        # Create the comment
+        new_comment = Comment(
+            id=comment_id,
+            content_id=content_id,
+            user_id=user_id,
+            text=comment,
+            parent_comment_id=None,
+            created_at=datetime.now()
+        )
+        
+        # Add to the comments dictionary
+        self.comments[comment_id] = new_comment
+        
+        # Save the comments
+        self._save_comments()
+        
+        # Increment the comment count for the content
+        self.content[content_id].comment_count += 1
+        self._save_content()
+        
+        # Get user information from the knowledge graph
+        user_info = self.kg_service.get_node(user_id)
+        user_name = user_info.get("properties", {}).get("name", "Unknown User") if user_info else "Unknown User"
+        
+        # Return the comment with user information
+        return {
+            "id": comment_id,
+            "content_id": content_id,
+            "user_id": user_id,
+            "user_name": user_name,
+            "text": comment,
+            "created_at": new_comment.created_at.isoformat(),
+            "like_count": 0
+        }
     
     def like_comment(self, comment_id: str, user_id: str) -> bool:
         """Like a comment"""

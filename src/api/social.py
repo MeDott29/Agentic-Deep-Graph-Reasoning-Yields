@@ -4,12 +4,13 @@ Social API endpoints for the Knowledge Graph Social Network System
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import List, Optional, Dict, Any
 
-from models.user import User
-from models.content import Content
-from services.knowledge_graph import KnowledgeGraphService
-from services.user import UserService
-from services.content import ContentService
-from api.users import get_current_user
+from src.models.user import User
+from src.models.content import Content
+from src.services.knowledge_graph import KnowledgeGraphService
+from src.services.user import UserService
+from src.services.content import ContentService
+from src.services.recommendation import RecommendationService
+from src.api.users import get_current_user
 
 # Create router
 router = APIRouter()
@@ -53,7 +54,6 @@ async def explore_content(
     trending_content = kg_service.get_trending_content(limit=limit // 2)
     
     # Get recommended content
-    from services.recommendation import RecommendationService
     recommendation_service = RecommendationService(kg_service)
     
     recommended_content = recommendation_service.get_recommended_content(

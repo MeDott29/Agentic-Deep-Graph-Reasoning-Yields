@@ -1,0 +1,1 @@
+{"users": [{"id": "admin123", "username": "admin", "email": "admin@example.com", "password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW", "full_name": "Admin User", "bio": "System administrator", "profile_picture": null, "created_at": "2023-01-01T00:00:00", "updated_at": "2023-01-01T00:00:00", "is_active": true, "is_verified": true, "is_admin": true}]}

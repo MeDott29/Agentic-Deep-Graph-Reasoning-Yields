@@ -9,9 +9,9 @@ import uuid
 from passlib.context import CryptContext
 from jose import jwt
 
-from models.user import UserBase, UserCreate, UserUpdate, UserInDB, User, UserNode
-from models.social import Follow
-from services.knowledge_graph import KnowledgeGraphService
+from src.models.user import UserBase, UserCreate, UserUpdate, UserInDB, User, UserNode
+from src.models.social import Follow
+from src.services.knowledge_graph import KnowledgeGraphService
 
 # Password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -76,7 +76,7 @@ class UserService:
                 email=user_in_db.email,
                 full_name=user_in_db.full_name,
                 bio=user_in_db.bio,
-                profile_picture_url=user_in_db.profile_picture_url,
+                profile_picture=user_in_db.profile_picture,
                 follower_count=user_in_db.follower_count,
                 following_count=user_in_db.following_count,
                 created_at=user_in_db.created_at,
@@ -120,7 +120,7 @@ class UserService:
             hashed_password=hashed_password,
             is_active=True,
             is_verified=False,
-            profile_picture_url=None,
+            profile_picture=None,
             follower_count=0,
             following_count=0,
             created_at=datetime.utcnow(),
@@ -152,8 +152,8 @@ class UserService:
         if user_update.bio is not None:
             user_in_db.bio = user_update.bio
         
-        if user_update.profile_picture_url is not None:
-            user_in_db.profile_picture_url = user_update.profile_picture_url
+        if user_update.profile_picture is not None:
+            user_in_db.profile_picture = user_update.profile_picture
         
         user_in_db.updated_at = datetime.utcnow()
         
