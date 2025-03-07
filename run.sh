@@ -21,6 +21,23 @@ show_usage() {
     exit 0
 }
 
+# Function to initialize the system in the background
+initialize_system_background() {
+    # Initialize database
+    echo "Initializing database in the background..."
+    python src/scripts/init_db.py
+    
+    # Create AI agents if they don't exist
+    echo "Creating AI agents in the background..."
+    python src/scripts/init_agents.py
+    
+    # Generate initial content
+    echo "Generating initial content in the background..."
+    python src/scripts/generate_content.py
+    
+    echo "Background initialization complete!"
+}
+
 # Parse command line arguments
 RUN_API=true
 RUN_FRONTEND=false
@@ -70,20 +87,29 @@ fi
 mkdir -p src/data
 echo "Data directory created/verified."
 
-# Initialize database
-echo "Initializing database..."
-python src/scripts/init_db.py || handle_error "Database initialization" $?
-echo "Database initialization completed successfully."
-
-# Create AI agents
-echo "Creating AI agents..."
-python src/scripts/init_agents.py || handle_error "Agent creation" $?
-echo "Agent creation completed successfully."
-
-# Generate initial content
-echo "Generating initial content..."
-python src/scripts/generate_content.py || handle_error "Content generation" $?
-echo "Content generation completed successfully."
+# Start initialization in the background
+if [ "$RUN_FRONTEND" = true ]; then
+    # If running frontend, start initialization in the background
+    initialize_system_background &
+    INIT_PID=$!
+    echo "System initialization started in the background (PID $INIT_PID)"
+else
+    # If not running frontend, initialize synchronously
+    # Initialize database
+    echo "Initializing database..."
+    python src/scripts/init_db.py || handle_error "Database initialization" $?
+    echo "Database initialization completed successfully."
+    
+    # Create AI agents
+    echo "Creating AI agents..."
+    python src/scripts/init_agents.py || handle_error "Agent creation" $?
+    echo "Agent creation completed successfully."
+    
+    # Generate initial content
+    echo "Generating initial content..."
+    python src/scripts/generate_content.py || handle_error "Content generation" $?
+    echo "Content generation completed successfully."
+fi
 
 # Run the API server
 if [ "$RUN_API" = true ]; then
@@ -103,15 +129,20 @@ fi
 if [ "$RUN_FRONTEND" = true ]; then
     echo "Starting Streamlit frontend..."
     echo "The frontend will be available at http://localhost:8501"
+    echo "System initialization is running in the background."
+    echo "Content will appear as it's generated."
     
     # Check if streamlit is installed
     if ! command -v streamlit &> /dev/null; then
         echo "Error: streamlit is not installed."
         echo "Please install it using: pip install streamlit"
         
-        # Kill API server if it's running
+        # Kill background processes if they're running
         if [ -n "$API_PID" ]; then
             kill $API_PID
+        fi
+        if [ -n "$INIT_PID" ]; then
+            kill $INIT_PID
         fi
         
         exit 1
@@ -120,9 +151,13 @@ if [ "$RUN_FRONTEND" = true ]; then
     # Run the frontend
     streamlit run src/frontend.py
     
-    # Kill API server when frontend exits
+    # Kill background processes when frontend exits
     if [ -n "$API_PID" ]; then
         echo "Stopping API server (PID $API_PID)..."
         kill $API_PID
+    fi
+    if [ -n "$INIT_PID" ]; then
+        echo "Stopping background initialization (PID $INIT_PID)..."
+        kill $INIT_PID
     fi
 fi 

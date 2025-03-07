@@ -128,7 +128,13 @@ if page == "Dashboard":
     content_data = content_service._load_data()
     all_content = content_data["content"]
     all_comments = content_data["comments"]
-    graph_metrics = graph_service.get_metrics()
+    
+    try:
+        graph_metrics = graph_service.get_metrics()
+        graph_node_count = graph_metrics.node_count
+    except Exception:
+        # Graph might not be initialized yet
+        graph_node_count = 0
     
     with col1:
         st.metric("AI Agents", len(agents))
@@ -140,7 +146,15 @@ if page == "Dashboard":
         st.metric("Comments", len(all_comments))
     
     with col4:
-        st.metric("Graph Nodes", graph_metrics.node_count)
+        st.metric("Graph Nodes", graph_node_count)
+    
+    # System status
+    if len(agents) == 0:
+        st.warning("System initialization in progress. AI agents are being created...")
+    elif len(all_content) == 0:
+        st.warning("Content generation in progress. Please wait...")
+    else:
+        st.success("System is fully initialized and ready to use!")
     
     # Recent activity
     st.subheader("Recent Activity")
@@ -176,7 +190,11 @@ if page == "Dashboard":
             </div>
             """, unsafe_allow_html=True)
     else:
-        st.info("No content available yet.")
+        st.info("No content available yet. Content generation may be in progress...")
+        
+        # Add a refresh button
+        if st.button("Refresh Dashboard"):
+            st.experimental_rerun()
     
     # Graph visualization preview
     st.subheader("Knowledge Graph Preview")
@@ -216,101 +234,116 @@ if page == "Dashboard":
             net.save_graph(tmp.name)
             components.html(open(tmp.name, 'r').read(), height=500)
     else:
-        st.info("No graph data available yet.")
+        st.info("Knowledge graph is being built. Please check back later...")
+        
+        # Add a refresh button
+        if st.button("Refresh Graph"):
+            st.experimental_rerun()
 
 # Content Feed
 elif page == "Content Feed":
     st.title("Content Feed")
     
-    # Filters
-    col1, col2 = st.columns(2)
-    with col1:
-        sort_by = st.selectbox("Sort by", ["Newest", "Most Viewed", "Most Liked", "Most Commented"])
-    with col2:
-        filter_by = st.multiselect("Filter by type", ["text", "image", "video", "mixed"], default=["text", "image", "video", "mixed"])
-    
     # Get content
     content_data = content_service._load_data()
     all_content = content_data["content"]
     
-    # Filter by type
-    filtered_content = [c for c in all_content if c.get("type") in filter_by]
-    
-    # Sort content
-    if sort_by == "Newest":
-        sorted_content = sorted(filtered_content, key=lambda x: x.get("created_at", ""), reverse=True)
-    elif sort_by == "Most Viewed":
-        sorted_content = sorted(filtered_content, key=lambda x: x.get("view_count", 0), reverse=True)
-    elif sort_by == "Most Liked":
-        sorted_content = sorted(filtered_content, key=lambda x: x.get("like_count", 0), reverse=True)
-    else:  # Most Commented
-        sorted_content = sorted(filtered_content, key=lambda x: x.get("comment_count", 0), reverse=True)
-    
-    # Display content
-    if sorted_content:
-        for content_item in sorted_content:
-            creator_id = content_item.get("creator_id", "")
-            creator = agent_service.get_agent(creator_id)
-            creator_name = creator.display_name if creator else "Unknown"
-            
-            # Content card
-            with st.container():
-                st.markdown(f"""
-                <div class="content-card">
-                    <div class="content-header">
-                        <div class="content-title">{content_item.get('title', 'Untitled')}</div>
-                    </div>
-                    <div class="content-meta">
-                        By {creator_name} • {time_since(datetime.fromisoformat(str(content_item.get('created_at'))))} • Type: {content_item.get('type', 'text')}
-                    </div>
-                    <div class="content-body">
-                        {content_item.get('text_content', '')}
-                    </div>
-                """, unsafe_allow_html=True)
-                
-                # Display media if available
-                media_urls = content_item.get('media_urls', [])
-                if media_urls:
-                    for url in media_urls:
-                        if "image" in url:
-                            st.image(url, use_container_width=True)
-                        elif "video" in url:
-                            st.video(url)
-                
-                st.markdown(f"""
-                    <div class="content-hashtags">
-                        {' '.join(content_item.get('hashtags', []))}
-                    </div>
-                    <div class="content-stats">
-                        <div>👁️ {content_item.get('view_count', 0)} views</div>
-                        <div>❤️ {content_item.get('like_count', 0)} likes</div>
-                        <div>💬 {content_item.get('comment_count', 0)} comments</div>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-                
-                # Comments
-                content_id = content_item.get("id", "")
-                comments = [c for c in content_data["comments"] if c.get("content_id") == content_id]
-                
-                if comments:
-                    with st.expander(f"View {len(comments)} comments"):
-                        for comment in comments:
-                            commenter_id = comment.get("user_id", "")
-                            commenter = agent_service.get_agent(commenter_id)
-                            commenter_name = commenter.display_name if commenter else "Unknown"
-                            
-                            st.markdown(f"""
-                            <div style="margin-bottom: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
-                                <div style="font-weight: bold;">{commenter_name}</div>
-                                <div>{comment.get('text', '')}</div>
-                                <div style="font-size: 12px; color: #666;">
-                                    {time_since(datetime.fromisoformat(str(comment.get('created_at'))))}
-                                </div>
-                            </div>
-                            """, unsafe_allow_html=True)
+    if not all_content:
+        st.info("Content generation is in progress. Please wait or check back later...")
+        
+        # Add a refresh button
+        if st.button("Refresh Content Feed"):
+            st.experimental_rerun()
     else:
-        st.info("No content available with the selected filters.")
+        # Filters
+        col1, col2 = st.columns(2)
+        with col1:
+            sort_by = st.selectbox("Sort by", ["Newest", "Most Viewed", "Most Liked", "Most Commented"])
+        with col2:
+            filter_by = st.multiselect("Filter by type", ["text", "image", "video", "mixed"], default=["text", "image", "video", "mixed"])
+        
+        # Filter by type
+        filtered_content = [c for c in all_content if c.get("type") in filter_by]
+        
+        # Sort content
+        if sort_by == "Newest":
+            sorted_content = sorted(filtered_content, key=lambda x: x.get("created_at", ""), reverse=True)
+        elif sort_by == "Most Viewed":
+            sorted_content = sorted(filtered_content, key=lambda x: x.get("view_count", 0), reverse=True)
+        elif sort_by == "Most Liked":
+            sorted_content = sorted(filtered_content, key=lambda x: x.get("like_count", 0), reverse=True)
+        else:  # Most Commented
+            sorted_content = sorted(filtered_content, key=lambda x: x.get("comment_count", 0), reverse=True)
+        
+        # Display content
+        if sorted_content:
+            for content_item in sorted_content:
+                creator_id = content_item.get("creator_id", "")
+                creator = agent_service.get_agent(creator_id)
+                creator_name = creator.display_name if creator else "Unknown"
+                
+                # Content card
+                with st.container():
+                    st.markdown(f"""
+                    <div class="content-card">
+                        <div class="content-header">
+                            <div class="content-title">{content_item.get('title', 'Untitled')}</div>
+                        </div>
+                        <div class="content-meta">
+                            By {creator_name} • {time_since(datetime.fromisoformat(str(content_item.get('created_at'))))} • Type: {content_item.get('type', 'text')}
+                        </div>
+                        <div class="content-body">
+                            {content_item.get('text_content', '')}
+                        </div>
+                    """, unsafe_allow_html=True)
+                    
+                    # Display media if available
+                    media_urls = content_item.get('media_urls', [])
+                    if media_urls:
+                        for url in media_urls:
+                            if "image" in url:
+                                st.image(url, use_container_width=True)
+                            elif "video" in url:
+                                st.video(url)
+                    
+                    st.markdown(f"""
+                        <div class="content-hashtags">
+                            {' '.join(content_item.get('hashtags', []))}
+                        </div>
+                        <div class="content-stats">
+                            <div>👁️ {content_item.get('view_count', 0)} views</div>
+                            <div>❤️ {content_item.get('like_count', 0)} likes</div>
+                            <div>💬 {content_item.get('comment_count', 0)} comments</div>
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
+                    # Comments
+                    content_id = content_item.get("id", "")
+                    comments = [c for c in content_data["comments"] if c.get("content_id") == content_id]
+                    
+                    if comments:
+                        with st.expander(f"View {len(comments)} comments"):
+                            for comment in comments:
+                                commenter_id = comment.get("user_id", "")
+                                commenter = agent_service.get_agent(commenter_id)
+                                commenter_name = commenter.display_name if commenter else "Unknown"
+                                
+                                st.markdown(f"""
+                                <div style="margin-bottom: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
+                                    <div style="font-weight: bold;">{commenter_name}</div>
+                                    <div>{comment.get('text', '')}</div>
+                                    <div style="font-size: 12px; color: #666;">
+                                        {time_since(datetime.fromisoformat(str(comment.get('created_at'))))}
+                                    </div>
+                                </div>
+                                """, unsafe_allow_html=True)
+        else:
+            st.info("No content available with the selected filters.")
+            
+            # Add a refresh button
+            if st.button("Refresh Content"):
+                st.experimental_rerun()
 
 # Agents
 elif page == "Agents":
@@ -319,7 +352,13 @@ elif page == "Agents":
     # Get all agents
     agents = agent_service.list_agents()
     
-    if agents:
+    if not agents:
+        st.info("Agent creation is in progress. Please wait or check back later...")
+        
+        # Add a refresh button
+        if st.button("Refresh Agents"):
+            st.experimental_rerun()
+    else:
         # Sort agents by content count
         sorted_agents = sorted(agents, key=lambda x: x.content_count, reverse=True)
         
@@ -380,42 +419,53 @@ elif page == "Agents":
                                 </div>
                             </div>
                             """, unsafe_allow_html=True)
-    else:
-        st.info("No agents available yet. Run the init_agents.py script to create some agents.")
+                else:
+                    st.info(f"No content available yet for {agent.display_name}. Content generation may be in progress...")
 
 # Knowledge Graph
 elif page == "Knowledge Graph":
     st.title("Knowledge Graph Visualization")
     
-    # Graph metrics
-    metrics = graph_service.get_metrics()
-    
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.metric("Nodes", metrics.node_count)
-    with col2:
-        st.metric("Edges", metrics.edge_count)
-    with col3:
-        st.metric("Avg. Node Degree", f"{metrics.avg_node_degree:.2f}")
-    with col4:
-        st.metric("Connected Components", metrics.connected_components)
-    
-    # Visualization options
-    st.subheader("Graph Visualization")
-    
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        include_users = st.checkbox("Include Users", value=True)
-    with col2:
-        include_content = st.checkbox("Include Content", value=True)
-    with col3:
-        include_topics = st.checkbox("Include Topics", value=True)
-    
-    node_limit = st.slider("Max Nodes", min_value=10, max_value=500, value=100, step=10)
-    
-    # Create visualization
+    # Get graph
     G = graph_service.graph
-    if G.number_of_nodes() > 0:
+    
+    if G.number_of_nodes() == 0:
+        st.info("Knowledge graph is being built. Please wait or check back later...")
+        
+        # Add a refresh button
+        if st.button("Refresh Graph"):
+            st.experimental_rerun()
+    else:
+        # Graph metrics
+        try:
+            metrics = graph_service.get_metrics()
+            
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                st.metric("Nodes", metrics.node_count)
+            with col2:
+                st.metric("Edges", metrics.edge_count)
+            with col3:
+                st.metric("Avg. Node Degree", f"{metrics.avg_node_degree:.2f}")
+            with col4:
+                st.metric("Connected Components", metrics.connected_components)
+        except Exception as e:
+            st.warning(f"Could not calculate graph metrics: {str(e)}")
+        
+        # Visualization options
+        st.subheader("Graph Visualization")
+        
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            include_users = st.checkbox("Include Users", value=True)
+        with col2:
+            include_content = st.checkbox("Include Content", value=True)
+        with col3:
+            include_topics = st.checkbox("Include Topics", value=True)
+        
+        node_limit = st.slider("Max Nodes", min_value=10, max_value=500, value=100, step=10)
+        
+        # Create visualization
         # Filter nodes based on options
         node_types_to_include = []
         if include_users:
@@ -430,124 +480,129 @@ elif page == "Knowledge Graph":
             if attrs.get("type") in node_types_to_include
         ]
         
-        # Apply limit
-        if len(filtered_nodes) > node_limit:
-            filtered_nodes = filtered_nodes[:node_limit]
-        
-        # Create a pyvis network
-        net = Network(height="600px", width="100%", notebook=True, directed=True)
-        
-        # Add nodes with different colors based on type
-        node_colors = {
-            "user": "#3498db",  # Blue
-            "content": "#2ecc71",  # Green
-            "topic": "#e74c3c",  # Red
-            "hashtag": "#f39c12"  # Orange
-        }
-        
-        for node in filtered_nodes:
-            attrs = G.nodes[node]
-            node_type = attrs.get("type", "unknown")
-            entity_id = attrs.get("entity_id", "")
+        if not filtered_nodes:
+            st.warning("No nodes match the selected filters. Try including more node types.")
+        else:
+            # Apply limit
+            if len(filtered_nodes) > node_limit:
+                filtered_nodes = filtered_nodes[:node_limit]
             
-            # Get a more descriptive label
-            if node_type == "user":
-                agent = agent_service.get_agent(entity_id)
-                label = agent.display_name if agent else entity_id
-            elif node_type == "content":
-                content = content_service.get_content(entity_id)
-                label = content.title if content else entity_id
-            else:
-                label = entity_id
+            # Create a pyvis network
+            net = Network(height="600px", width="100%", notebook=True, directed=True)
             
-            color = node_colors.get(node_type, "#95a5a6")  # Default gray
-            net.add_node(node, label=label, title=f"{node_type}: {label}", color=color, group=node_type)
-        
-        # Add edges between the nodes in our subset
-        for source, target, attrs in G.edges(data=True):
-            if source in filtered_nodes and target in filtered_nodes:
-                edge_type = attrs.get("type", "unknown")
-                net.add_edge(source, target, title=edge_type, arrows="to")
-        
-        # Set physics options for better visualization
-        net.set_options("""
-        {
-            "physics": {
-                "forceAtlas2Based": {
-                    "gravitationalConstant": -50,
-                    "centralGravity": 0.01,
-                    "springLength": 100,
-                    "springConstant": 0.08
-                },
-                "maxVelocity": 50,
-                "solver": "forceAtlas2Based",
-                "timestep": 0.35,
-                "stabilization": {
-                    "enabled": true,
-                    "iterations": 1000,
-                    "updateInterval": 25
+            # Add nodes with different colors based on type
+            node_colors = {
+                "user": "#3498db",  # Blue
+                "content": "#2ecc71",  # Green
+                "topic": "#e74c3c",  # Red
+                "hashtag": "#f39c12"  # Orange
+            }
+            
+            for node in filtered_nodes:
+                attrs = G.nodes[node]
+                node_type = attrs.get("type", "unknown")
+                entity_id = attrs.get("entity_id", "")
+                
+                # Get a more descriptive label
+                if node_type == "user":
+                    agent = agent_service.get_agent(entity_id)
+                    label = agent.display_name if agent else entity_id
+                elif node_type == "content":
+                    content = content_service.get_content(entity_id)
+                    label = content.title if content else entity_id
+                else:
+                    label = entity_id
+                
+                color = node_colors.get(node_type, "#95a5a6")  # Default gray
+                net.add_node(node, label=label, title=f"{node_type}: {label}", color=color, group=node_type)
+            
+            # Add edges between the nodes in our subset
+            for source, target, attrs in G.edges(data=True):
+                if source in filtered_nodes and target in filtered_nodes:
+                    edge_type = attrs.get("type", "unknown")
+                    net.add_edge(source, target, title=edge_type, arrows="to")
+            
+            # Set physics options for better visualization
+            net.set_options("""
+            {
+                "physics": {
+                    "forceAtlas2Based": {
+                        "gravitationalConstant": -50,
+                        "centralGravity": 0.01,
+                        "springLength": 100,
+                        "springConstant": 0.08
+                    },
+                    "maxVelocity": 50,
+                    "solver": "forceAtlas2Based",
+                    "timestep": 0.35,
+                    "stabilization": {
+                        "enabled": true,
+                        "iterations": 1000,
+                        "updateInterval": 25
+                    }
                 }
             }
-        }
-        """)
+            """)
+            
+            # Generate the HTML file
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.html') as tmp:
+                net.save_graph(tmp.name)
+                components.html(open(tmp.name, 'r').read(), height=600)
         
-        # Generate the HTML file
-        with tempfile.NamedTemporaryFile(delete=False, suffix='.html') as tmp:
-            net.save_graph(tmp.name)
-            components.html(open(tmp.name, 'r').read(), height=600)
-    else:
-        st.info("No graph data available yet.")
-    
-    # Graph analysis
-    st.subheader("Graph Analysis")
-    
-    # Topic clusters
-    st.write("Topic Clusters")
-    clusters = graph_service.get_topic_clusters(limit=5)
-    
-    if clusters:
-        for cluster in clusters:
-            st.markdown(f"""
-            <div style="margin-bottom: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
-                <div style="font-weight: bold;">{cluster.name}</div>
-                <div>Size: {cluster.size} nodes</div>
-                <div>Related topics: {', '.join(cluster.related_topics)}</div>
-            </div>
-            """, unsafe_allow_html=True)
-    else:
-        st.info("No topic clusters available yet.")
-    
-    # Bridge nodes
-    st.write("Bridge Nodes")
-    bridges = graph_service.get_bridge_nodes(limit=5)
-    
-    if bridges:
-        for bridge in bridges:
-            st.markdown(f"""
-            <div style="margin-bottom: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
-                <div style="font-weight: bold;">{bridge.entity_id} ({bridge.type})</div>
-                <div>Betweenness centrality: {bridge.betweenness_centrality:.4f}</div>
-                <div>Connected clusters: {', '.join(bridge.connected_clusters)}</div>
-            </div>
-            """, unsafe_allow_html=True)
-    else:
-        st.info("No bridge nodes available yet.")
-    
-    # Emerging topics
-    st.write("Emerging Topics")
-    topics = graph_service.get_emerging_topics(limit=5)
-    
-    if topics:
-        for topic in topics:
-            st.markdown(f"""
-            <div style="margin-bottom: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
-                <div style="font-weight: bold;">{topic.topic}</div>
-                <div>Growth rate: {topic.growth_rate:.2f}x</div>
-                <div>Related hashtags: {', '.join(topic.related_hashtags)}</div>
-            </div>
-            """, unsafe_allow_html=True)
-    else:
-        st.info("No emerging topics available yet.")
+        # Graph analysis
+        st.subheader("Graph Analysis")
+        
+        try:
+            # Topic clusters
+            st.write("Topic Clusters")
+            clusters = graph_service.get_topic_clusters(limit=5)
+            
+            if clusters:
+                for cluster in clusters:
+                    st.markdown(f"""
+                    <div style="margin-bottom: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
+                        <div style="font-weight: bold;">{cluster.name}</div>
+                        <div>Size: {cluster.size} nodes</div>
+                        <div>Related topics: {', '.join(cluster.related_topics)}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+            else:
+                st.info("No topic clusters available yet. The graph may need more data.")
+            
+            # Bridge nodes
+            st.write("Bridge Nodes")
+            bridges = graph_service.get_bridge_nodes(limit=5)
+            
+            if bridges:
+                for bridge in bridges:
+                    st.markdown(f"""
+                    <div style="margin-bottom: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
+                        <div style="font-weight: bold;">{bridge.entity_id} ({bridge.type})</div>
+                        <div>Betweenness centrality: {bridge.betweenness_centrality:.4f}</div>
+                        <div>Connected clusters: {', '.join(bridge.connected_clusters)}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+            else:
+                st.info("No bridge nodes available yet. The graph may need more connections.")
+            
+            # Emerging topics
+            st.write("Emerging Topics")
+            topics = graph_service.get_emerging_topics(limit=5)
+            
+            if topics:
+                for topic in topics:
+                    st.markdown(f"""
+                    <div style="margin-bottom: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
+                        <div style="font-weight: bold;">{topic.topic}</div>
+                        <div>Growth rate: {topic.growth_rate:.2f}x</div>
+                        <div>Related hashtags: {', '.join(topic.related_hashtags)}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+            else:
+                st.info("No emerging topics available yet. The graph may need more temporal data.")
+        except Exception as e:
+            st.warning(f"Could not perform graph analysis: {str(e)}")
+            st.info("The graph may still be building. Try refreshing later.")
 
 # Generate Content
 elif page == "Generate Content":
@@ -557,7 +612,12 @@ elif page == "Generate Content":
     agents = agent_service.list_agents()
     
     if not agents:
-        st.error("No agents available. Please run the init_agents.py script first.")
+        st.warning("No agents available yet. Agent creation is in progress...")
+        st.info("Please wait for the agents to be created or check back later.")
+        
+        # Add a refresh button
+        if st.button("Refresh Agents"):
+            st.experimental_rerun()
     else:
         # Select agent
         selected_agent = st.selectbox("Select Agent", options=agents, format_func=lambda x: f"{x.display_name} (@{x.username})")
@@ -620,7 +680,7 @@ elif page == "Generate Content":
             st.write("Generate content for multiple agents at once")
             
             # Number of content items to generate
-            count = st.slider("Number of content items", min_value=1, max_value=20, value=5)
+            count = st.slider("Number of content items", min_value=1, max_value=10, value=3)
             
             # Submit button
             batch_submit = st.form_submit_button("Generate Batch Content")
