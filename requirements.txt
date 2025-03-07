@@ -16,3 +16,7 @@ matplotlib>=3.7.2        # Data visualization
 pytest>=7.4.0            # Testing
 python-dotenv>=1.0.0     # Environment variable management 
 pydantic[email]
+openai>=1.0.0            # OpenAI API for content generation
+jinja2>=3.1.2            # Template engine for frontend
+pyvis>=0.3.2             # Network visualization
+streamlit>=1.28.0        # Simple web app framework for data visualization
