@@ -10,6 +10,7 @@ A modern TikTok clone with AI-generated content, featuring an infinite scroll ex
 - **Infinite Scroll**: Smooth scrolling experience with automatic loading of new content
 - **Responsive Design**: Works on both mobile and desktop devices
 - **Modern UI**: Clean and intuitive interface inspired by TikTok
+- **Analytics Dashboard**: Monitor platform usage, video performance, and user interactions
 
 ## Tech Stack
 
@@ -20,6 +21,7 @@ A modern TikTok clone with AI-generated content, featuring an infinite scroll ex
 - React Router (Navigation)
 - Framer Motion (Animations)
 - OpenAI API (GPT-4o)
+- Chart.js (Analytics visualizations)
 
 ## Getting Started
 
@@ -64,108 +66,7 @@ See `public/assets/README.md` for more details.
 npm run dev
 ```
 
-5. Open your browser and navigate to `http://localhost:3000`
-
-## Troubleshooting
-
-If you encounter any issues while running the application, try these solutions:
-
-### WebSocket Connection Failures
-
-If you see errors like:
-```
-WebSocket connection to 'ws://localhost:3000/?token=...' failed
-```
-
-This is related to Vite's Hot Module Replacement (HMR). The application will still work, but you may need to manually refresh the page to see changes. We've implemented a fallback mechanism that will automatically switch to HTTP-based HMR if WebSocket fails.
-
-### Maximum Update Depth Exceeded
-
-If you see errors like:
-```
-Maximum update depth exceeded. This can happen when a component calls setState inside useEffect...
-```
-
-This is typically caused by an infinite loop in React's rendering cycle. We've fixed the most common causes of this issue, but if it persists:
-
-1. Check for any state updates inside useEffect hooks without proper dependency arrays
-2. Restart the development server with `npm run dev`
-3. Clear your browser cache and reload the page
-
-### React Prop Warnings
-
-If you see warnings like:
-```
-React does not recognize the `isActive` prop on a DOM element...
-```
-
-This is caused by passing custom props directly to DOM elements. We've fixed this by:
-
-1. Creating separate styled components for active and inactive states
-2. Using custom wrapper components that handle the `isActive` prop without passing it to the DOM
-3. Using proper React patterns for conditional rendering
-
-If you encounter similar warnings with other props, follow the same pattern:
-- Create separate styled components for different states
-- Use a wrapper component to handle the prop and render the appropriate styled component
-
-### Hugging Face API Errors
-
-If you see errors like:
-```
-GET https://datasets-server.huggingface.co/rows?dataset=HuggingFaceFV/finevideo&config=default&split=train&offset=0&limit=5 500 (Internal Server Error)
-```
-
-or
-
-```
-Failed to fetch from Hugging Face API: {"error":"Authentication check on the Hugging Face Hub failed or timed out..."}
-```
-
-These errors indicate issues with the Hugging Face API. The application is designed to handle these errors gracefully:
-
-1. It will automatically fall back to using sample videos with generated metadata
-2. The app will continue to function normally, just without real FineVideo metadata
-3. You can still see the core functionality of extracting frames and generating descriptions
-
-To fix these issues:
-- Check that your Hugging Face API key is correct in the `.env` file
-- The API might be experiencing temporary issues - try again later
-- You may need to request access to the FineVideo dataset on Hugging Face
-
-### Video Loading Errors
-
-If you see errors like:
-```
-GET https://some-video-url.mp4 403 (Forbidden)
-```
-
-or
-
-```
-Error processing FineVideo: Error: Error loading video
-```
-
-These errors occur when the app can't load the sample videos. We've updated the app to:
-
-1. Use different sample videos from sources that allow direct access
-2. Add better error handling to continue even if some videos fail to load
-3. Implement timeouts to prevent hanging requests
-
-If you still encounter these errors:
-- Check your internet connection
-- The video sources might be temporarily unavailable
-- The app will still function with any videos it can successfully load
-
-### Videos Not Loading or Playing
-
-If videos aren't loading or playing properly:
-
-1. Check your network connection
-2. Try using a different browser (Chrome works best for video playback)
-3. Clear your browser cache and reload the page
-4. Check the browser console for specific error messages
-5. The app will fall back to sample videos if it can't fetch from the FineVideo dataset
+5. Open your browser and navigate to `http://localhost:3000` (or the port shown in your terminal)
 
 ## Project Structure
 
@@ -175,6 +76,8 @@ tiktok-ai-clone/
 │   ├── components/     # Reusable UI components
 │   ├── hooks/          # Custom React hooks
 │   ├── pages/          # Page components
+│   │   ├── Home/       # Main feed page
+│   │   └── Dashboard/  # Analytics dashboard
 │   ├── services/       # API and service functions
 │   │   ├── aiService.ts          # AI content generation
 │   │   ├── fineVideoService.ts   # FineVideo integration
@@ -184,6 +87,7 @@ tiktok-ai-clone/
 │   ├── App.tsx         # Main App component
 │   └── main.tsx        # Entry point
 ├── public/             # Static assets
+│   └── assets/         # Videos, images, and data files
 ├── index.html          # HTML template
 ├── package.json        # Dependencies and scripts
 ├── tsconfig.json       # TypeScript configuration
@@ -235,6 +139,7 @@ If you want to use the actual videos from FineVideo in production, you would nee
 - Add video recording and uploading functionality
 - Enhance agent interactions based on video content
 - Implement content recommendation algorithms
+- Expand analytics dashboard with more detailed metrics
 
 ## License
 
