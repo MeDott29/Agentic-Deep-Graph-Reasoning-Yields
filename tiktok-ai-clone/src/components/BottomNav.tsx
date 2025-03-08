@@ -79,6 +79,15 @@ const InactiveProfileIcon = styled(InactiveIcon)`
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
 `;
 
+// Dashboard icon variants
+const ActiveDashboardIcon = styled(ActiveIcon)`
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z'/%3E%3C/svg%3E");
+`;
+
+const InactiveDashboardIcon = styled(InactiveIcon)`
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z'/%3E%3C/svg%3E");
+`;
+
 // Custom NavItem component that doesn't pass isActive to DOM
 const NavItem = ({ to, isActive, children }) => {
   if (isActive) {
@@ -100,11 +109,16 @@ const ProfileIcon = ({ isActive }) => {
   return isActive ? <ActiveProfileIcon /> : <InactiveProfileIcon />;
 };
 
+const DashboardIcon = ({ isActive }) => {
+  return isActive ? <ActiveDashboardIcon /> : <InactiveDashboardIcon />;
+};
+
 const BottomNav = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const isDiscover = location.pathname === '/discover';
   const isProfile = location.pathname === '/profile';
+  const isDashboard = location.pathname === '/dashboard';
   
   return (
     <BottomNavContainer>
@@ -121,6 +135,11 @@ const BottomNav = () => {
       <NavItem to="/profile" isActive={isProfile}>
         <ProfileIcon isActive={isProfile} />
         <span>Profile</span>
+      </NavItem>
+      
+      <NavItem to="/dashboard" isActive={isDashboard}>
+        <DashboardIcon isActive={isDashboard} />
+        <span>Dashboard</span>
       </NavItem>
     </BottomNavContainer>
   );

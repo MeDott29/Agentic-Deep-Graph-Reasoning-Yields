@@ -1,12 +1,14 @@
 import { useRef, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { AIVideo, AIInteraction } from '../services/aiService';
+import { AIVideo, AIInteraction, trackUserInteraction, processUserInteraction } from '../services/aiService';
 import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
+import { checkVideoHasAudio, fixAudioPlayback, playVideoWithAudio, addAudioToVideo } from '../utils/audioFix';
 
 interface VideoCardProps {
   video: AIVideo;
   isActive: boolean;
+  id?: string;
 }
 
 const CardContainer = styled.div`
@@ -227,12 +229,17 @@ const formatCount = (count: number): string => {
   return count.toString();
 };
 
-const VideoCard: React.FC<VideoCardProps> = ({ video, isActive }) => {
+const VideoCard: React.FC<VideoCardProps> = ({ video, isActive, id }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showInteractions, setShowInteractions] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [watchDuration, setWatchDuration] = useState(0);
+  const [watchStartTime, setWatchStartTime] = useState<number | null>(null);
+  const [audioEnabled, setAudioEnabled] = useState(true);
+  const [hasAudio, setHasAudio] = useState<boolean | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Preload video when component mounts
   useEffect(() => {
@@ -245,73 +252,191 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, isActive }) => {
     }
   }, []);
 
+  // Check if video has audio after it loads
+  useEffect(() => {
+    if (videoLoaded && videoRef.current) {
+      checkVideoHasAudio(videoRef.current)
+        .then(hasAudioTrack => {
+          setHasAudio(hasAudioTrack);
+          console.log(`Video ${video.id} has audio: ${hasAudioTrack}`);
+          
+          // If video doesn't have audio and we have timecoded_text_to_speech in metadata, try to extract audio
+          if (!hasAudioTrack && video.metadata && video.metadata.json) {
+            try {
+              const jsonData = typeof video.metadata.json === 'string' 
+                ? JSON.parse(video.metadata.json) 
+                : video.metadata.json;
+              
+              // Check if this is a FineVideo dataset video with audio
+              if (jsonData.text_to_speech || jsonData.timecoded_text_to_speech) {
+                console.log(`FineVideo dataset detected for video ${video.id}, attempting to extract audio`);
+                
+                // If there's an audio URL in the metadata, use it
+                if (video.audioUrl) {
+                  addAudioToVideo(videoRef.current, video.audioUrl);
+                  console.log(`Added audio track from metadata to video ${video.id}`);
+                } else {
+                  // Use a default audio track from assets as fallback
+                  const audioTrack = `/assets/audio/background${Math.floor(Math.random() * 5) + 1}.mp3`;
+                  addAudioToVideo(videoRef.current, audioTrack);
+                  console.log(`Added background audio track to video ${video.id}`);
+                }
+              }
+            } catch (error) {
+              console.error('Error parsing video metadata:', error);
+            }
+          } else if (!hasAudioTrack) {
+            // Use a default audio track from assets
+            const audioTrack = `/assets/audio/background${Math.floor(Math.random() * 5) + 1}.mp3`;
+            addAudioToVideo(videoRef.current, audioTrack);
+            console.log(`Added background audio track to video ${video.id}`);
+          }
+        })
+        .catch(error => {
+          console.error('Error checking for audio:', error);
+          setHasAudio(false);
+        });
+    }
+  }, [videoLoaded, video]);
+
   // Handle video playback when active
   useEffect(() => {
     let playAttemptTimeout: number | null = null;
     
-    const attemptPlay = () => {
-      if (!videoRef.current || !isActive) return;
+    if (isActive && videoRef.current) {
+      // Reset watch duration when video becomes active
+      setWatchDuration(0);
+      setWatchStartTime(Date.now());
       
-      // Cancel any previous play attempts
-      if (playAttemptTimeout) {
-        window.clearTimeout(playAttemptTimeout);
-        playAttemptTimeout = null;
-      }
+      // Track that user is viewing this video
+      trackUserInteraction(video.id, 'view');
       
-      const playPromise = videoRef.current.play();
+      // Also update the graph with this interaction
+      processUserInteraction(
+        {
+          videoId: video.id,
+          action: 'view',
+          timestamp: new Date(),
+          duration: 0, // Will be updated when video becomes inactive
+          metadata: { started: true }
+        },
+        video
+      );
       
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            setIsPlaying(true);
-          })
-          .catch(error => {
-            console.error(`Error playing video: ${error.message}`);
-            setIsPlaying(false);
+      // Attempt to play the video
+      const attemptPlay = async () => {
+        if (videoRef.current) {
+          try {
+            // Fix any audio playback issues
+            fixAudioPlayback(videoRef.current);
             
-            // Try again after a short delay, but only if still active
-            if (isActive) {
-              playAttemptTimeout = window.setTimeout(() => {
-                if (videoRef.current && isActive) {
-                  attemptPlay();
-                }
-              }, 500);
+            // Ensure volume is set (fix for audio issues)
+            videoRef.current.volume = audioEnabled ? 1.0 : 0.0;
+            videoRef.current.muted = !audioEnabled;
+            
+            // Play the video with audio, falling back to muted if necessary
+            console.log(`Attempting to play video ${video.id}`);
+            await playVideoWithAudio(videoRef.current);
+            setIsPlaying(true);
+            console.log(`Successfully playing video ${video.id}`);
+          } catch (error) {
+            console.error('Error playing video:', error);
+            
+            // Try again with muted
+            try {
+              console.log(`Retrying with muted video ${video.id}`);
+              videoRef.current.muted = true;
+              await videoRef.current.play();
+              setIsPlaying(true);
+              console.log(`Successfully playing muted video ${video.id}`);
+            } catch (mutedError) {
+              console.error('Error playing even with muted:', mutedError);
+              setVideoError(true);
             }
-          });
+          }
+        }
+      };
+      
+      // Try to play immediately if video is loaded
+      if (videoLoaded) {
+        attemptPlay();
+      } else {
+        // Set a timeout to try playing after a short delay
+        playAttemptTimeout = window.setTimeout(() => {
+          attemptPlay();
+        }, 300);
+        
+        // Add a longer timeout as a fallback
+        const fallbackTimeout = window.setTimeout(() => {
+          if (!isPlaying && videoRef.current) {
+            console.log(`Fallback timeout: attempting to play video ${video.id} again`);
+            attemptPlay();
+          }
+        }, 1000);
+        
+        return () => {
+          if (fallbackTimeout) clearTimeout(fallbackTimeout);
+        };
       }
-    };
-    
-    if (isActive && videoLoaded) {
-      attemptPlay();
-    } else if (videoRef.current) {
-      // Pause when not active
+    } else if (!isActive && videoRef.current) {
+      // Pause the video when not active
       videoRef.current.pause();
       setIsPlaying(false);
+      
+      // Calculate and track watch duration when video becomes inactive
+      if (watchStartTime !== null) {
+        const duration = Math.floor((Date.now() - watchStartTime) / 1000);
+        setWatchDuration(duration);
+        
+        // Track view with duration
+        trackUserInteraction(video.id, 'view', duration);
+        
+        // Also update the graph with this interaction
+        processUserInteraction(
+          {
+            videoId: video.id,
+            action: 'view',
+            timestamp: new Date(),
+            duration,
+            metadata: { completed: duration > 0 }
+          },
+          video
+        );
+        
+        // Reset watch start time
+        setWatchStartTime(null);
+      }
     }
     
-    // Cleanup function
     return () => {
       if (playAttemptTimeout) {
-        window.clearTimeout(playAttemptTimeout);
+        clearTimeout(playAttemptTimeout);
       }
     };
-  }, [isActive, videoLoaded]);
+  }, [isActive, videoLoaded, video, audioEnabled, isPlaying]);
 
-  // Handle video loading errors
+  // Handle video errors
   const handleVideoError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
-    console.error(`Error loading video: ${video.videoUrl}`);
+    console.error('Video error:', e);
     setVideoError(true);
+    trackUserInteraction(video.id, 'skip', 0, { reason: 'error' });
   };
 
-  // Handle video loaded successfully
+  // Handle video loaded
   const handleVideoLoaded = () => {
+    console.log('Video loaded successfully');
     setVideoLoaded(true);
     setVideoError(false);
-    
-    // Try to play immediately if this is the active video
-    if (isActive && videoRef.current) {
+  };
+
+  // Handle video ended
+  const handleVideoEnded = () => {
+    console.log('Video playback ended');
+    if (videoRef.current) {
+      // Loop the video
+      videoRef.current.currentTime = 0;
       videoRef.current.play().catch(error => {
-        console.error('Error playing after load:', error.message);
+        console.error('Error replaying video:', error);
       });
     }
   };
@@ -322,20 +447,41 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, isActive }) => {
       if (isPlaying) {
         videoRef.current.pause();
         setIsPlaying(false);
-      } else {
-        const playPromise = videoRef.current.play();
         
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              setIsPlaying(true);
-            })
-            .catch(error => {
-              console.error(`Error playing video: ${error.message}`);
-              setIsPlaying(false);
-            });
+        // Track pause action
+        if (watchStartTime !== null) {
+          const duration = Math.floor((Date.now() - watchStartTime) / 1000);
+          trackUserInteraction(video.id, 'view', duration, { paused: true });
+          setWatchStartTime(null);
         }
+      } else {
+        videoRef.current.play()
+          .then(() => {
+            setIsPlaying(true);
+            setWatchStartTime(Date.now());
+          })
+          .catch(error => {
+            console.error('Error playing video:', error);
+          });
       }
+    }
+  };
+
+  // Toggle audio
+  const toggleAudio = () => {
+    if (videoRef.current) {
+      const newAudioEnabled = !audioEnabled;
+      setAudioEnabled(newAudioEnabled);
+      
+      // Update video element
+      videoRef.current.muted = !newAudioEnabled;
+      videoRef.current.volume = newAudioEnabled ? 1.0 : 0.0;
+      
+      // Track user preference
+      trackUserInteraction(video.id, newAudioEnabled ? 'unmute' : 'mute');
+      
+      // Show feedback
+      console.log(`Audio ${newAudioEnabled ? 'enabled' : 'disabled'} for video ${video.id}`);
     }
   };
 
@@ -343,24 +489,114 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, isActive }) => {
   const toggleInteractions = (e: React.MouseEvent) => {
     e.stopPropagation();
     setShowInteractions(!showInteractions);
+    
+    // Track interaction panel toggle
+    trackUserInteraction(
+      video.id, 
+      'view', 
+      0, 
+      { showInteractions: !showInteractions }
+    );
+  };
+
+  // Handle like action
+  const handleLike = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    // In a real app, this would call an API to like the video
+    console.log('Liked video:', video.id);
+    
+    // Track like action
+    trackUserInteraction(video.id, 'like');
+    
+    // Also update the graph with this interaction
+    processUserInteraction(
+      {
+        videoId: video.id,
+        action: 'like',
+        timestamp: new Date(),
+        metadata: { liked: true }
+      },
+      video
+    );
+  };
+
+  // Handle comment action
+  const handleComment = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    // In a real app, this would open a comment modal
+    console.log('Comment on video:', video.id);
+    
+    // Track comment action
+    trackUserInteraction(video.id, 'comment');
+    
+    // Also update the graph with this interaction
+    processUserInteraction(
+      {
+        videoId: video.id,
+        action: 'comment',
+        timestamp: new Date(),
+        metadata: { commented: true }
+      },
+      video
+    );
+  };
+
+  // Handle share action
+  const handleShare = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    // In a real app, this would open a share modal
+    console.log('Share video:', video.id);
+    
+    // Track share action
+    trackUserInteraction(video.id, 'share');
+    
+    // Also update the graph with this interaction
+    processUserInteraction(
+      {
+        videoId: video.id,
+        action: 'share',
+        timestamp: new Date(),
+        metadata: { shared: true }
+      },
+      video
+    );
+  };
+
+  // Handle follow action
+  const handleFollow = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    // In a real app, this would call an API to follow the creator
+    console.log('Follow creator:', video.username);
+    
+    // Track follow action
+    trackUserInteraction(video.id, 'follow', 0, { creator: video.username });
+    
+    // Also update the graph with this interaction
+    processUserInteraction(
+      {
+        videoId: video.id,
+        action: 'follow',
+        timestamp: new Date(),
+        metadata: { creator: video.username }
+      },
+      video
+    );
   };
 
   return (
-    <CardContainer onClick={togglePlayPause}>
+    <CardContainer id={id}>
       {videoError ? (
-        <div style={{ 
-          color: 'white', 
-          display: 'flex', 
-          flexDirection: 'column', 
-          alignItems: 'center', 
-          justifyContent: 'center',
-          height: '100%',
-          padding: '20px',
-          textAlign: 'center',
-          backgroundColor: '#111'
-        }}>
-          <h3>Video could not be loaded</h3>
-          <p>There was an error loading this video.</p>
+        <div style={{ color: 'white', textAlign: 'center', padding: '20px' }}>
+          <p>Error loading video</p>
+          <button onClick={(e) => {
+            e.stopPropagation();
+            if (videoRef.current) {
+              videoRef.current.load();
+              setVideoError(false);
+            }
+          }}>
+            Retry
+          </button>
         </div>
       ) : (
         <VideoElement
@@ -368,11 +604,11 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, isActive }) => {
           src={video.videoUrl}
           loop
           playsInline
-          muted
           preload="auto"
-          autoPlay={isActive}
           onError={handleVideoError}
           onLoadedData={handleVideoLoaded}
+          onEnded={handleVideoEnded}
+          onClick={togglePlayPause}
         />
       )}
       
@@ -381,8 +617,22 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, isActive }) => {
           <Avatar src={video.userAvatar} alt={video.username} />
           <div>
             <Username>@{video.username}</Username>
-            {video.agent && <div style={{ fontSize: '12px' }}>{video.agent.role}</div>}
+            {video.agent && <AgentBio>{video.agent.bio}</AgentBio>}
           </div>
+          <button 
+            style={{ 
+              marginLeft: 'auto', 
+              background: 'var(--primary)', 
+              color: 'white',
+              border: 'none',
+              padding: '8px 16px',
+              borderRadius: '4px',
+              cursor: 'pointer'
+            }}
+            onClick={handleFollow}
+          >
+            Follow
+          </button>
         </UserInfo>
         <Description>{video.description}</Description>
         <MusicInfo>
@@ -394,69 +644,72 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, isActive }) => {
         {(video.category || video.originalTitle) && (
           <VideoMetadata>
             {video.category && <CategoryTag>{video.category}</CategoryTag>}
-            {video.originalTitle && <OriginalTitle>Source: {video.originalTitle}</OriginalTitle>}
+            {video.originalTitle && <OriginalTitle>Original: {video.originalTitle}</OriginalTitle>}
           </VideoMetadata>
         )}
       </VideoOverlay>
       
       <ActionsContainer>
-        <ActionButton>
+        <ActionButton onClick={handleLike}>
           <ActionIcon>❤️</ActionIcon>
-          {formatCount(video.likes)}
+          <ActionCount>{formatCount(video.likes)}</ActionCount>
         </ActionButton>
-        <ActionButton onClick={toggleInteractions}>
+        <ActionButton onClick={handleComment}>
           <ActionIcon>💬</ActionIcon>
-          {formatCount(video.comments)}
+          <ActionCount>{formatCount(video.comments)}</ActionCount>
         </ActionButton>
-        <ActionButton>
-          <ActionIcon>↪️</ActionIcon>
-          {formatCount(video.shares)}
+        <ActionButton onClick={handleShare}>
+          <ActionIcon>↗️</ActionIcon>
+          <ActionCount>{formatCount(video.shares)}</ActionCount>
         </ActionButton>
         
         {video.interactions && video.interactions.length > 0 && (
           <InteractionsButton onClick={toggleInteractions}>
             <ActionIcon>🤖</ActionIcon>
-            <ActionCount>AI</ActionCount>
+            <ActionCount>{video.interactions.length}</ActionCount>
             <InteractionsBadge>{video.interactions.length}</InteractionsBadge>
           </InteractionsButton>
+        )}
+        <ActionButton onClick={toggleAudio}>
+          <ActionIcon>{audioEnabled ? '🔊' : '🔇'}</ActionIcon>
+          <ActionCount>{audioEnabled ? 'Mute' : 'Unmute'}</ActionCount>
+        </ActionButton>
+        
+        {hasAudio === false && (
+          <div style={{
+            position: 'absolute',
+            bottom: '-30px',
+            right: '0',
+            color: 'white',
+            fontSize: '10px',
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            padding: '2px 5px',
+            borderRadius: '3px'
+          }}>
+            Using background audio
+          </div>
         )}
       </ActionsContainer>
       
       <AnimatePresence>
-        {showInteractions && (
-          <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 20 }}
-            style={{
-              position: 'absolute',
-              top: 0,
-              right: 0,
-              bottom: 0,
-              width: '80%',
-              backgroundColor: 'rgba(0, 0, 0, 0.9)',
-              padding: '20px',
-              overflowY: 'auto',
-              zIndex: 10,
-            }}
-            onClick={(e) => e.stopPropagation()}
+        {showInteractions && video.interactions && (
+          <InteractionsPanel
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.2 }}
           >
-            <h3>AI Interactions</h3>
             {video.interactions.map((interaction) => (
               <InteractionItem key={interaction.id}>
                 <InteractionHeader>
-                  <InteractionAvatar 
-                    src={getRandomAvatar(interaction.agent.name)} 
-                    alt={interaction.agent.name} 
-                  />
-                  <InteractionUsername>@{interaction.agent.name}</InteractionUsername>
+                  <InteractionAvatar src={getRandomAvatar(interaction.agent.name)} alt={interaction.agent.name} />
+                  <InteractionUsername>@{interaction.agent.name.toLowerCase().replace(/\s+/g, '_')}</InteractionUsername>
                   <InteractionType>{interaction.type}</InteractionType>
                 </InteractionHeader>
                 <InteractionContent>{interaction.content}</InteractionContent>
               </InteractionItem>
             ))}
-          </motion.div>
+          </InteractionsPanel>
         )}
       </AnimatePresence>
     </CardContainer>

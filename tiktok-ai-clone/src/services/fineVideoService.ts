@@ -26,6 +26,8 @@ interface FineVideoData {
       }>;
     };
     video_path: string;
+    text_to_speech?: string;
+    timecoded_text_to_speech?: string;
   };
 }
 
@@ -69,7 +71,9 @@ export const fetchFineVideos = async (count: number = 5): Promise<FineVideoData[
               duration_seconds: metadata.duration_seconds,
               youtube_title: metadata.youtube_title,
               content_metadata: metadata.content_metadata,
-              video_path: videoPath // Add the video path to the metadata
+              video_path: videoPath, // Add the video path to the metadata
+              text_to_speech: metadata.text_to_speech,
+              timecoded_text_to_speech: metadata.timecoded_text_to_speech
             }
           });
           
@@ -295,46 +299,64 @@ export const trimVideoToFifteenSeconds = async (videoBlob: Blob): Promise<Blob> 
   return videoBlob;
 };
 
-// Function to process a FineVideo for use in the app
+// Function to extract audio from FineVideo data
+export const extractAudioFromFineVideo = (videoData: FineVideoData): string | null => {
+  try {
+    // Check if the video data has text_to_speech or timecoded_text_to_speech
+    if (videoData.json && 
+        (videoData.json.text_to_speech || 
+         videoData.json.timecoded_text_to_speech)) {
+      
+      console.log('Found speech data in FineVideo metadata');
+      
+      // In a real implementation, we would:
+      // 1. Extract the text from text_to_speech or timecoded_text_to_speech
+      // 2. Use a text-to-speech API to convert it to audio
+      // 3. Return the URL to the audio file
+      
+      // For now, we'll return a placeholder audio URL
+      // In a real implementation, this would be a URL to an audio file generated from the text
+      return '/assets/audio/speech.mp3';
+    }
+    
+    // If no speech data is found, return null
+    return null;
+  } catch (error) {
+    console.error('Error extracting audio from FineVideo data:', error);
+    return null;
+  }
+};
+
+// Function to process a FineVideo into a format usable by our app
 export const processFineVideo = async (videoData: FineVideoData): Promise<{
   videoBlob: Blob;
   description: string;
   metadata: any;
+  audioUrl?: string;
 }> => {
   try {
-    // Trim the video to 15 seconds
-    const trimmedVideo = await trimVideoToFifteenSeconds(videoData.mp4);
+    console.log('Processing FineVideo data:', videoData);
     
-    try {
-      // Extract a frame from the middle of the video
-      const frameDataUrl = await extractVideoFrame(trimmedVideo);
-      
-      // Get a description from GPT-4o
-      const description = await getDescriptionFromFrame(frameDataUrl, videoData.json);
-      
-      return {
-        videoBlob: trimmedVideo,
-        description,
-        metadata: videoData.json
-      };
-    } catch (frameError) {
-      console.error('Error extracting frame or generating description:', frameError);
-      
-      // Fall back to a generic description if frame extraction fails
-      return {
-        videoBlob: trimmedVideo,
-        description: `Check out this ${videoData.json.content_fine_category || 'amazing'} video! #trending #viral`,
-        metadata: videoData.json
-      };
+    // Extract a frame from the video for thumbnail generation
+    let frameDataUrl = '';
+    if (videoData.mp4 && videoData.mp4.size > 0) {
+      frameDataUrl = await extractVideoFrame(videoData.mp4);
     }
-  } catch (error) {
-    console.error('Error processing FineVideo:', error);
     
-    // Return the original data with a generic description as a last resort
+    // Generate a description based on the video frame and metadata
+    const description = await getDescriptionFromFrame(frameDataUrl, videoData.json);
+    
+    // Extract audio from the video data if available
+    const audioUrl = extractAudioFromFineVideo(videoData);
+    
     return {
       videoBlob: videoData.mp4,
-      description: `Amazing ${videoData.json.content_fine_category || ''} content! #mustwatch`,
-      metadata: videoData.json
+      description,
+      metadata: videoData.json,
+      audioUrl: audioUrl || undefined
     };
+  } catch (error) {
+    console.error('Error processing FineVideo:', error);
+    throw error;
   }
 }; 
