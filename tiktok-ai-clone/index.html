@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI TikTok Clone</title>
+    <meta name="description" content="A TikTok clone with AI-generated content" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Preload video files for faster initial loading -->
+    <link rel="preload" href="/assets/videos/video1.mp4" as="video" type="video/mp4" />
+    <link rel="preload" href="/assets/videos/video2.mp4" as="video" type="video/mp4" />
+    <!-- Preload metadata -->
+    <link rel="preload" href="/assets/data/video_metadata.json" as="fetch" crossorigin="anonymous" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html> 

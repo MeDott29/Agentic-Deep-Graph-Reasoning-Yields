@@ -1,0 +1,107 @@
+[
+  {
+    "id": "video1",
+    "content_fine_category": "Nature",
+    "content_parent_category": "Outdoors",
+    "duration_seconds": 15,
+    "youtube_title": "Beautiful Ocean Waves",
+    "content_metadata": {
+      "title": "Ocean Waves Crashing on Shore",
+      "description": "Peaceful ocean waves crashing on a sandy beach at sunset, creating a serene and calming atmosphere.",
+      "scenes": [
+        {
+          "title": "Ocean Waves",
+          "timestamps": {
+            "start_timestamp": "00:00:00",
+            "end_timestamp": "00:00:15"
+          }
+        }
+      ]
+    },
+    "video_path": "/assets/videos/video1.mp4"
+  },
+  {
+    "id": "video2",
+    "content_fine_category": "Travel",
+    "content_parent_category": "Lifestyle",
+    "duration_seconds": 15,
+    "youtube_title": "City Timelapse",
+    "content_metadata": {
+      "title": "Urban City Timelapse",
+      "description": "Stunning timelapse of a bustling city with cars and people moving through the streets, showcasing urban life.",
+      "scenes": [
+        {
+          "title": "City Streets",
+          "timestamps": {
+            "start_timestamp": "00:00:00",
+            "end_timestamp": "00:00:15"
+          }
+        }
+      ]
+    },
+    "video_path": "/assets/videos/video2.mp4"
+  },
+  {
+    "id": "video3",
+    "content_fine_category": "Food",
+    "content_parent_category": "Lifestyle",
+    "duration_seconds": 15,
+    "youtube_title": "Cooking Preparation",
+    "content_metadata": {
+      "title": "Cooking Fresh Ingredients",
+      "description": "Chef preparing fresh ingredients for a gourmet meal, showcasing culinary skills and food preparation techniques.",
+      "scenes": [
+        {
+          "title": "Food Preparation",
+          "timestamps": {
+            "start_timestamp": "00:00:00",
+            "end_timestamp": "00:00:15"
+          }
+        }
+      ]
+    },
+    "video_path": "/assets/videos/video3.mp4"
+  },
+  {
+    "id": "video4",
+    "content_fine_category": "Fitness",
+    "content_parent_category": "Health",
+    "duration_seconds": 15,
+    "youtube_title": "Workout Routine",
+    "content_metadata": {
+      "title": "High-Intensity Workout",
+      "description": "Energetic fitness routine demonstrating effective exercises for strength and cardio training.",
+      "scenes": [
+        {
+          "title": "Exercise Routine",
+          "timestamps": {
+            "start_timestamp": "00:00:00",
+            "end_timestamp": "00:00:15"
+          }
+        }
+      ]
+    },
+    "video_path": "/assets/videos/video4.mp4"
+  },
+  {
+    "id": "video5",
+    "content_fine_category": "Technology",
+    "content_parent_category": "Education",
+    "duration_seconds": 15,
+    "youtube_title": "Tech Gadgets Review",
+    "content_metadata": {
+      "title": "Latest Technology Showcase",
+      "description": "Exploring cutting-edge technology gadgets and their innovative features in this comprehensive review.",
+      "scenes": [
+        {
+          "title": "Tech Review",
+          "timestamps": {
+            "start_timestamp": "00:00:00",
+            "end_timestamp": "00:00:15"
+          }
+        }
+      ]
+    },
+    "video_path": "/assets/videos/video5.mp4"
+  }
+] 

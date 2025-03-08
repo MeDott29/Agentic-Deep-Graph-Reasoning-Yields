@@ -1,0 +1,39 @@
+{
+  "name": "tiktok-ai-clone",
+  "version": "1.0.0",
+  "description": "A TikTok clone with AI-generated content",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "tiktok",
+    "ai",
+    "infinite-scroll"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "axios": "^1.8.2",
+    "dotenv": "^16.4.7",
+    "framer-motion": "^12.4.10",
+    "openai": "^4.86.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.1"
+  }
+}
