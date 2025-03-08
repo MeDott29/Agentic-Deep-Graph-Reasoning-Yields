@@ -72,27 +72,60 @@ npm run dev
 
 ```
 tiktok-ai-clone/
-├── src/
-│   ├── components/     # Reusable UI components
-│   ├── hooks/          # Custom React hooks
-│   ├── pages/          # Page components
-│   │   ├── Home/       # Main feed page
-│   │   └── Dashboard/  # Analytics dashboard
-│   ├── services/       # API and service functions
+├── src/                          # Source code directory
+│   ├── assets/                   # Application-specific assets
+│   │   └── icons/                # SVG icons used in the UI
+│   ├── components/               # Reusable UI components
+│   │   ├── VideoPlayer/          # Video player component and controls
+│   │   ├── VideoFeed/            # Infinite scroll video feed
+│   │   ├── VideoDescription/     # AI-generated video descriptions
+│   │   ├── Navigation/           # App navigation components
+│   │   └── Dashboard/            # Analytics dashboard components
+│   ├── hooks/                    # Custom React hooks
+│   │   ├── useVideoPlayer.ts     # Video playback functionality
+│   │   ├── useInfiniteScroll.ts  # Infinite scrolling logic
+│   │   ├── useVideoVisibility.ts # Video visibility detection
+│   │   └── useAnalytics.ts       # Analytics tracking
+│   ├── pages/                    # Page components
+│   │   ├── Home/                 # Main feed page
+│   │   │   ├── index.tsx         # Home page component
+│   │   │   └── Home.styles.ts    # Home page styles
+│   │   └── Dashboard/            # Analytics dashboard
+│   │       ├── index.tsx         # Dashboard page component
+│   │       └── Dashboard.styles.ts # Dashboard styles
+│   ├── services/                 # API and service functions
 │   │   ├── aiService.ts          # AI content generation
 │   │   ├── fineVideoService.ts   # FineVideo integration
-│   │   └── openaiService.ts      # OpenAI API integration
-│   ├── styles/         # Global styles
-│   ├── utils/          # Utility functions
-│   ├── App.tsx         # Main App component
-│   └── main.tsx        # Entry point
-├── public/             # Static assets
-│   └── assets/         # Videos, images, and data files
-├── index.html          # HTML template
-├── package.json        # Dependencies and scripts
-├── tsconfig.json       # TypeScript configuration
-└── vite.config.ts      # Vite configuration
+│   │   ├── openaiService.ts      # OpenAI API integration
+│   │   └── analyticsService.ts   # Analytics data processing
+│   ├── styles/                   # Global styles
+│   │   ├── theme.ts              # Theme configuration
+│   │   ├── global.ts             # Global style definitions
+│   │   └── animations.ts         # Shared animations
+│   ├── utils/                    # Utility functions
+│   │   ├── videoUtils.ts         # Video processing utilities
+│   │   ├── formatUtils.ts        # Data formatting helpers
+│   │   ├── apiUtils.ts           # API interaction utilities
+│   │   └── analyticsUtils.ts     # Analytics helper functions
+│   ├── App.tsx                   # Main App component with routing
+│   └── main.tsx                  # Application entry point
+├── public/                       # Static assets
+│   ├── assets/                   # Public assets
+│   │   ├── videos/               # Sample video files
+│   │   ├── audio/                # Audio files for videos
+│   │   ├── avatars/              # User avatar images
+│   │   └── data/                 # JSON data files
+│   │       └── video_metadata.json # Video metadata
+│   └── favicon.svg               # Application favicon
+├── index.html                    # HTML template
+├── package.json                  # Dependencies and scripts
+├── tsconfig.json                 # TypeScript configuration
+├── vite.config.ts                # Vite configuration
+├── .env                          # Environment variables
+└── README.md                     # Project documentation
 ```
+
+Each directory contains its own README.md file with more detailed information about its purpose and contents.
 
 ## How It Works
 
